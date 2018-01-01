@@ -1,0 +1,12 @@
+"Remove ErrorBells and VisualBells (annoying)
+set noeb vb t_vb=
+
+"Set GUI options
+set guioptions+=a					 "Vis selection goes to clipboard
+set guioptions+=e					 "Better looking window tabs
+set guioptions-=L					 "Remove left-hand scroll
+"set guioptions-=r					 "Remove right-hand scroll
+set guioptions-=m					 "Remove menubar
+set guioptions-=T					 "Remove toolbar
+set guifont=Monospace\ 12
+set lines=50 columns=200
