@@ -37,14 +37,15 @@ colors() {
 
 # Set aliases
 alias backup-all='backup-rc & backup-vim & backup-task'
-alias backup-rc='zip ~/Backups/rc_bak.zip ~/.*rc ~/.bash_profile'
-alias backup-task='zip -r ~/Backups/task_bak.zip ~/.task'
-alias backup-vim='zip -r ~/Backups/vim_bak.zip ~/.vim'
+alias backup-rc='zip ~/Documents/backups/rc_bak.zip ~/.*rc ~/.bash_profile'
+alias backup-task='zip -r ~/Documents/backups/task_bak.zip ~/.task'
+alias backup-vim='zip -r ~/Documents/backups/vim_bak.zip ~/.vim'
 alias browse='chromium &'
 alias chrome='chromium &'
 alias entar='tar -czvf'
 alias ffx='firefox &'
 alias idea='idea &'
+
 # logout and lock require lightdm (or at least dm-tool)
 alias quit-cin='cinnamon-session-quit'
 alias lock='dm-tool lock'
