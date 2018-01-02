@@ -1,0 +1,45 @@
+" [Settings]
+set autoindent                       "Follow indentation of last line
+set autoread                         "Auto-detect file changes
+set autowrite                        "Auto-save file before running
+set backupdir=~/.backup,.,/tmp       "Do not put backups in current dir
+set cmdheight=2                      "Height of the command bar
+set completeopt=menuone              "Auto-completion option menu
+set confirm                          "Confirm :q when unsaved changes
+set cursorline                       "Highlight current line
+set directory=~/.backup,.,/tmp       "Don't put swaps in current dir
+set equalalways                      "Make all windows equal in size
+set encoding=utf-8
+set expandtab                        "Replace tabs with spaces
+set fileencoding=utf-8
+set fileformat=unix
+set foldcolumn=4                     "Width of column indicating folds
+set foldlevelstart=42                "No closed folds at start
+set foldmethod=indent                "Auto-folding of indented blocks
+set foldnestmax=5                    "Maximum number of nested folds
+set helplang=                        "Set help language to English
+set hlsearch                         "Highlight search results
+set ignorecase                       "Ignore case when searching
+set incsearch                        "HL search matches while typing
+set lazyredraw                       "Redraw screen only when need to
+set list
+set listchars=tab:▸\ ,eol:¬          "Set Tab and EOL characters
+let mapleader=","                    "Change leader key
+set mouse=a                          "Enable mouse in all modes
+set nobomb                           "No BOM
+set noerrorbells visualbell t_vb=
+set noswapfile                       "Disable swap files
+set nowrap                           "Disable line wrapping
+set number                           "Turn on line numbers
+set omnifunc=syntaxcomplete#Complete "Native auto-complete 
+set shell=/bin/bash                  "Set the default shell
+set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
+set shiftwidth=4                     "Intentation size
+set showmatch                        "Highlight matching brackets
+set smartcase                        "Except when using capital letters
+set smartindent                      "Use smart indentation
+set smarttab                         "Use smart tabs
+set splitbelow                       "New splits always below
+set splitright                       "New vSplits always to the right"
+set tabstop=4
+set wildmenu                         "Better auto-completion for cmd

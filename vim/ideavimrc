@@ -1,0 +1,144 @@
+call pathogen#infect()				 "Load bundles via Pathogen
+Helptags							 "Reload plugin documentation 
+filetype plugin indent on			 "Use auto-indenting
+
+set nocompatible					 "Use Vim mode instead of Vi
+set foldenable						 "Enable folding
+if has('gui_running')
+	colorscheme obsidian2			 "Set GUI color scheme
+else
+	colorscheme elflord				 "Set color scheme 
+endif
+
+let g:slime_target = "tmux"			 "Tell slime to use tmux
+let g:syntastic_enable_racket_racket_checker = 1
+
+syntax on							 "Enable syntax highlighting
+
+" [Settings]
+set autoindent						 "Follow indentation of last line
+set autoread						 "Auto-detect file changes
+set autowrite						 "Auto-save file before running
+set backupdir=~/.backup,.,/tmp		 "Do not put backups in current dir
+set cmdheight=2						 "Height of the command bar
+set completeopt=menuone				 "Auto-completion option menu
+set confirm							 "Confirm :q when unsaved changes
+set cursorline 						 "Highlight current line
+set directory=~/.backup,.,/tmp		 "Don't put swaps in current dir
+set equalalways						 "Make all windows equal in size
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformat=unix
+set foldcolumn=4					 "Width of column indicating folds
+set foldlevelstart=42				 "No closed folds at start
+set foldmethod=indent				 "Auto-folding of indented blocks
+set foldnestmax=5					 "Maximum number of nested folds
+set helplang=						 "Set help language to English
+set hlsearch						 "Highlight search results
+set ignorecase						 "Ignore case when searching
+set incsearch						 "HL search matches while typing
+set lazyredraw						 "Redraw screen only when need to
+set list
+set listchars=tab:▸\ ,eol:¬			 "Set Tab and EOL characters
+let mapleader=","					 "Change leader key
+set mouse=a							 "Enable mouse in all modes
+set nobomb							 "No BOM
+set noerrorbells visualbell t_vb=
+set noswapfile						 "Disable swap files
+set nowrap							 "Disable line wrapping
+set number							 "Turn on line numbers
+set omnifunc=syntaxcomplete#Complete "Native auto-complete 
+set shell=/bin/bash					 "Set the default shell
+set shiftwidth=4 					 "Intentation size
+set showmatch						 "Highlight matching brackets
+set smartcase						 "Except when using capital letters
+set smartindent						 "Use smart indentation
+set smarttab						 "Use smart tabs
+set splitbelow						 "New splits always below
+set splitright						 "New vSplits always to the right"
+set tabstop=4
+set wildmenu						 "Better auto-completion for cmd
+
+
+" [Key mappings]
+"Move the movement keys (ironic) 1 key to the right
+noremap j h
+noremap k j
+noremap l k
+noremap ; l
+"Go the Beginning and End of line
+noremap J ^
+noremap K $
+"gg => END
+noremap G gg
+noremap gg G
+"Optical illusion ?
+noremap p P
+noremap P p
+"% too far away :(
+noremap <leader><Tab> %
+"Tab manipulation
+noremap <Tab><Tab> :tabnext
+noremap <Tab>n :tabnew 
+"Get over here!
+noremap <leader>z zz
+"I found it, now go away!
+nnoremap <leader><space> :noh<cr>
+"Add a key combination for the run command
+noremap <leader>r :Run<cr>
+
+"vertical split
+nnoremap <leader>v <C-W>v
+"horizontal split
+nnoremap <leader>s <C-W>s
+"Window navigation
+nnoremap <leader>w <C-W>w
+nnoremap <Tab>j <C-W>h
+nnoremap <Tab>k <C-W>j
+nnoremap <Tab>l <C-W>k
+nnoremap <Tab>; <C-W>l
+"Window resizing
+nnoremap <leader>` <C-W>=
+nnoremap <C-Left> 5<C-W>>
+nnoremap <C-Right> 5<C-W><
+nnoremap <C-Down> 5<C-W>-
+nnoremap <C-Up> 5<C-W>+
+
+
+"Force vim to use Prolog syntax on .pl files
+autocmd BufNewFile,BufRead *.pl set syntax=prolog
+
+
+"Call the Run function with the Run command
+command Run execute "call Run()" 	 
+"Function to run the current file in the cases of certain filetypes
+function Run()
+	"Always save file before running
+	:w
+	"If it is a Python file
+	if &filetype == 'python'
+		exe '!python %'
+	"If it is a Prolog file
+	elseif &filetype == 'prolog'
+		exe '!swipl %'
+	"If it is a Java file
+	"Compile in a diff directory, because easier to open next time
+	elseif &filetype == 'java' 
+		exe '!echo "Compiling..." && javac %'
+		exe '!java %:r'
+	"If it is a Haskell file
+	"Just run in the interpreter
+	elseif &filetype == 'haskell'
+		exe '!ghci %'
+	"If it is a Go file
+	elseif &filetype == 'go'
+		exe '!go run %'
+	elseif &filetype == 'scala'
+		exe '!echo "Compiling..." && scalac %'
+		exe '!scala %:r'
+	elseif &filetype == 'racket'
+		exe '!racket -f % -i'
+	endif
+endfunction
+
+

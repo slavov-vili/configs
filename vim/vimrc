@@ -1,19 +1,22 @@
+" [Plugin setup]
 call pathogen#infect()               "Load bundles via Pathogen
 Helptags                             "Reload plugin documentation 
 filetype plugin indent on            "Use auto-indenting
 
+" [Some basic settings]
 set nocompatible                     "Use Vim mode instead of Vi
 set foldenable                       "Enable folding
+syntax on                            "Enable syntax highlighting
+
+" [Set the theme]
 if has('gui_running')
     colorscheme obsidian2            "Set GUI color scheme
 else
     colorscheme elflord              "Set color scheme 
 endif
 
-let g:slime_target = "tmux"          "Tell slime to use tmux
-let g:syntastic_enable_racket_racket_checker = 1
 
-syntax on                            "Enable syntax highlighting
+
 
 " [Settings]
 set autoindent                       "Follow indentation of last line
@@ -60,6 +63,8 @@ set splitbelow                       "New splits always below
 set splitright                       "New vSplits always to the right"
 set tabstop=4
 set wildmenu                         "Better auto-completion for cmd
+
+
 
 
 " [Key mappings]
@@ -142,6 +147,11 @@ nnoremap <leader>wo <C-W>o
 
 
 
+
+" [Others]
+let g:slime_target = "tmux"          "Tell slime to use tmux
+let g:syntastic_enable_racket_racket_checker = 1
+
 "Force vim to use Prolog syntax on .pl files
 autocmd BufNewFile,BufRead *.pl set syntax=prolog
 "Automatically retab files when opened
@@ -149,6 +159,8 @@ autocmd BufNewFile * :retab
 
 
 
+
+" [User-defined functions]
 "Call the Run function with the Run command
 command Run execute "call Run()"     
 "Function to run the current file in the cases of certain filetypes

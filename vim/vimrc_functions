@@ -1,0 +1,37 @@
+" [User-defined functions]
+"Call the Run function with the Run command
+command Run execute "call Run()"     
+"Function to run the current file in the cases of certain filetypes
+function Run()
+    "Always save file before running
+    :w!
+    "If it is a Python file
+    if &filetype == 'python'
+        exe '!python3 %'
+    "If it is a Prolog file
+    elseif &filetype == 'prolog'
+        exe '!swipl %'
+    "If it is a Java file
+    "Compile and run
+    elseif &filetype == 'java' 
+        exe '!echo "Compiling..." && javac %'
+        exe '!java %:r'
+    "If it is a Haskell file
+    "Just run in the interpreter
+    elseif &filetype == 'haskell'
+        exe '!ghci %'
+    "If it is a Go file
+    elseif &filetype == 'go'
+        exe '!go run %'
+    "If it is a Scala file
+    "Compile and run
+    elseif &filetype == 'scala'
+        exe '!scala %'
+        "exe '!echo \"Compiling...\" && scalac %'
+        "exe '!scala %:r'
+    "If it is a Racket file
+    "Just run in the interpreter
+    elseif &filetype == 'racket'
+        exe '!racket -f % -i'
+    endif
+endfunction
