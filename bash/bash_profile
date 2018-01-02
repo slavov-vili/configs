@@ -6,6 +6,10 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 
+
+
+# [ENV VARIABLES]
+
 # Set default path
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
 export PATH
@@ -29,5 +33,3 @@ export QT_AUTO_SCREEN_FACTOR=1
 if [ -z "$DISPLAY" ] && [ -n "$XDG_VTNR" ] && [ "$XDG_VTNR" -eq 1 ]; then
 	 exec startx
 fi
-
-

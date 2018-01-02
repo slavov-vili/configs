@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/home/vilskin'
-let g:netrw_dirhist_2='/home/vilskin/.task'
-let g:netrw_dirhist_3='/home/vilskin'
-let g:netrw_dirhist_4='/home/vilskin/Documents/advent_of_code_2017'
-let g:netrw_dirhist_5='/home/vilskin/Documents/advent_of_code_2017/day_1'
-let g:netrw_dirhist_6='/home/vilskin/Documents/advent_of_code_2017/day_10'
-let g:netrw_dirhist_7='/home/vilskin/Documents/configs/.git'
-let g:netrw_dirhist_8='/home/vilskin/Documents/configs/taskwarrior/task'
-let g:netrw_dirhist_9='/home/vilskin/Documents/configs/vim/vim'
+let g:netrw_dirhist_cnt =0
