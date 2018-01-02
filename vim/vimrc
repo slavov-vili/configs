@@ -19,6 +19,7 @@ endif
 
 
 " [Settings]
+
 set autoindent                       "Follow indentation of last line
 set autoread                         "Auto-detect file changes
 set autowrite                        "Auto-save file before running
@@ -68,6 +69,7 @@ set wildmenu                         "Better auto-completion for cmd
 
 
 " [Key mappings]
+
 "Move the movement keys (ironic) 1 key to the right
 noremap j h
 noremap k j
@@ -149,6 +151,7 @@ nnoremap <leader>wo <C-W>o
 
 
 " [Others]
+
 let g:slime_target = "tmux"          "Tell slime to use tmux
 let g:syntastic_enable_racket_racket_checker = 1
 
@@ -161,6 +164,7 @@ autocmd BufNewFile * :retab
 
 
 " [User-defined functions]
+
 "Call the Run function with the Run command
 command Run execute "call Run()"     
 "Function to run the current file in the cases of certain filetypes

@@ -1,8 +1,0 @@
-" [Others]
-let g:slime_target = "tmux"          "Tell slime to use tmux
-let g:syntastic_enable_racket_racket_checker = 1
-
-"Force vim to use Prolog syntax on .pl files
-autocmd BufNewFile,BufRead *.pl set syntax=prolog
-"Automatically retab files when opened
-autocmd BufNewFile * :retab
