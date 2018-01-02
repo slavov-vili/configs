@@ -1,0 +1,153 @@
+# [Created by task 2.5.1 9/27/2017 20:39:03]
+# Taskwarrior program configuration file.
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+
+
+# TIP: tag things with +next to boost urgency
+
+
+# Files
+data.location=~/.task
+
+# Color
+color=on
+
+# Date and Time
+dateformat=D-M-YTH:N:S
+weekstart=Monday
+
+# Set default values
+default.project=Random
+default.priority=M
+# Edit urgency coefficients
+urgency.blocking.coefficient=3.0
+urgency.uda.priority.H.coefficient=6.0
+urgency.uda.priority.L.coefficient=1.0
+urgency.uda.priority.M.coefficient=3.0
+
+# Edit 'ls' report
+report.ls.description=Shows general information of pending tasts
+report.ls.filter=status:pending
+report.ls.columns=id,description.count,project,entry,depends.indicator,due
+report.ls.labels=ID,Description,Project,Created,D,Due
+report.ls.sort=start-,description+
+# Edit 'list' report
+report.list.description=Shows semi-informative list of pending tasks
+report.list.filter=status:pending
+report.list.columns=id,urgency,description.oneline,start,recur,due.remaining,project,depends.indicator,priority,tags,entry.age
+report.list.labels=ID,Urg,Description,Start,Rec,Due,Project,D,P,Tags,BD
+report.list.sort=start-,urgency-,due+
+# Edit 'long' report
+report.long.description=Shows fully informative list of pending tasks
+report.long.filter=status:pending
+report.long.columns=id,description,start.active,entry,project,depends,priority,tags,modified.age,due,recur,wait.remaining,scheduled,until
+report.long.labels=ID,Description,Act,Created,Proj,Deps,P,Tags,Mod,Due,Recur,Wait,Sched,Until
+report.long.sort=modified-
+# Edit 'all' report
+report.all.description=Shows useful info for all tasks
+report.all.columns=status.short,description,project.parent,start.active,recur.indicator,entry,due,end,uuid.short
+report.all.labels=St,Description,Project,Start,Recur,Created,Due,Done,UUID
+report.all.sort=status+
+# Edit 'overdue' report
+report.overdue.description=Shows overdue tasks
+report.overdue.filter=(status:pending or status:waiting) and +OVERDUE
+report.overdue.columns=id,urgency,description,entry.age,depends,priority,project,tags
+report.overdue.labels=ID,Urg,Description,Age,Deps,P,Project,Tags
+report.overdue.sort=due+,urgency-
+# Edit the 'blocked' report
+report.blocked.description=Shows a list of blocked tasks
+report.blocked.filter=status:pending +BLOCKED
+report.blocked.columns=id,description,due,depends,priority,project,start.active,entry.age
+report.blocked.labels=ID,Description,Due,Deps,P,Proj,Active,Age
+report.blocked.sort=due+,priority-,start-
+# Edit the 'next' report
+report.next.description=Shows a list of the most urgent tasks
+report.next.filter=status:pending limit:page
+report.next.columns=id,urgency,description,depends,priority,due.relative,project,start.age,recur,entry.age,tags
+report.next.labels=ID,Urg,Description,Deps,P,Due,Project,Active,Recur,Age,Tags
+report.next.sort=urgency-
+# Edit the 'recurring' report
+report.recurring.description=Shows a list of only recurring Tasks
+report.recurring.filter=(status:pending or status:waiting) and (+PARENT or +CHILD)
+report.recurring.columns=id,urgency,description,due,recur,start.age,until.remaining,entry.age,depends.indicator,priority,project,tags,scheduled.countdown
+report.recurring.labels=ID,Urg,Description,Due,Recur,Active,Age,Until,D,P,Project,Tags,Sch
+report.recurring.sort=due+,urgency-,entry+
+
+
+
+# Color theme (uncomment one to use)
+#include /usr/share/doc/task/rc/light-16.theme
+#include /usr/share/doc/task/rc/light-256.theme
+#include /usr/share/doc/task/rc/dark-16.theme
+include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-red-256.theme
+#include /usr/share/doc/task/rc/dark-green-256.theme
+#include /usr/share/doc/task/rc/dark-blue-256.theme
+#include /usr/share/doc/task/rc/dark-violets-256.theme
+#include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
+#include /usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/share/doc/task/rc/solarized-light-256.theme
+#include /usr/share/doc/task/rc/no-color.theme
+
+
+# Override some color settings, because they are hideous
+
+color.active=color10
+color.alternate=on gray3
+color.blocked=rgb130 on color8
+color.blocking=white
+#color.burndown.done=on rgb010
+#color.burndown.pending=on color9
+#color.burndown.started=on color11
+#color.calendar.due=color0 on color1
+#color.calendar.due.today=color15 on color1
+#color.calendar.holiday=color0 on color11
+#color.calendar.overdue=color0 on color9
+#color.calendar.today=color15 on rgb013
+#color.calendar.weekend=on color235
+#color.calendar.weeknumber=rgb013
+#color.completed
+color.debug=magenta
+#color.deleted
+color.due=color11
+color.due.today=red on black
+color.error=white on red
+#color.footnote=color3
+#color.header=color3
+#color.history.add=color0 on rgb500
+#color.history.delete=color0 on rgb550
+#color.history.done=color0 on rgb050
+#color.label
+color.label.sort=green
+color.overdue=red on black
+#color.project.n
+color.recurring=cyan
+#color.scheduled=on rgb001
+#color.summary.background=white on color0
+#color.summary.bar=black on rgb141
+#color.sync.added=rgb010
+#color.sync.changed=color11
+#color.sync.rejected=color9
+color.tag.next=red
+#color.tag.none
+color.tagged=green
+color.uda.priority.H=
+color.uda.priority.L=
+color.uda.priority.M=
+#color.undo.after=color2
+#color.undo.before=color1
+#color.until
+color.warning=bold red on bold black
+rule.color.merge=no
+rule.precedence.color=deleted,completed,active,keyword.,tag.,project.,overdue,scheduled,due.today,due,blocked,blocking,recurring,tagged,uda.
