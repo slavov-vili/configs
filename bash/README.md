@@ -1,4 +1,4 @@
-# WARNING:
+# Warning:
 
-#### COMPARE THE AUTOMATICALLY GENERATED PART OF YOUR BASHRC
-#### BEFORE RUNNING THE SETUP SCRIPT
+#### Compare the automatically generated part of your bashrc
+#### before running the setup script
