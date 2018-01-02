@@ -7,4 +7,4 @@ To only clone part of repo:
   git checkout master
 
 
-### Downside: downloads whole history of repo
+**Downside: downloads whole history of repo**
