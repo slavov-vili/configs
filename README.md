@@ -1,3 +1,5 @@
+**Sparse Checkout**
+
 To only clone part of repo:
   $ git init
   $ git remote add -f origin <url>
