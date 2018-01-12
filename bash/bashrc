@@ -72,6 +72,7 @@ colors() {
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 # Set aliases
+alias ls='ls --color=always'
 alias backup-all='backup-rc & backup-vim & backup-task'
 alias backup-rc='zip ~/Documents/backups/rc_bak.zip ~/.*rc ~/.bash_profile'
 alias backup-task='zip -r ~/Documents/backups/task_bak.zip ~/.task'
