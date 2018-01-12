@@ -1,4 +1,4 @@
-**Sparse Checkout**
+***Sparse Checkout***
 
 To only clone part of repo:
   $ git init
