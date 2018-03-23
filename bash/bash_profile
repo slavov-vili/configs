@@ -23,7 +23,7 @@ export GOROOT="$HOME/go"
 export GOBIN="$GOROOT/bin"
 export GOARCH="amd64"
 export GOOS="linux"
-export GOPATH="$HOME/Documents/Go_stuff"
+export GOPATH="$HOME/Documents/go_stuff"
 export PATH="$PATH:$GOBIN"
 # Set environment variables to scale QT applications
 export QT_AUTO_SCREEN_FACTOR=1

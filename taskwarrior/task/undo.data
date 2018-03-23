@@ -1751,3 +1751,126 @@ time 1514557605
 old [description:"Do laundry" due:"1514286000" entry:"1513592529" imask:"3" modified:"1512303189" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"19260287-18c0-4dbe-a9c8-ba1e4aaed786"]
 new [description:"Do laundry" due:"1514286000" end:"1514557601" entry:"1513592529" imask:"3" modified:"1514557605" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"deleted" tags:"habit,chore" until:"1522490400" uuid:"19260287-18c0-4dbe-a9c8-ba1e4aaed786"]
 ---
+time 1515781819
+new [description:"Pay rent to Chris" due:"1517612400" entry:"1515781819" imask:"3" modified:"1512374726" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"6d6a226b-d5d0-4d07-af5c-60cb059c1da8"]
+---
+time 1515781819
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"++-" modified:"1512374726" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"++--" modified:"1515781819" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1515781819
+new [description:"Do laundry" due:"1516705200" entry:"1515781819" imask:"5" modified:"1514557605" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"64805f8f-1018-454f-918b-b1143ba3fee7"]
+---
+time 1515781819
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X-" modified:"1514557605" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X--" modified:"1515781819" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1515781834
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"++--" modified:"1515781819" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++-" modified:"1515781834" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1515781834
+old [description:"Pay rent to Chris" due:"1514934000" entry:"1512303172" imask:"2" modified:"1510053684" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"b929c4d0-0e7d-49f0-a2d7-1f08c34cd3e3"]
+new [description:"Pay rent to Chris" due:"1514934000" end:"1515781834" entry:"1512303172" imask:"2" modified:"1515781834" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"completed" tags:"habit" until:"1522447200" uuid:"b929c4d0-0e7d-49f0-a2d7-1f08c34cd3e3"]
+---
+time 1515781862
+old [description:"Find a job in Tuebingen" due:"1514761200" entry:"1506542826" modified:"1509813939" priority:"H" project:"Job" status:"pending" tags:"job,tuebingen" uuid:"d89a07ef-e963-4d38-a947-badc4627c3ad"]
+new [description:"Find a job in Tuebingen" due:"1514761200" end:"1515781859" entry:"1506542826" modified:"1515781862" priority:"H" project:"Job" status:"deleted" tags:"job,tuebingen" uuid:"d89a07ef-e963-4d38-a947-badc4627c3ad"]
+---
+time 1516087563
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X--" modified:"1515781819" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X+-" modified:"1516087563" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1516087563
+old [description:"Do laundry" due:"1515495600" entry:"1514557525" imask:"4" modified:"1513792866" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"ed842755-77d7-48b8-bef0-fbe315a2ad87"]
+new [description:"Do laundry" due:"1515495600" end:"1516087563" entry:"1514557525" imask:"4" modified:"1516087563" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"completed" tags:"habit,chore" until:"1522490400" uuid:"ed842755-77d7-48b8-bef0-fbe315a2ad87"]
+---
+time 1517738491
+new [description:"Pay rent to Chris" due:"1520031600" entry:"1517738491" imask:"4" modified:"1515781834" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"27c40a63-a409-49b0-a268-6b63d2f3aed4"]
+---
+time 1517738491
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++-" modified:"1515781834" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++--" modified:"1517738491" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1517738491
+new [description:"Do laundry" due:"1517914800" entry:"1517738491" imask:"6" modified:"1516087563" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"85f3f66a-fee5-47bd-97e4-40108df46f4c"]
+---
+time 1517738491
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X+-" modified:"1516087563" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X+--" modified:"1517738491" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1517738508
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X+--" modified:"1517738491" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++-" modified:"1517738508" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1517738508
+old [description:"Do laundry" due:"1516705200" entry:"1515781819" imask:"5" modified:"1514557605" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"64805f8f-1018-454f-918b-b1143ba3fee7"]
+new [description:"Do laundry" due:"1516705200" end:"1517738508" entry:"1515781819" imask:"5" modified:"1517738508" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"completed" tags:"habit,chore" until:"1522490400" uuid:"64805f8f-1018-454f-918b-b1143ba3fee7"]
+---
+time 1520019969
+new [description:"Do laundry" due:"1519124400" entry:"1520019969" imask:"7" modified:"1517738508" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"851c47ad-acab-4231-9c66-f809903a5cce"]
+---
+time 1520019969
+new [description:"Do laundry" due:"1520334000" entry:"1520019969" imask:"8" modified:"1517738508" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"c499abaf-7c30-4a67-9bd5-c06d928e306f"]
+---
+time 1520019969
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++-" modified:"1517738508" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++---" modified:"1520019969" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1520019985
+old [depends:"cd474414-c509-47ff-9dae-40ff8f0ffed3,3603c00f-c5fa-481d-ac5b-4fc709bdf313,b0dec804-8620-4488-b7ca-031172274220,2349b1d1-baea-47ed-b715-50a5f5588174" description:"Get 6 ECTS key qualifications" due:"1518692400" entry:"1506538280" modified:"1507757152" priority:"H" project:"Graduation" status:"pending" tags:"uni,ects" uuid:"dff831b6-c4b6-4e67-a3b2-fd39fea09655"]
+new [depends:"cd474414-c509-47ff-9dae-40ff8f0ffed3,3603c00f-c5fa-481d-ac5b-4fc709bdf313,b0dec804-8620-4488-b7ca-031172274220,2349b1d1-baea-47ed-b715-50a5f5588174" description:"Get 6 ECTS key qualifications" due:"1518692400" end:"1520019985" entry:"1506538280" modified:"1520019985" priority:"H" project:"Graduation" status:"completed" tags:"uni,ects" uuid:"dff831b6-c4b6-4e67-a3b2-fd39fea09655"]
+---
+time 1520020004
+old [depends:"38e15937-6b31-4c65-8655-9406a1b89132" description:"Get Scheine for 'Deep Learning'" due:"1513724400" entry:"1506957968" modified:"1506958141" project:"Graduation" status:"pending" tags:"ects,uni" uuid:"408c1e08-4a53-4b4c-b09e-b884f0874580"]
+new [depends:"38e15937-6b31-4c65-8655-9406a1b89132" description:"Get Scheine for 'Deep Learning'" due:"1513724400" end:"1520020004" entry:"1506957968" modified:"1520020004" project:"Graduation" status:"completed" tags:"ects,uni" uuid:"408c1e08-4a53-4b4c-b09e-b884f0874580"]
+---
+time 1520452802
+new [description:"Pay rent to Chris" due:"1522706400" entry:"1520452802" imask:"5" modified:"1517738491" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"d42dbeec-a94e-4c5c-80a7-e3f660068473"]
+---
+time 1520452802
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++--" modified:"1517738491" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++---" modified:"1520452802" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1520452802
+new [description:"Do laundry" due:"1521543600" entry:"1520452802" imask:"9" modified:"1520019969" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"7e7f9cda-2793-4985-8148-9e49b8495cf6"]
+---
+time 1520452802
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++---" modified:"1520019969" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++----" modified:"1520452802" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1521641519
+new [description:"Do laundry" due:"1522753200" entry:"1521641519" imask:"10" modified:"1520452802" parent:"0774a5e1-6900-4580-885f-4f6d2ecf2264" project:"Chores" recur:"biweekly" status:"pending" tags:"habit,chore" until:"1522490400" uuid:"4ecdcf40-70b0-47f1-8940-fa2d6fc473bf"]
+---
+time 1521641519
+old [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++----" modified:"1520452802" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+new [description:"Do laundry" due:"1510657200" entry:"1510053639" mask:"+++X++-----" modified:"1521641519" project:"Chores" recur:"biweekly" status:"recurring" tags:"habit,chore" until:"1522490400" uuid:"0774a5e1-6900-4580-885f-4f6d2ecf2264"]
+---
+time 1521641574
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++---" modified:"1520452802" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++X--" modified:"1521641574" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1521641574
+old [description:"Pay rent to Chris" due:"1517612400" entry:"1515781819" imask:"3" modified:"1512374726" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"6d6a226b-d5d0-4d07-af5c-60cb059c1da8"]
+new [description:"Pay rent to Chris" due:"1517612400" end:"1521641571" entry:"1515781819" imask:"3" modified:"1521641574" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"deleted" tags:"habit" until:"1522447200" uuid:"6d6a226b-d5d0-4d07-af5c-60cb059c1da8"]
+---
+time 1521641579
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++X--" modified:"1521641574" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++XX-" modified:"1521641579" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1521641579
+old [description:"Pay rent to Chris" due:"1520031600" entry:"1517738491" imask:"4" modified:"1515781834" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"27c40a63-a409-49b0-a268-6b63d2f3aed4"]
+new [description:"Pay rent to Chris" due:"1520031600" end:"1521641579" entry:"1517738491" imask:"4" modified:"1521641579" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"deleted" tags:"habit" until:"1522447200" uuid:"27c40a63-a409-49b0-a268-6b63d2f3aed4"]
+---
+time 1521641579
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++XX-" modified:"1521641579" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++XXX" modified:"1521641579" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---
+time 1521641579
+old [description:"Pay rent to Chris" due:"1522706400" entry:"1520452802" imask:"5" modified:"1517738491" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"pending" tags:"habit" until:"1522447200" uuid:"d42dbeec-a94e-4c5c-80a7-e3f660068473"]
+new [description:"Pay rent to Chris" due:"1522706400" end:"1521641579" entry:"1520452802" imask:"5" modified:"1521641579" parent:"46cce222-d64b-463d-b538-acecdcef3932" project:"Chores" recur:"monthly" status:"deleted" tags:"habit" until:"1522447200" uuid:"d42dbeec-a94e-4c5c-80a7-e3f660068473"]
+---
+time 1521641579
+old [description:"Pay rent to Chris" due:"1509663600" entry:"1507042300" mask:"+++XXX" modified:"1521641579" project:"Chores" recur:"monthly" status:"recurring" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+new [description:"Pay rent to Chris" due:"1509663600" end:"1521641579" entry:"1507042300" mask:"+++XXX" modified:"1521641579" project:"Chores" recur:"monthly" status:"deleted" tags:"habit" until:"1522447200" uuid:"46cce222-d64b-463d-b538-acecdcef3932"]
+---

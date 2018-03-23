@@ -95,6 +95,8 @@ noremap P p
 "noremap zz za
 "% too far away :(
 noremap <leader><Tab> %
+"Toggle comment state of line
+noremap <leader>cc <leader>c<space>
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
@@ -104,7 +106,7 @@ nnoremap <leader><space> :noh<cr>
 "Add a key combination for the run function
 noremap <leader>r :Run<cr>
 
-"Tabs manipulation
+"Tab manipulation
 "Open file in new tab
 nnoremap <Tab>n      :tabnew 
 "Tab goto
@@ -121,10 +123,11 @@ nnoremap <Tab>mk :tabm +1<cr>
 "Tab closing
 nnoremap <Tab>e :tabclose<cr>
 
+"Window manipulation
 "Vertical split
-nnoremap <leader>wd<cr> <C-W>v
+nnoremap <leader>wds<cr> <C-W>v
 "Horizontal split
-nnoremap <leader>ws<cr> <C-W>s
+nnoremap <leader>wss<cr> <C-W>s
 "New (empty) window
 nnoremap <leader>wdn :vnew 
 nnoremap <leader>wsn :new 

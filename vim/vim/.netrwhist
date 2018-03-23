@@ -1,6 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/vilskin/Documents/configs/taskwarrior'
-let g:netrw_dirhist_2='/home/vilskin/Documents/configs/vim/vim'
-let g:netrw_dirhist_3='/home/vilskin/.cinnamon/configs'
-let g:netrw_dirhist_4='/home/vilskin/.cinnamon/configs/menu@cinnamon.org'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/vilskin/Documents/advent_of_code_2017/day_15'
+let g:netrw_dirhist_2='/home/vilskin/Documents/advent_of_code_2017/day_14'
+let g:netrw_dirhist_3='/home/vilskin/Documents/advent_of_code_2017/day_05'
+let g:netrw_dirhist_4='/home/vilskin/Documents/advent_of_code_2017/day_18'
+let g:netrw_dirhist_5='/home/vilskin/Documents/uni_stuff/academic_writing/test'
