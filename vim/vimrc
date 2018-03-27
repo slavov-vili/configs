@@ -103,6 +103,10 @@ noremap <leader>` :set rnu!<cr>
 noremap <leader><leader> :set cursorcolumn!<cr>
 "I found it, now go away!
 nnoremap <leader><space> :noh<cr>
+"Toggle spellchecker
+nnoremap <leader>en :setlocal spell! spelllang=en_us<cr>
+nnoremap <leader>de :setlocal spell! spelllang=de_de<cr>
+nnoremap <leader>bg :setlocal spell! spelllang=bg_bg<cr>
 "Add a key combination for the run function
 noremap <leader>r :Run<cr>
 
