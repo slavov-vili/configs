@@ -136,7 +136,7 @@ nnoremap <leader>wss<cr> <C-W>s
 nnoremap <leader>wdn :vnew 
 nnoremap <leader>wsn :new 
 "Move current window to its own tab
-nnoremap <leader>w<Tab>n <C-W>T
+nnoremap <leader>w<Tab> <C-W>T
 "Window navigation
 nnoremap <leader>ww <C-W>w
 nnoremap <leader>wj <C-W>h
@@ -144,15 +144,15 @@ nnoremap <leader>wk <C-W>j
 nnoremap <leader>wl <C-W>k
 nnoremap <leader>w; <C-W>l
 "Window resizing
+"TIP: <C-W>= makes ALL windows have normal shapes
 nnoremap <C-Left>  5<C-W>>
 nnoremap <C-Right> 5<C-W><
 nnoremap <C-Down>  5<C-W>-
 nnoremap <C-Up>    5<C-W>+
-"TIP: <C-W>= makes ALL windows have normal shapes
 "Window close current
-nnoremap <leader>we <C-W>q
+nnoremap <leader>we<cr> <C-W>q
 "Window close others
-nnoremap <leader>wo <C-W>o
+nnoremap <leader>wo<cr> <C-W>o
 
 
 
