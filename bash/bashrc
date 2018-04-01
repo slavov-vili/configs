@@ -74,7 +74,7 @@ colors() {
 
 
 # Set aliases
-alias ls='ls --color=always'
+alias ls='ls -F --color=always'
 alias browse='chromium &'
 alias chrome='chromium &'
 alias docs='cd ~/Documents'

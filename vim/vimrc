@@ -24,6 +24,7 @@ set autoindent                       "Follow indentation of last line
 set autoread                         "Auto-detect file changes
 set autowrite                        "Auto-save file before running
 set backupdir=~/.backup,.,/tmp       "Do not put backups in current dir
+set breakindent                      "Indent the text when wrapping
 set cmdheight=2                      "Height of the command bar
 set completeopt=menuone              "Auto-completion option menu
 set confirm                          "Confirm :q when unsaved changes
@@ -43,6 +44,7 @@ set hlsearch                         "Highlight search results
 set ignorecase                       "Ignore case when searching
 set incsearch                        "HL search matches while typing
 set lazyredraw                       "Redraw screen only when need to
+set linebreak                        "Don't split words when wrapping
 set list
 set listchars=tab:▸\ ,eol:¬          "Set Tab and EOL characters
 let mapleader=","                    "Change leader key
@@ -50,7 +52,7 @@ set mouse=a                          "Enable mouse in all modes
 set nobomb                           "No BOM
 set noerrorbells visualbell t_vb=
 set noswapfile                       "Disable swap files
-set nowrap                           "Disable line wrapping
+" set nowrap                           "Disable line wrapping
 set number                           "Turn on line numbers
 set omnifunc=syntaxcomplete#Complete "Native auto-complete 
 set shell=/bin/bash                  "Set the default shell
@@ -206,5 +208,9 @@ function Run()
     "Just run in the interpreter
     elseif &filetype == 'racket'
         exe '!racket -f % -i'
+    "If it is a LaTeX file
+    "Run pdflatex on it and open the pdf
+    elseif &filetype == 'tex'
+        exe '!pdflatex %'
     endif
 endfunction
