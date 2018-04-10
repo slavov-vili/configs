@@ -88,6 +88,11 @@ noremap <C-l> M
 "gg => END
 noremap G gg
 noremap gg G
+"Turns out its faster than :w
+noremap <C-s> :w<cr>
+"System clipboard is bae
+noremap <C-c> "+y
+noremap <C-v> "+p
 "Optical illusion ?
 noremap p P
 noremap P p
