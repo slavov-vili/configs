@@ -1,4 +1,6 @@
 #!/bin/bash
 
+DIR=$(pwd)
+
 # Make links to all git-related files and folders
-ln -srf ./gitconfig     ~/.gitconfig
+ln -sf $DIR/gitconfig     ~/.gitconfig

@@ -1,6 +1,8 @@
 #!/bin/bash
 
+DIR=$(pwd)
+
 # Make links to all vim-related files and folders
-ln -srf ./vimrc     ~/.vimrc
-ln -srf ./gvimrc    ~/.gvimrc
-ln -srf ./vim       ~/.vim
+ln -sf $DIR/vimrc     ~/.vimrc
+ln -sf $DIR/gvimrc    ~/.gvimrc
+ln -sf $DIR/vim       ~/.vim
