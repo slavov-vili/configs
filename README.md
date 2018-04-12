@@ -1,4 +1,4 @@
-***Sparse Checkout***
+****Sparse Checkout****
 
 To only clone part of repo:
   1. $ git init
@@ -9,4 +9,4 @@ To only clone part of repo:
   6. $ git checkout master
 
 
-*Downside: downloads whole history of repo*
+**Downside: downloads whole history of repo**
