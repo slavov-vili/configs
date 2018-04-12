@@ -4,3 +4,6 @@
 [submodule "vim/vim/bundle/vim-autoclose"]
 	path = vim/vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
+[submodule "vim/vim/bundle/auto-pairs"]
+	path = vim/vim/bundle/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
