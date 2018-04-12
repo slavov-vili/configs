@@ -91,8 +91,8 @@ noremap gg G
 "Turns out its faster than :w
 noremap <C-s> :w<cr>
 "System clipboard is bae
-noremap <C-c> "+y
-noremap <C-v> "+p
+noremap <C-y> "+y
+noremap <C-p> "+p
 "Optical illusion ?
 noremap p P
 noremap P p

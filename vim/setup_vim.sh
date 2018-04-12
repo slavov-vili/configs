@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Store the path to this file
 DIR=$(pwd)
 
 # Make links to all vim-related files and folders
