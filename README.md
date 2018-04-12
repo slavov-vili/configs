@@ -1,12 +1,12 @@
 ***Sparse Checkout***
 
 To only clone part of repo:
-  $ git init
-  $ git remote add -f origin <url>
-  $ git config core.sparseCheckout true
-  // add whichever files and dirs we want to .git/info/sparse-checkout
-  $ git pull origin master
-  $ git checkout master
+  1. $ git init
+  2. $ git remote add -f origin <url>
+  3. $ git config core.sparseCheckout true
+  4. add whichever files and dirs we want to .git/info/sparse-checkout
+  5. $ git pull origin master
+  6. $ git checkout master
 
 
-**Downside: downloads whole history of repo**
+*Downside: downloads whole history of repo*
