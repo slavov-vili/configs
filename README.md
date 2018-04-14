@@ -8,5 +8,7 @@ To only clone part of repo:
   5. $ git pull origin master
   6. $ git checkout master
 
+To include submodules (e.x. vim plugins):
+  * $ git submodule add <url> <path>
 
 ## Downside: downloads whole history of repo
