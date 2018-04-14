@@ -1,0 +1,9 @@
+# Message which appears before each command
+export PS1="\u [\w]$ "
+
+# default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+# Aliases
+alias ls='ls -GF'
