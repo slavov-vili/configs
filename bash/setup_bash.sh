@@ -3,6 +3,10 @@
 # Store the path to this file
 DIR=$(pwd)
 
+# remove the files in case they already exist
+rm ~/.bashrc
+rm ~/.bash_profile
+
 # Make links to all bash-related files
-ln -sf $DIR/bash_profile ~/.bash_profile
-ln -sf $DIR/bashrc       ~/.bashrc
+ln -s $DIR/bash_profile ~/.bash_profile
+ln -s $DIR/bashrc       ~/.bashrc

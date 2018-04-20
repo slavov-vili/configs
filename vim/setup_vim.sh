@@ -3,6 +3,11 @@
 # Store the path to this file
 DIR=$(pwd)
 
+# remove the files in case they already exist
+rm ~/.vimrc
+rm ~/.gvimrc
+rm -r ~/.vim
+
 # Make links to all vim-related files and folders
 ln -sf $DIR/vimrc     ~/.vimrc
 ln -sf $DIR/gvimrc    ~/.gvimrc

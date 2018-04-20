@@ -2,3 +2,5 @@
 taskwarrior/task
 # This is a very random file
 vim/vim/.netrwhist
+# Confuses me when I have to re-add the submodules
+vim/vim/bundle/*
