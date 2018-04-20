@@ -9,4 +9,4 @@ set guioptions-=L					 "Remove left-hand scroll
 set guioptions-=m					 "Remove menubar
 set guioptions-=T					 "Remove toolbar
 set guifont=Monospace\ 12
-set lines=50 columns=200
+set lines=80 columns=200
