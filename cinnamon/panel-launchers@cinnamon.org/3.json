@@ -12,8 +12,9 @@
         ],
         "value": [
             "firefox.desktop",
+            "nemo.desktop",
             "org.gnome.Terminal.desktop",
-            "nemo.desktop"
+            "chromium.desktop"
         ]
     },
     "allow-dragging": {
