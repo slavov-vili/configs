@@ -57,7 +57,7 @@ set number                           "Turn on line numbers
 set omnifunc=syntaxcomplete#Complete "Native auto-complete 
 set shell=/bin/bash                  "Set the default shell
 set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
-set shiftwidth=4                     "Intentation size
+set shiftwidth=4                     "Indentation size
 set showmatch                        "Highlight matching brackets
 set smartcase                        "Except when using capital letters
 set smartindent                      "Use smart indentation

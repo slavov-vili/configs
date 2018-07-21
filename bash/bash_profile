@@ -10,6 +10,8 @@
 
 # [ENV VARIABLES]
 
+# Prevents single command to flood the history
+export HISTCONTROL=ignoredups
 # Set default path
 PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
 export PATH
