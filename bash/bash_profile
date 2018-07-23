@@ -18,7 +18,7 @@ export PATH
 # Set vim as editor
 export EDITOR="/usr/bin/vim"
 # Set the Jdk path
-export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
+export JAVA_HOME="/usr/lib/jvm/java-10-openjdk"
 export PATH="$JAVA_HOME/bin:$PATH"
 # Set Go environment variables and reset path
 export GOROOT="$HOME/go"

@@ -45,7 +45,7 @@ alias docs='cd ~/Documents'
 alias down='cd ~/Downloads'
 alias entar='tar -czvf'
 alias ffx='firefox &'
-alias idea='idea &'
+alias idea='idea.sh &'
 alias spotify='spotify --force-device-scale-factor=2 &'
 
 # logout and lock require lightdm (or at least dm-tool)
@@ -67,6 +67,6 @@ alias gowinuni='cd /run/media/vilskin/Users/Velislav/Documents/University\ Stuff
 alias set-ethernet='sudo ip link add link enp0s25 name enp0s25.1 type vlan id 1 && sudo ip addr add 192.168.1.1/24 dev enp0s25.1 && sudo ip link set dev enp0s25.1 up && sudo systemctl restart sshd'
 alias unset-ethernet='sudo ip link delete enp0s25'
 
-# Create a function, which opens a man file with vim
+# Create a function, which opens a man page in vim
 vimman () { man "$1" | vim -; }
 gvimman () { man "$1" | gvim -; }
