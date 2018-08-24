@@ -76,7 +76,7 @@ noremap <C-p> "+p
 noremap p P
 noremap P p
 "Get over here!
-"noremap za zz
+noremap za <C-.>
 "Have to fold sometimes
 "noremap zz za
 "% too far away :(
