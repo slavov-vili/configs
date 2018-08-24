@@ -65,7 +65,7 @@ alias gowinuni='cd /run/media/vilskin/Users/Velislav/Documents/University\ Stuff
 # USED BY SYNERGY
 # Create a new virtual interface through the ethernet port with a static IP
 alias set-ethernet='sudo ip link add link enp0s25 name enp0s25.1 type vlan id 1 && sudo ip addr add 192.168.1.1/24 dev enp0s25.1 && sudo ip link set dev enp0s25.1 up && sudo systemctl restart sshd'
-alias unset-ethernet='sudo ip link delete enp0s25'
+alias unset-ethernet='sudo ip link delete enp0s25.1'
 
 # Create a function, which opens a man page in vim
 vimman () { man "$1" | vim -; }
