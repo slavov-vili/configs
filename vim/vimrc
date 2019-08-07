@@ -185,35 +185,30 @@ command Run execute "call Run()"
 function Run()
     "Always save file before running
     :w!
-    "If it is a Python file
     if &filetype == 'python'
+        " Run the file with the interpreter
         exe '!python3 %'
-    "If it is a Prolog file
     elseif &filetype == 'prolog'
+        " Run the file with the interpreter
         exe '!swipl %'
-    "If it is a Java file
-    "Compile and run
     elseif &filetype == 'java' 
+        "Compile and run
         exe '!echo "Compiling..." && javac %'
         exe '!java %:r'
-    "If it is a Haskell file
-    "Just run in the interpreter
     elseif &filetype == 'haskell'
+        " Run the file with the interpreter
         exe '!ghci %'
-    "If it is a Go file
     elseif &filetype == 'go'
         exe '!go run %'
-    "If it is a Scala file
-    "Compile and run
     elseif &filetype == 'scala'
+        " Run the file with the interpreter
         exe '!scala %'
+        " Compile the file and run the result
         "exe '!echo \"Compiling...\" && scalac %'
         "exe '!scala %:r'
-    "If it is a Racket file
     "Just run in the interpreter
     elseif &filetype == 'racket'
         exe '!racket -f % -i'
-    "If it is a LaTeX file
     "Run pdflatex on it and open the pdf
     elseif &filetype == 'tex'
         exe '!pdflatex %'
