@@ -154,8 +154,8 @@ nnoremap <leader>w; <C-W>l
 "TIP: <C-W>= makes ALL windows have normal shapes
 nnoremap <C-Left>  5<C-W>>
 nnoremap <C-Right> 5<C-W><
-nnoremap <C-Down>  5<C-W>-
-nnoremap <C-Up>    5<C-W>+
+nnoremap <C-Up>    5<C-W>-
+nnoremap <C-Down>  5<C-W>+
 "Window close current
 nnoremap <leader>we<cr> <C-W>q
 "Window close others
