@@ -1,3 +1,4 @@
 #!/bin/bash
 
-# for each submodule in the file
+git submodule init
+git submodule update
