@@ -164,6 +164,16 @@ nnoremap <leader>wo<cr> <C-W>o
 
 
 
+" [Plugin settings]
+
+let g:ctrlp_prompt_mappings = {
+  \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
+  \ 'PrtSelectMove("k")':   ['<c-j>', '<up>'],
+\ }
+
+
+
+
 " [Others]
 
 let g:slime_target = "tmux"          "Tell slime to use tmux
