@@ -169,6 +169,9 @@ nnoremap <leader>wo<cr> <C-W>o
 let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
   \ 'PrtSelectMove("k")':   ['<c-j>', '<up>'],
+  \ 'AcceptSelection("e")': ['<c-cr>'],
+  \ 'AcceptSelection("h")': ['<c-x>'],
+  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
 
 
