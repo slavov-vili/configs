@@ -3,6 +3,11 @@ call pathogen#infect()               "Load bundles via Pathogen
 Helptags                             "Reload plugin documentation 
 filetype plugin indent on            "Use auto-indenting
 
+
+" [Includes]
+runtime user_functions.vim
+
+
 " [Some basic settings]
 set nocompatible                     "Use Vim mode instead of Vi
 set foldenable                       "Enable folding
@@ -164,8 +169,16 @@ nnoremap <leader>wo<cr> <C-W>o
 
 
 
+" [Variables]
+let g:my_root_markers = ['.git', 'pom.xml']
+
+
 " [Plugin settings]
 
+" CTRL-P
+" Some root markers are already pre-configured in ctrlp, but I like
+" to keep things consistent :)
+let g:ctrlp_root_markers = g:my_root_markers
 let g:ctrlp_prompt_mappings = {
   \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
   \ 'PrtSelectMove("k")':   ['<c-j>', '<up>'],
@@ -180,50 +193,10 @@ let g:ctrlp_prompt_mappings = {
 " [Others]
 
 let g:slime_target = "tmux"          "Tell slime to use tmux
-let g:syntastic_enable_racket_racket_checker = 1
 
 "Force vim to use Prolog syntax on .pl files
 autocmd BufNewFile,BufRead *.pl set syntax=prolog
 "Automatically retab files when opened
-autocmd BufNewFile * :retab
+"autocmd BufNewFile,BufRead * :retab
 
-
-
-
-" [User-defined functions]
-
-"Call the Run function with the Run command
-command Run execute "call Run()"     
-"Function to run the current file in the cases of certain filetypes
-function Run()
-    "Always save file before running
-    :w!
-    if &filetype == 'python'
-        " Run the file with the interpreter
-        exe '!python3 %'
-    elseif &filetype == 'prolog'
-        " Run the file with the interpreter
-        exe '!swipl %'
-    elseif &filetype == 'java' 
-        "Compile and run
-        exe '!echo "Compiling..." && javac %'
-        exe '!java %:r'
-    elseif &filetype == 'haskell'
-        " Run the file with the interpreter
-        exe '!ghci %'
-    elseif &filetype == 'go'
-        exe '!go run %'
-    elseif &filetype == 'scala'
-        " Run the file with the interpreter
-        exe '!scala %'
-        " Compile the file and run the result
-        "exe '!echo \"Compiling...\" && scalac %'
-        "exe '!scala %:r'
-    "Just run in the interpreter
-    elseif &filetype == 'racket'
-        exe '!racket -f % -i'
-    "Run pdflatex on it and open the pdf
-    elseif &filetype == 'tex'
-        exe '!pdflatex %'
-    endif
-endfunction
+autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
