@@ -1,9 +1,0 @@
-[submodule "vim/vim/bundle/ctrlp.vim"]
-    path = vim/vim/bundle/ctrlp.vim
-    url = https://github.com/ctrlpvim/ctrlp.vim.git
-[submodule "vim/vim/bundle/nerdcommenter"]
-    path = vim/vim/bundle/nerdcommenter
-    url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/vim/bundle/auto-pairs"]
-    path = vim/vim/bundle/auto-pairs
-    url = https://github.com/jiangmiao/auto-pairs.git

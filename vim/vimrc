@@ -1,24 +1,33 @@
-" [Plugin setup]
-call pathogen#infect()               "Load bundles via Pathogen
-Helptags                             "Reload plugin documentation 
-filetype plugin indent on            "Use auto-indenting
-
-
-" [Includes]
-runtime user_functions.vim
-
-
-" [Some basic settings]
 set nocompatible                     "Use Vim mode instead of Vi
-set foldenable                       "Enable folding
-syntax on                            "Enable syntax highlighting
 
-" [Set the theme]
+" [Plugin setup]
+"Load obligatory plugins
+call plug#begin('~/.vim/vimplugs')
+" Vim-plug automatically adds 'https://github.com/'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jiangmiao/auto-pairs'
+call plug#end()
+
+" good guy vim-plug
+"filetype plugin indent on            "Use auto-indenting
+"syntax on                            "Enable syntax highlighting
+
+
+" [Set GUI-specific settings]
 if has('gui_running')
+    "Load gui plugins
+    call plug#begin('~/.vim/vimplugs')
+    Plug 'itchyny/lightline.vim'
+    call plug#end()
     colorscheme obsidian2            "Set GUI color scheme
 else
     colorscheme elflord              "Set color scheme 
 endif
+
+
+" [Includes]
+runtime user_functions.vim
 
 
 
@@ -40,6 +49,7 @@ set encoding=utf-8
 set expandtab                        "Replace tabs with spaces
 set fileencoding=utf-8
 set fileformat=unix
+set foldenable                       "Enable folding
 set foldcolumn=4                     "Width of column indicating folds
 set foldlevelstart=42                "No closed folds at start
 set foldmethod=indent                "Auto-folding of indented blocks
@@ -48,6 +58,7 @@ set helplang=                        "Set help language to English
 set hlsearch                         "Highlight search results
 set ignorecase                       "Ignore case when searching
 set incsearch                        "HL search matches while typing
+set laststatus=2                     "Always show statusline
 set lazyredraw                       "Redraw screen only when need to
 set linebreak                        "Don't split words when wrapping
 set list

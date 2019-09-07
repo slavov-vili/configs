@@ -1,5 +1,8 @@
+
 "Remove ErrorBells and VisualBells (annoying)
 set noeb vb t_vb=
+
+set noshowmode                       "Mode already shown by lightline
 
 "Set gui cursor
 set guicursor+=a:blinkon0
