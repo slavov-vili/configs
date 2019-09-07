@@ -40,7 +40,7 @@ set autowrite                        "Auto-save file before running
 set backupdir=~/.backup,.,/tmp       "Do not put backups in current dir
 set breakindent                      "Indent the text when wrapping
 set cmdheight=2                      "Height of the command bar
-set completeopt=menuone              "Auto-completion option menu
+set completeopt=longest,menuone      "Auto-completion option menu
 set confirm                          "Confirm :q when unsaved changes
 set cursorline                       "Highlight current line
 set directory=~/.backup,.,/tmp       "Don't put swaps in current dir
@@ -132,6 +132,17 @@ nnoremap <leader>de :setlocal spell! spelllang=de_de<cr>
 nnoremap <leader>bg :setlocal spell! spelllang=bg_bg<cr>
 "Add a key combination for the run function
 noremap <leader>r :Run<cr>
+"Reload .vimrc
+noremap <leader><F5> :so $MYVIMRC<cr>
+
+" Insert-Completion
+" Choose popup menu item also with Enter instead of only Ctrl-Y
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+" Move up and down in the popup menu using MY movement keys
+inoremap <expr> <C-j> pumvisible() ? "\<C-p>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
+" Close the popup menu like any other mode
+inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 "Tab manipulation
 "Open file in new tab
@@ -177,6 +188,9 @@ nnoremap <leader>we<cr> <C-W>q
 "Window close others
 nnoremap <leader>wo<cr> <C-W>o
 
+
+" [Shortcuts for user functions]
+noremap <C-S-f> :call SearchInAllFilesWithInput(g:project_root)<cr>
 
 
 

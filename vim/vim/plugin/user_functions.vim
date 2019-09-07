@@ -1,3 +1,27 @@
+" TODO: Fix error where pressing <escape> causes randomness
+function SearchInAllFilesWithInput(path_to_files)
+    call inputsave()
+    let search_string = input('Search all files for: ')
+    call inputrestore()
+    call SearchInFiles_base(search_string, a:path_to_files, '*')
+endfunction
+
+" TODO: Add file pattern as input
+function SearchInSomeFilesWithInput(path_to_files)
+    call inputsave()
+    let search_string = input('Search all files for: ')
+    call inputrestore()
+    call SearchInFiles_base(search_string, a:path_to_files, '*')
+endfunction
+
+
+function SearchInFiles_base(search_string, path_to_files, file_pattern)
+    execute 'silent vimgrep' '/'.a:search_string.'/j ' a:path_to_files.'/**/'.a:file_pattern
+    tab copen
+endfunction
+
+
+
 function FindProjectRoot(start_path, root_markers)
     let files_list = []
     for root in a:root_markers
@@ -25,11 +49,9 @@ endfunction
 
 
 
-
-
 " TODO: Just use a dictionary!
 "Call the Run function with the Run command
-command Run execute "call Run()"     
+command Run execute "call Run()"
 "Function to run the current file in the cases of certain filetypes
 function Run()
     "Always save file before running
