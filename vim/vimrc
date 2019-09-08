@@ -6,7 +6,10 @@ call plug#begin('~/.vim/vimplugs')
 " Vim-plug automatically adds 'https://github.com/'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
+Plug 'itchyny/lightline.vim'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " good guy vim-plug
@@ -16,10 +19,6 @@ call plug#end()
 
 " [Set GUI-specific settings]
 if has('gui_running')
-    "Load gui plugins
-    call plug#begin('~/.vim/vimplugs')
-    Plug 'itchyny/lightline.vim'
-    call plug#end()
     colorscheme obsidian2            "Set GUI color scheme
 else
     colorscheme elflord              "Set color scheme 
@@ -119,7 +118,7 @@ noremap P p
 "% too far away :(
 noremap <leader><Tab> %
 "Toggle comment state of line
-noremap <leader>cc <leader>c<space>
+"noremap <leader>cc <leader>c<space>
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
@@ -136,10 +135,12 @@ noremap <leader>r :Run<cr>
 noremap <leader><F5> :so $MYVIMRC<cr>
 
 " Insert-Completion
+" Omni-completion
+inoremap <C-space> <C-x><C-o>
 " Choose popup menu item also with Enter instead of only Ctrl-Y
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 " Move up and down in the popup menu using MY movement keys
-inoremap <expr> <C-j> pumvisible() ? "\<C-p>" : "\<C-j>"
+inoremap <expr> <C-l> pumvisible() ? "\<C-p>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
 " Close the popup menu like any other mode
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
@@ -150,8 +151,8 @@ nnoremap <Tab>n      :tabnew
 "Tab goto
 nnoremap <Tab>l :tabnext 
 "Tab goto previous/next
-nnoremap <Tab>j :<C-U>exe "tabnext " . (tabpagenr() - v:count1)<cr>
-nnoremap <Tab>k :<C-U>exe "tabnext " . (tabpagenr() + v:count1)<cr>
+nnoremap <Tab>j :<C-U>execute "tabnext " . (tabpagenr() - v:count1)<cr>
+nnoremap <Tab>k :<C-U>execute "tabnext " . (tabpagenr() + v:count1)<cr>
 "Tab goto first/last
 nnoremap <Tab>J :tabfirst<cr>
 nnoremap <Tab>K :tablast<cr>
@@ -212,6 +213,10 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
 
+
+" NERDTree
+noremap <leader>t :execute "NERDTree " . project_root<cr>
+" TODO: Figure out what's up with NERDCommenter mappings
 
 
 
