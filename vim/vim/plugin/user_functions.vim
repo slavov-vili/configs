@@ -1,9 +1,12 @@
-" TODO: Fix error where pressing <escape> causes randomness
 function SearchInAllFilesWithInput(path_to_files)
     call inputsave()
     let search_string = input('Search all files for: ')
     call inputrestore()
-    call SearchInFiles_base(search_string, a:path_to_files, '*')
+    if search_string  == ""
+        return
+    else
+        call SearchInFiles_base(search_string, a:path_to_files, '*')
+    endif
 endfunction
 
 " TODO: Add file pattern as input

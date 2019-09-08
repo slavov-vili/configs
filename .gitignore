@@ -2,5 +2,7 @@
 taskwarrior/task
 # This is a very random file
 vim/vim/.netrwhist
-# Confuses me when I have to re-add the submodules
-vim/vim/bundle/*
+# Stores the plug.vim file
+vim/vim/autoload
+# Vim-plug plugins folder
+vim/vim/vimplugs
