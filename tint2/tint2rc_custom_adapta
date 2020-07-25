@@ -1,0 +1,301 @@
+# See https://gitlab.com/o9000/tint2/wikis/Configure for 
+# full documentation of the configuration options.
+
+
+
+#-------------------------------------
+# Backgrounds and Borders
+#-------------------------------------
+# Background 1: Panel
+rounded = 0
+border_width = 2
+border_sides = 
+background_color = #222D32 100
+border_color = #CFD8DC
+background_color_hover = 
+border_color_hover = 
+background_color_pressed = 
+border_color_pressed = 
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+
+# Background 2: Tooltip
+rounded = 0
+border_width = 1
+border_sides = RLTB
+background_color = #333333 100
+border_color = #333333 100
+background_color_hover =
+border_color_hover =
+background_color_pressed =
+border_color_pressed =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+
+# Background 3: Default task, Iconified task
+rounded = 0
+border_width = 0
+border_sides = RLTB
+background_color = #235357 100
+border_color =
+background_color_hover = #071011 100
+border_color_hover =
+background_color_pressed = #071011 100
+border_color_pressed =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+
+# Background 4: Active task
+rounded = 0
+border_width = 2
+border_sides = T
+background_color = #235357 100
+border_color = #44dd44 100
+background_color_hover = #071011 100
+border_color_hover = #44DD44 100
+background_color_pressed = #071011 100
+border_color_pressed = #111111 100
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+
+# Background 5: Urgent task
+rounded = 0
+border_width = 0
+border_sides = RLTB
+background_color = #aa6622 100
+border_color = #44dd44 100
+background_color_hover =
+border_color_hover =
+background_color_pressed =
+border_color_pressed =
+border_content_tint_weight = 0
+background_content_tint_weight = 0
+
+
+
+#-------------------------------------
+# Panel
+#-------------------------------------
+panel_items = L:PT:E:SCP
+panel_monitor = all
+panel_position = top center horizontal
+panel_size = 100% 3%
+scale_relative_to_dpi = 0
+scale_relative_to_screen_height = 0
+panel_shrink = 0
+panel_margin = 0 0
+panel_padding = 0 0 5
+font_shadow = 0
+panel_background_id = 1
+wm_menu = 0
+panel_dock = 0
+panel_pivot_struts = 0
+panel_layer = top
+strut_policy = minimum
+panel_window_name = tint2
+disable_transparency = 0
+mouse_effects = 1
+mouse_hover_icon_asb = 100 10 10
+mouse_pressed_icon_asb = 100 10 10
+autohide = 1
+autohide_show_timeout = 0
+autohide_hide_timeout = 0
+autohide_height = 0
+
+
+
+#-------------------------------------
+# Launcher
+#-------------------------------------
+launcher_item_app = ~/.config/tint2/start_menu.desktop
+launcher_item_app = tint2conf.desktop
+launcher_item_app = lxterminal.desktop
+launcher_item_app = firefox.desktop
+launcher_background_id = 0
+launcher_icon_background_id = 0
+launcher_padding = 4 4 4
+launcher_icon_size = 24
+#launcher_icon_theme = ...
+launcher_icon_theme_override = 0
+launcher_icon_asb = 100 10 10
+launcher_tooltip = 1
+startup_notifications = 1
+
+
+
+#-------------------------------------
+# Taskbar
+#-------------------------------------
+taskbar_mode = multi_desktop
+taskbar_hide_if_empty = 0
+taskbar_distribute_size = 1
+taskbar_padding = 0 0 1
+taskbar_background_id = 0
+taskbar_active_background_id = 0
+taskbar_hide_inactive_tasks = 0
+taskbar_hide_different_monitor = 0
+taskbar_hide_different_desktop = 0
+taskbar_always_show_all_desktop_tasks = 0
+taskbar_sort_order = none
+task_align = left
+taskbar_name = 1
+taskbar_name_padding = 4 2 4
+taskbar_name_background_id = 0
+taskbar_name_font = DejaVu Sans 11
+taskbar_name_font_color = #CFD8DC 100
+taskbar_name_active_background_id = 0
+taskbar_name_active_font_color = #44dd44 100
+
+
+
+#-------------------------------------
+# Task (Taskbar button)
+#-------------------------------------
+task_icon = 1
+task_text = 1
+task_centered = 0
+task_tooltip = 1
+task_thumbnail = 1
+task_thumbnail_size = 250
+task_maximum_size = 150 35
+task_padding = 4 4
+urgent_nb_of_blink = 100000
+task_font = DejaVu Sans 11
+task_font_color = #bac2c6 100
+task_background_id = 3
+task_active_background_id = 4
+task_urgent_background_id = 5
+task_iconified_background_id = 3
+mouse_left = toggle_iconify
+mouse_middle = shade
+mouse_right = none
+mouse_scroll_up = toggle
+mouse_scroll_down = iconify
+
+
+
+#-------------------------------------
+# System tray (notification area)
+#-------------------------------------
+systray_padding = 2 4 2
+systray_background_id = 0
+systray_sort = ascending
+systray_icon_size = 24
+systray_icon_asb = 100 0 0
+systray_monitor = primary
+systray_name_filter = 
+
+
+
+#-------------------------------------
+# Clock
+#-------------------------------------
+time1_font = DejaVu Sans 11
+time1_format = %a %d %B, %H:%M
+time2_format = 
+time1_timezone = 
+time2_timezone = 
+clock_font_color = #CFD8DC 100
+clock_padding = 2 2
+clock_background_id = 0
+clock_tooltip = %Z
+clock_tooltip_timezone = 
+# TODO: change calendar to run some kind of Appointment calendar thing for today/this week?
+clock_lclick_command = gsimplecal next_month
+clock_rclick_command = gsimplecal prev_month
+clock_uwheel_command = gsimplecal next_month
+clock_dwheel_command = gsimplecal prev_month
+
+
+
+#-------------------------------------
+# Tooltip
+#-------------------------------------
+tooltip_show_timeout = 0.1
+tooltip_hide_timeout = 0.2
+tooltip_padding = 4 4
+tooltip_background_id = 2
+tooltip_font_color = #dddddd 100
+
+
+
+#-------------------------------------
+# Executors
+#-------------------------------------
+# Executor I: Memory usage
+execp = new
+execp_command = free | awk '/Mem/ {printf "Mem: %.2f%", ($3/$2) * 100}'
+execp_interval = 10
+execp_continuous = 0
+execp_has_icon = 0
+execp_cache_icon = 0
+execp_tooltip = Current memory usage
+execp_font = DejaVu Sans 11
+execp_font_color = #CFD8DC 100
+execp_background_id = 0
+execp_centered = 1
+execp_padding = 2 4
+execp_lclick_command = lxtask
+
+
+
+#-------------------------------------
+# Buttons
+#-------------------------------------
+# Button I (Show Desktop)
+button = new
+# Icon should be in ~/.icons/...
+button_icon = tint2/show_desktop_button_24px
+button_text = 
+button_tooltip = Hides all windows and shows the desktop
+#button_font =
+#button_font_color = 
+button_background_id = 0
+button_centered = 1
+button_padding = 4 4 0
+button_max_icon_size = 24
+button_lclick_command = xdotool key super+space
+
+# Button II (Exit Menu)
+button = new
+# Icon should be in ~/.icons/...
+button_icon = tint2/exit_button_24px
+button_text = 
+button_tooltip = Displays the exit menu
+#button_font =
+#button_font_color = 
+button_background_id = 0
+button_centered = 1
+button_padding = 4 4 0
+button_max_icon_size = 24
+button_lclick_command = xdotool key super+Escape
+
+
+
+#-------------------------------------
+# Separators
+#-------------------------------------
+# Separator I
+separator = new
+separator_background_id = 0
+separator_color = #bbbbbb 100
+separator_style = line
+separator_size = 2
+separator_padding = 0 3
+
+# Separator II
+separator = new
+separator_background_id = 0
+separator_color = #bbbbbb 100
+separator_style = line
+separator_size = 2
+separator_padding = 0 3
+
+# Separator III
+separator = new
+separator_background_id = 0
+separator_color = #bbbbbb 100
+separator_style = line
+separator_size = 2
+separator_padding = 0 3
+
