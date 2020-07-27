@@ -37,16 +37,32 @@ colors() {
 
 
 
+
+# [ENV VARIABLES]
+
+# Prevents single command to flood the history
+export HISTCONTROL=ignoredups
+# Set default path
+PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
+export PATH
+# Set vim as editor
+export EDITOR="/usr/bin/vim"
+# Set environment variables to scale QT applications
+export QT_AUTO_SCREEN_FACTOR=1
+
+
+
 # Set aliases
 alias ls='ls -F --color=always'
-alias browse='chromium &'
-alias chrome='chromium &'
+alias browse='firefox &'
+alias ffx='firefox &'
 alias docs='cd ~/Documents'
 alias down='cd ~/Downloads'
-alias entar='tar -czvf'
-alias ffx='firefox &'
-alias idea='idea.sh &'
+alias pics='cd ~/Pictures'
+alias entar='tar -cvzf'
+alias untar='tar -xvzf'
 alias spotify='spotify --force-device-scale-factor=2 &'
+alias findkey='xev -event keyboard &'
 
 # logout and lock require lightdm (or at least dm-tool)
 alias quit-cin='cinnamon-session-quit'
@@ -54,18 +70,6 @@ alias lock='dm-tool lock'
 alias off='poweroff'
 alias open='xdg-open'
 alias res='reboot'
-alias untar='tar -xvzf'
-
-alias mnt-win='sudo mkdir -p /run/media -p /run/media/vilskin && sudo mount /dev/sda4 /run/media/vilskin'
-alias umnt-win='sudo umount /dev/sda4'
-alias gowin='cd /run/media/vilskin/Users/Velislav && ls -d */'
-alias gowindoc='cd /run/media/vilskin/Users/Velislav/Documents && ls -d */'
-alias gowinuni='cd /run/media/vilskin/Users/Velislav/Documents/University\ Stuff && ls -d */'
-
-# USED BY SYNERGY
-# Create a new virtual interface through the ethernet port with a static IP
-alias set-ethernet='sudo ip link add link enp0s25 name enp0s25.1 type vlan id 1 && sudo ip addr add 192.168.1.1/24 dev enp0s25.1 && sudo ip link set dev enp0s25.1 up && sudo systemctl restart sshd'
-alias unset-ethernet='sudo ip link delete enp0s25.1'
 
 # Create a function, which opens a man page in vim
 vimman () { man "$1" | vim -; }
