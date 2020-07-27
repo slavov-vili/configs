@@ -51,7 +51,7 @@
       S: shade (roll up/down)
       D: omnipresent (on all desktops).
   -->
-        <keepBorder>no</keepBorder>
+        <keepBorder>yes</keepBorder>
         <animateIconify>no</animateIconify>
         <font place='ActiveWindow'>
             <name>DejaVu Sans</name>
@@ -205,7 +205,7 @@
                 <direction>east</direction>
             </action>
             <action name="MoveResizeTo">
-              <width>50%</width>
+                <width>50%</width>
             </action>
             <action name="Maximize">
                 <direction>vertical</direction>
@@ -218,7 +218,7 @@
                 <direction>west</direction>
             </action>
             <action name="MoveResizeTo">
-              <width>50%</width>
+                <width>50%</width>
             </action>
             <action name="Maximize">
                 <direction>vertical</direction>
@@ -231,7 +231,7 @@
                 <direction>north</direction>
             </action>
             <action name="MoveResizeTo">
-              <height>50%</height>
+                <height>50%</height>
             </action>
             <action name="Maximize">
                 <direction>horizontal</direction>
@@ -244,10 +244,54 @@
                 <direction>south</direction>
             </action>
             <action name="MoveResizeTo">
-              <height>50%</height>
+                <height>50%</height>
             </action>
             <action name="Maximize">
                 <direction>horizontal</direction>
+            </action>
+        </keybind>
+        <keybind key='A-S-Right'>
+            <action name="Unshade"/>
+            <action name="Unmaximize"/>
+            <action name="MoveToEdge">
+                <direction>east</direction>
+            </action>
+            <action name="MoveResizeTo">
+                <width>50%</width>
+                <height>50%</height>
+            </action>
+        </keybind>
+        <keybind key='A-S-Left'>
+            <action name="Unshade"/>
+            <action name="Unmaximize"/>
+            <action name="MoveToEdge">
+                <direction>west</direction>
+            </action>
+            <action name="MoveResizeTo">
+                <width>50%</width>
+                <height>50%</height>
+            </action>
+        </keybind>
+        <keybind key='A-S-Up'>
+            <action name="Unshade"/>
+            <action name="Unmaximize"/>
+            <action name="MoveToEdge">
+                <direction>north</direction>
+            </action>
+            <action name="MoveResizeTo">
+                <width>50%</width>
+                <height>50%</height>
+            </action>
+        </keybind>
+        <keybind key='A-S-Down'>
+            <action name="Unshade"/>
+            <action name="Unmaximize"/>
+            <action name="MoveToEdge">
+                <direction>south</direction>
+            </action>
+            <action name="MoveResizeTo">
+                <width>50%</width>
+                <height>50%</height>
             </action>
         </keybind>
         <keybind key='A-Return'>
@@ -264,7 +308,7 @@
               </else>
             </action>
         </keybind>
-        <keybind key='A-S-Down'>
+        <keybind key='A-S-Return'>
             <action name="Unshade"/>
             <action name="Iconify"/>
         </keybind>
@@ -312,6 +356,26 @@
                 <command>lxterminal</command>
             </action>
         </keybind>
+        <keybind key='Print'>
+            <action name='Execute'>
+                <command>sh ~/.config/openbox/scripts/screenshot_current_window.sh</command>
+            </action>
+        </keybind>
+        <keybind key='A-Print'>
+            <action name='Execute'>
+                <command>sh ~/.config/openbox/scripts/screenshot_selection.sh</command>
+            </action>
+        </keybind>
+        <keybind key='S-Print'>
+            <action name='Execute'>
+                <command>sh ~/.config/openbox/scripts/screenshot_current_window.sh --save</command>
+            </action>
+        </keybind>
+        <keybind key='S-A-Print'>
+            <action name='Execute'>
+                <command>sh ~/.config/openbox/scripts/screenshot_selection.sh --save</command>
+            </action>
+        </keybind>
         <keybind key='A-q'>
             <action name='Close'/>
         </keybind>
@@ -338,7 +402,7 @@
         </keybind>
     </keyboard>
     <mouse>
-        <dragThreshold>1</dragThreshold>
+        <dragThreshold>5</dragThreshold>
         <!-- number of pixels the mouse must move before a drag begins -->
         <doubleClickTime>500</doubleClickTime>
         <!-- in milliseconds (1000 = 1 second) -->
