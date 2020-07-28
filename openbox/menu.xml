@@ -24,7 +24,11 @@
       <command>leafpad</command>
     </action>
   </item>
-  <menu id="exit-menu"/>
+  <item label="Exit">
+    <action name="Execute">
+      <command>clearine</command>
+    </action>
+  </item>
 </menu>
 
 </openbox_menu>
