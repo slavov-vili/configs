@@ -309,6 +309,9 @@
             </action>
         </keybind>
         <keybind key='A-S-Return'>
+            <action name="ToggleOmnipresent"/>
+        </keybind>
+        <keybind key='A-BackSpace'>
             <action name="Unshade"/>
             <action name="Iconify"/>
         </keybind>
@@ -317,9 +320,6 @@
         </keybind>
         <keybind key='A-S-equal'>
             <action name="Resize"/>
-        </keybind>
-        <keybind key='A-S-Return'>
-            <action name="ToggleOmnipresent"/>
         </keybind>
         <keybind key='W-Tab'>
             <action name="GoToDesktop">
@@ -366,12 +366,12 @@
                 <command>sh ~/.config/openbox/scripts/screenshot_selection.sh</command>
             </action>
         </keybind>
-        <keybind key='S-Print'>
+        <keybind key='C-Print'>
             <action name='Execute'>
                 <command>sh ~/.config/openbox/scripts/screenshot_current_window.sh --save</command>
             </action>
         </keybind>
-        <keybind key='S-A-Print'>
+        <keybind key='A-C-Print'>
             <action name='Execute'>
                 <command>sh ~/.config/openbox/scripts/screenshot_selection.sh --save</command>
             </action>

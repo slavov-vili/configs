@@ -1,13 +1,14 @@
 #!/bin/bash
 
+# TODO: Send notification that a screenshot was taken?
 if [ "$1" = "--save" ]
 then
-    mkdir -p ~/Screenshots
-    FILENAME="~/Screenshots/screenshot_$(date +%Y_%m_%d_%N).png"
-    # FIXME: why you complain about reading file?
-    # FIXME: Why doesn't selection box colro work???
-    maim -s "$FILENAME"
+    PATH_TO_SCREENSHOTS="${HOME}/Screenshots"
+    mkdir -p $PATH_TO_SCREENSHOTS
+    FILENAME="screenshot_$(date +%Y_%m_%d_%N).png"
+    # FIXME: Why doesn't selection box color work???
+    maim -s --bordersize=3 "$PATH_TO_SCREENSHOTS/$FILENAME"
 else
-    maim -s | xclip -selection clipboard -t image/png
+    maim -s --bordersize=3 | xclip -selection clipboard -t image/png
 fi
 
