@@ -385,11 +385,8 @@
             </action>
         </keybind>
         <keybind key='W-Escape'>
-            <action name='ShowMenu'>
-                <menu>exit-menu</menu>
-                <position>
-                    <monitor>active</monitor>
-                </position>
+            <action name='Execute'>
+                <command>clearine</command>
             </action>
         </keybind>
         <keybind key='W-Return'>

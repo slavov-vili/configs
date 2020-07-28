@@ -2,5 +2,5 @@
 
 DIR=$(pwd)
 
-# Make links to all git-related files and folders
-ln -svf $DIR/gitconfig     ~/.gitconfig
+# Make link to the config file
+ln -svf $DIR/gitconfig ~/.gitconfig

@@ -2,7 +2,7 @@
 
 DIR=$(pwd)
 
-# Make links to all vim-related files and folders
+# Make links to the rc files and vim's home folder
 ln -svf $DIR/vimrc     ~/.vimrc
 ln -svf $DIR/gvimrc    ~/.gvimrc
 ln -svf $DIR/ideavimrc ~/.ideavimrc

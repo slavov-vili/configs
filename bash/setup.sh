@@ -2,6 +2,6 @@
 
 DIR=$(pwd)
 
-# Make links to all bash-related files
+# Create link to the config files
 ln -svf $DIR/bash_profile ~/.bash_profile
 ln -svf $DIR/bashrc       ~/.bashrc

@@ -2,6 +2,5 @@
 
 DIR=$(pwd)
 
-# Make a link to the config in the correct directory
-ln -svf $DIR/gxkb.cfg    ~/.config/gxkb/gxkb.cfg
-
+# Create link to the config file
+ln -svf $DIR/gxkb.cfg ~/.config/gxkb/gxkb.cfg

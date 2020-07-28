@@ -268,7 +268,7 @@ button_background_id = 0
 button_centered = 1
 button_padding = 4 4 0
 button_max_icon_size = 24
-button_lclick_command = xdotool key super+Escape
+button_lclick_command = clearine
 
 
 

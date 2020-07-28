@@ -2,7 +2,5 @@
 
 DIR=$(pwd)
 
-# Reconfiguring breaks stuff and idk why :(
+# Create link to the config file
 sudo ln -vf $DIR/lightdm.conf /etc/lightdm/lightdm.conf
-
-
