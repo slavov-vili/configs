@@ -1,7 +1,3 @@
 sh ~/.screenlayout/default_layout.sh &
 nitrogen --restore &
 picom -bcCG &
-tint2 &
-nm-applet &
-volumeicon &
-gxkb &

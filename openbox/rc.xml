@@ -384,6 +384,11 @@
                 <command>rofi -show run</command>
             </action>
         </keybind>
+        <keybind key='W-L'>
+            <action name='Execute'>
+                <command>light-locker-command -l</command>
+            </action>
+        </keybind>
         <keybind key='W-Escape'>
             <action name='Execute'>
                 <command>clearine</command>

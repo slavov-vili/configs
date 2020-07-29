@@ -2,33 +2,52 @@
 
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
 
-<menu id="root-menu" label="Openbox 3">
-  <separator label="Applications" />
-  <item label="Terminal">
-    <action name="Execute">
-      <command>lxterminal</command>
-    </action>
-  </item>
-  <item label="Web Browser">
-    <action name="Execute">
-      <command>firefox</command>
-    </action>
-  </item>
-  <item label="File Manager">
-    <action name="Execute">
-      <command>pcmanfm</command>
-    </action>
-  </item>
-  <item label="Text Editor">
-    <action name="Execute">
-      <command>leafpad</command>
-    </action>
-  </item>
-  <item label="Exit">
-    <action name="Execute">
-      <command>clearine</command>
-    </action>
-  </item>
-</menu>
+  <menu id="exit-menu" label="Exit">
+    <item label="Lock">
+      <action name="Execute">
+        <command>light-locker-command -l</command>
+      </action>
+    </item>
+    <item label="Log out">
+      <action name="Execute">
+        <command>openbox --exit</command>
+      </action>
+    </item>
+    <item label="Restart">
+      <action name="Execute">
+        <command>systemctl reboot</command>
+      </action>
+    </item>
+    <item label="Power Off">
+      <action name="Execute">
+        <command>systemctl poweroff</command>
+      </action>
+    </item>
+  </menu>
+  
+  <menu id="root-menu" label="Openbox 3">
+    <separator label="Applications" />
+    <item label="Terminal">
+      <action name="Execute">
+        <command>lxterminal</command>
+      </action>
+    </item>
+    <item label="Web Browser">
+      <action name="Execute">
+        <command>firefox</command>
+      </action>
+    </item>
+    <item label="File Manager">
+      <action name="Execute">
+        <command>pcmanfm</command>
+      </action>
+    </item>
+    <item label="Text Editor">
+      <action name="Execute">
+        <command>leafpad</command>
+      </action>
+    </item>
+    <menu id="exit-menu"/>
+  </menu>
 
 </openbox_menu>
