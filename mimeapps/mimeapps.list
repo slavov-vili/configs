@@ -1,2 +1,4 @@
 [Default Applications]
 image/png=viewnior.desktop;
+application/pdf=xreader.desktop;firefox.desktop;
+

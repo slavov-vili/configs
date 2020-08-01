@@ -52,25 +52,31 @@ export QT_AUTO_SCREEN_FACTOR=1
 
 
 
-# Set aliases
+# [ALIASES]
+# Utils
 alias ls='ls -F --color=always'
-alias browse='firefox &'
-alias ffx='firefox &'
-alias docs='cd ~/Documents'
-alias down='cd ~/Downloads'
-alias pics='cd ~/Pictures'
 alias entar='tar -cvzf'
 alias untar='tar -xvzf'
-alias spotify='spotify --force-device-scale-factor=2 &'
+alias open='xdg-open'
 alias findkey='xev -event keyboard &'
+alias showmimes='cat /usr/share/applications/mimeinfo.cache'
+
+# Applications
+alias browse='firefox &'
+alias ffx='firefox &'
+alias spotify='spotify --force-device-scale-factor=2 &'
+
+# Gotos
+alias godocs='cd ~/Documents'
+alias godown='cd ~/Downloads'
+alias gopics='cd ~/Pictures'
+alias goscrs='cd ~/Screenshots'
 
 # logout and lock require lightdm (or at least dm-tool)
-alias quit-cin='cinnamon-session-quit'
-alias lock='dm-tool lock'
+alias lock='light-locker-command -l'
 alias off='poweroff'
-alias open='xdg-open'
 alias res='reboot'
 
-# Create a function, which opens a man page in vim
+# Open man pages in vim
 vimman () { man "$1" | vim -; }
 gvimman () { man "$1" | gvim -; }
