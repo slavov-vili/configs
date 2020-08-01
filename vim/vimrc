@@ -10,6 +10,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'kannokanno/previm'
 call plug#end()
 
 " good guy vim-plug
@@ -129,8 +130,10 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>en :setlocal spell! spelllang=en_us<cr>
 nnoremap <leader>de :setlocal spell! spelllang=de_de<cr>
 nnoremap <leader>bg :setlocal spell! spelllang=bg_bg<cr>
-"Add a key combination for the run function
+"Run the current file
 noremap <leader>r :Run<cr>
+"Open the current file
+noremap <leader>o :Open<cr>
 "Reload .vimrc
 noremap <leader><F5> :so $MYVIMRC<cr>
 
@@ -212,7 +215,7 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("h")': ['<c-x>'],
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
-
+let g:previm_open_cmd = 'vimb'
 
 " NERDTree
 noremap <leader>t :execute "NERDTree " . project_root<cr>

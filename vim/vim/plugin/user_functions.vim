@@ -52,13 +52,15 @@ endfunction
 
 
 
-" TODO: Just use a dictionary!
 "Call the Run function with the Run command
 command Run execute "call Run()"
 "Function to run the current file in the cases of certain filetypes
+" TODO: Just use a dictionary!
+" TODO: Do I need to escape the paths? (shellescape)
 function Run()
     "Always save file before running
     :w!
+
     if &filetype == 'python'
         exe '!python3 %'
 
@@ -85,8 +87,25 @@ function Run()
     elseif &filetype == 'tex'
         exe '!pdflatex %'
 
-    elseif &filetype == 'html'
-        exe '!xdg-open %'
+    elseif &filetype == 'markdown'
+        silent exe '!md2html -o %:r.html % &'
     endif
+
+    exe ':redraw!'
+endfunction
+
+command Open execute "call Open()"
+"Function to open the current file in the cases of certain filetypes
+function Open()
+    "Always save file before opening
+    :w!
+
+    if &filetype == 'html'
+        silent exe '!xdg-open % &'
+    elseif &filetype == 'markdown'
+        silent exe '!vimb %:r.html &> /dev/null &'
+    endif
+
+    exe ':redraw!'
 endfunction
 
