@@ -57,8 +57,8 @@ command Run execute "call Run()"
 "Function to run the current file in the cases of certain filetypes
 " TODO: Just use a dictionary!
 " TODO: Do I need to escape the paths? (shellescape)
+"Always save file before running!
 function Run()
-    "Always save file before running
     :w!
 
     if &filetype == 'python'
@@ -68,7 +68,6 @@ function Run()
         exe '!swipl %'
 
     elseif &filetype == 'java' 
-        "Compile and run
         exe '!echo "Compiling..." && javac %'
         exe '!java %:r'
 
@@ -88,7 +87,7 @@ function Run()
         exe '!pdflatex %'
 
     elseif &filetype == 'markdown'
-        silent exe '!md2html -o %:r.html % &'
+        silent exe '!md2html --github -o %:r.html % &'
     endif
 
     exe ':redraw!'

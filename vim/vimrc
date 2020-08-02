@@ -10,7 +10,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'kannokanno/previm'
 call plug#end()
 
 " good guy vim-plug
