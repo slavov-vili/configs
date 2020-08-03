@@ -6,7 +6,7 @@ DIR=$(pwd)
 ln -svf $DIR/vimrc     ~/.vimrc
 ln -svf $DIR/gvimrc    ~/.gvimrc
 ln -svf $DIR/ideavimrc ~/.ideavimrc
-ln -svf $DIR/vim       ~/.vim
+ln -svnFf $DIR/vim     ~/.vim
 
 # "Install" vim-plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

@@ -214,7 +214,6 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("h")': ['<c-x>'],
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
 \ }
-let g:previm_open_cmd = 'vimb'
 
 " NERDTree
 noremap <leader>t :execute "NERDTree " . project_root<cr>
