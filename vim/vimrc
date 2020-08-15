@@ -13,8 +13,8 @@ Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 " good guy vim-plug
-"filetype plugin indent on            "Use auto-indenting
-"syntax on                            "Enable syntax highlighting
+filetype plugin indent on            "Use auto-indenting
+syntax on                            "Enable syntax highlighting
 
 
 " [Set GUI-specific settings]
@@ -62,7 +62,6 @@ set lazyredraw                       "Redraw screen only when need to
 set linebreak                        "Don't split words when wrapping
 set list
 set listchars=tab:▸\ ,eol:¬          "Set Tab and EOL characters
-let mapleader=","                    "Change leader key
 set mouse=a                          "Enable mouse in all modes
 set nobomb                           "No BOM
 set noerrorbells visualbell t_vb=
@@ -73,6 +72,7 @@ set omnifunc=syntaxcomplete#Complete "Native auto-complete
 set shell=/bin/bash                  "Set the default shell
 set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
 set shiftwidth=4                     "Indentation size
+set showcmd                          "Show incomplete commands (fd, cw, etc.)
 set showmatch                        "Highlight matching brackets
 set smartcase                        "Except when using capital letters
 set smartindent                      "Use smart indentation
@@ -81,6 +81,7 @@ set splitbelow                       "New splits always below
 set splitright                       "New vSplits always to the right"
 set tabstop=4
 set wildmenu                         "Better auto-completion for cmd
+let mapleader=","                    "Change leader key
 
 
 
