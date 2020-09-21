@@ -38,10 +38,8 @@
 - [ ] Steam and other gaming stuff
 - [ ] Password manager
 - [ ] Math and Engineering helpers?
-- [ ] IM Client
 - [ ] Dictionary: see pidgin and libreoffice
 - [ ] Coding stuff: IDE or fancy text editor (vim?)
-- [ ] ???Email Client
 
 
 
@@ -50,4 +48,3 @@
 - File searchers (ripgrep?)
 - Conky
 - pass, bzw. qtpass
-- Pidgin

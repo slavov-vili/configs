@@ -1,3 +1,4 @@
 sh ~/.screenlayout/default_layout.sh &
 nitrogen --restore &
 picom -bcCG &
+dunst &
