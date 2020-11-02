@@ -1,0 +1,5 @@
+# Show different filetypes in different color
+set colored-stats on 
+set completion-ignore-case on
+# Treat '_' and '-' as the same
+set completion-map-case on

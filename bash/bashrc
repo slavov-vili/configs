@@ -42,10 +42,8 @@ colors() {
 
 # Prevents single command to flood the history
 export HISTCONTROL=ignoredups
-# Set default path
-PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
-export PATH
-# Set vim as editor
+#PATH="/usr/local/sbin:/usr/local/bin:/usr/bin"
+#export PATH
 export EDITOR="/usr/bin/vim"
 # Set environment variables to scale QT applications
 export QT_AUTO_SCREEN_FACTOR=1
