@@ -226,7 +226,7 @@ tooltip_font_color = #dddddd 100
 # Executor I: Memory usage
 execp = new
 execp_command = free | awk '/Mem/ {printf "Mem: %.2f%", ($3/$2) * 100}'
-execp_interval = 10
+execp_interval = 5
 execp_continuous = 0
 execp_has_icon = 0
 execp_cache_icon = 0
