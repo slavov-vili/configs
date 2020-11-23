@@ -3,3 +3,6 @@ nm-applet &
 volumeicon &
 gxkb &
 light-locker &
+
+# Tablet setup
+sh ~/Scripts/setup_wacom.sh

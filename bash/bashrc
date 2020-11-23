@@ -55,9 +55,9 @@ export QT_AUTO_SCREEN_FACTOR=1
 alias ls='ls -F --color=always'
 alias entar='tar -cvzf'
 alias untar='tar -xvzf'
-alias open='xdg-open'
 alias findkey='xev -event keyboard &'
 alias showmimes='cat /usr/share/applications/mimeinfo.cache'
+alias pacman='pacman --color always'
 
 # Applications
 alias browse='firefox &'
@@ -75,6 +75,7 @@ alias lock='light-locker-command -l'
 alias off='poweroff'
 alias res='reboot'
 
+open () { xdg-open "$1" & };
 # Open man pages in vim
 vimman () { man "$1" | vim -; }
 gvimman () { man "$1" | gvim -; }
