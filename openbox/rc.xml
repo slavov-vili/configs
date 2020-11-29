@@ -331,22 +331,22 @@
                 <to>left</to>
             </action>
         </keybind>
-        <keybind key='F1'>
+        <keybind key='S-F1'>
             <action name="GoToDesktop">
                 <to>1</to>
             </action>
         </keybind>
-        <keybind key='F2'>
+        <keybind key='S-F2'>
             <action name="GoToDesktop">
                 <to>2</to>
             </action>
         </keybind>
-        <keybind key='F3'>
+        <keybind key='S-F3'>
             <action name="GoToDesktop">
                 <to>3</to>
             </action>
         </keybind>
-        <keybind key='F4'>
+        <keybind key='S-F4'>
             <action name="GoToDesktop">
                 <to>4</to>
             </action>
