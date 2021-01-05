@@ -1,3 +1,9 @@
 [user]
-	email = slavov.vili@gmail.com
-	name = vilskin
+    email = slavov.vili@gmail.com
+    name = vilskin
+
+[pull]
+    rebase = true
+
+[alias]
+    pullaut = pull --autostash
