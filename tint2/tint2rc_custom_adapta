@@ -8,10 +8,10 @@
 #-------------------------------------
 # Background 1: Panel
 rounded = 0
-border_width = 2
+border_width =
 border_sides = 
 background_color = #222D32 100
-border_color = #CFD8DC
+border_color =
 background_color_hover = 
 border_color_hover = 
 background_color_pressed = 
@@ -21,10 +21,10 @@ background_content_tint_weight = 0
 
 # Background 2: Tooltip
 rounded = 0
-border_width = 1
-border_sides = RLTB
-background_color = #333333 100
-border_color = #333333 100
+border_width = 0
+border_sides =
+background_color = #090c0d 100
+border_color =
 background_color_hover =
 border_color_hover =
 background_color_pressed =
@@ -35,35 +35,35 @@ background_content_tint_weight = 0
 # Background 3: Default task, Iconified task
 rounded = 0
 border_width = 0
-border_sides = RLTB
-background_color = #235357 100
+border_sides = 
+background_color = #374850 100
 border_color =
-background_color_hover = #071011 100
+background_color_hover = #090c0d 100
 border_color_hover =
-background_color_pressed = #071011 100
+background_color_pressed = #090c0d 100
 border_color_pressed =
 border_content_tint_weight = 0
 background_content_tint_weight = 0
 
 # Background 4: Active task
 rounded = 0
-border_width = 2
-border_sides = T
-background_color = #235357 100
-border_color = #44dd44 100
-background_color_hover = #071011 100
-border_color_hover = #44DD44 100
-background_color_pressed = #071011 100
-border_color_pressed = #111111 100
+border_width = 0
+border_sides =
+background_color = #3B5037 100
+border_color =
+background_color_hover = #171f16 100
+border_color_hover =
+background_color_pressed = #171f16 100
+border_color_pressed =
 border_content_tint_weight = 0
 background_content_tint_weight = 0
 
 # Background 5: Urgent task
 rounded = 0
 border_width = 0
-border_sides = RLTB
+border_sides =
 background_color = #aa6622 100
-border_color = #44dd44 100
+border_color =
 background_color_hover =
 border_color_hover =
 background_color_pressed =
