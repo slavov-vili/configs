@@ -52,9 +52,9 @@ find_git_branch() {
 find_status_color() {
     if test $? -eq 0
     then
-        echo -e "\e[32m"
+        echo -e "\e[32m" # Green
     else
-        echo -e "\e[31m"
+        echo -e "\e[31m" # Red
     fi
 }
 
@@ -72,7 +72,7 @@ export QT_AUTO_SCREEN_FACTOR=1
 # [ALIASES]
 
 # Utils
-alias ls='ls -F --color=always'
+alias ls='ls -F --color=always --group-directories-first'
 alias entar='tar -cvzf'
 alias untar='tar -xvzf'
 alias findkey='xev -event keyboard &'
@@ -80,15 +80,22 @@ alias showmimes='cat /usr/share/applications/mimeinfo.cache'
 alias pacman='pacman --color always'
 
 # Applications
-alias browse='firefox &'
-alias ffx='firefox &'
+alias browse='firefox'
+alias ffx='firefox'
 alias spotify='spotify --force-device-scale-factor=2 &'
 
 # Gotos
-alias godocs='cd ~/Documents'
-alias godown='cd ~/Downloads'
-alias gopics='cd ~/Pictures'
-alias goscrs='cd ~/Screenshots'
+alias gDocs='cd ~/Documents'
+alias gDown='cd ~/Downloads'
+alias gPics='cd ~/Pictures'
+alias gScrs='cd ~/Screenshots'
+alias gUni='cd ~/Documents/University'
+
+# Reload stuff
+alias reloadBash='source ~/.bashrc'
+alias reloadWM='openbox --reconfigure'
+alias reloadPanel='killall -SIGUSR1 tint2'
+alias reloadNotifics='killall dunst'
 
 # logout and lock require lightdm (or at least dm-tool)
 alias lock='light-locker-command -l'
