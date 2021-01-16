@@ -106,3 +106,4 @@ open () { xdg-open "$1" & };
 # Open man pages in vim
 vimman () { man "$1" | vim -; }
 gvimman () { man "$1" | gvim -; }
+

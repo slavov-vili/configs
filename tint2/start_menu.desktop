@@ -1,7 +1,0 @@
-[Desktop Entry]
-Name=Start Menu
-Comment=A tint2 Launcher for a custom Start menu
-Exec=xdotool key super+Return
-# Icon should be in ~/.icons/...
-Icon=tint2/archlinux_icon_24px
-
