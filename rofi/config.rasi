@@ -1,0 +1,17 @@
+configuration {
+  modi: "drun";
+  width: 75;
+  fixed-num-lines: true;
+  lines: 20;
+  font: "DejaVu Sans Mono Regular 14";
+  location: 0; // 0 = center, 1-8 = touching a screen border
+  show-icons: true;
+  icon-theme: "Papirus"; // defaults are at /usr/share/icons/
+  terminal: "lxterminal";
+  sidebar-mode: false;
+  matching: "glob";
+  scroll-method: 1;
+  matching-negate-char: '!';
+  theme: "./custom_theme.rasi"; // defaults are at /usr/share/rofi/themes/
+  //theme: "fancy";
+}

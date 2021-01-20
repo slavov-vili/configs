@@ -377,12 +377,12 @@
       </action>
     </keybind>
     <!-- TODO: after closing, open the next window available on the current screen -->
-    <keybind key="A-q">
+    <keybind key="A-S-q">
       <action name="Close"/>
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-        <command>rofi -show drun</command>
+          <command>sh ~/.config/rofi/app_launcher.sh</command>
       </action>
     </keybind>
     <keybind key="W-L">

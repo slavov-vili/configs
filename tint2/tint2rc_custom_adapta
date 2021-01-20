@@ -256,7 +256,7 @@ button_background_id = 0
 button_centered = 1
 button_padding = 5 1 1 0
 button_max_icon_size = 28
-button_lclick_command = xdotool key super+space
+button_lclick_command = xdotool key super+Return
 
 # Button (Show Desktop)
 button = new

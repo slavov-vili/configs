@@ -226,8 +226,10 @@ noremap <leader>t :execute "NERDTree " . project_root<cr>
 
 let g:slime_target = "tmux"          "Tell slime to use tmux
 
-"Force vim to use Prolog syntax on .pl files
+" [File syntax]
+" Prolog
 autocmd BufNewFile,BufRead *.pl set syntax=prolog
+autocmd BufNewFile,BufRead *.rasi set syntax=css
 "Automatically retab files when opened
 "autocmd BufNewFile,BufRead * :retab
 
