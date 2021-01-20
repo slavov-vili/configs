@@ -5,20 +5,29 @@
  ********************************************************************************/
 
 configuration {
+    // Mode config
     modi: "drun";
+    drun-show-actions: true;
+    matching: "glob";
+    scroll-method: 1; // 0 = per page, 1 = continuous
+
+    // Location and size
     width: 75;
     fixed-num-lines: true;
     lines: 20;
-    font: "DejaVu Sans Mono Regular 14";
     location: 0; // 0 = center, 1-8 = touching a screen border
+
+    // Text config
+    font: "DejaVu Sans Mono Regular 14";
+    display-window: "window:";
+    display-drun: "apps:";
+    matching-negate-char: '!';
+
     show-icons: true;
     icon-theme: "Papirus"; // defaults are at /usr/share/icons/
+
+    // Actions and commands
     terminal: "lxterminal";
-    matching: "glob";
-    scroll-method: 1; // 0 = per page, 1 = continuous
-    matching-negate-char: '!';
-    display-drun: "apps:";
-    drun-show-actions: true;
 }
 
 // Keybinds
@@ -49,8 +58,8 @@ configuration {
 
     kb-row-left:   "Control+Alt+Left";
     kb-row-right:  "Control+Alt+Right";
-    kb-row-up:     "Control+Alt+Up";
-    kb-row-down:   "Control+Alt+Down";
+    kb-row-up:     "Up";
+    kb-row-down:   "Down";
     kb-row-tab:    "Tab";
     kb-row-first:  "Control+Alt+G,Home";
     kb-row-last:   "Control+Alt+g,End";
@@ -110,41 +119,43 @@ configuration {
 
 
 * {
-    // Colors
-    background-color: #222D32;
-    background: #222D32;
-
     inputbar-font: "DejaVu Sans Mono Regular 16";
 
-    foreground: white;
-    text-color: @foreground;
+    // Colors
+    bg-color: #222D32;
+    fg-color: white;
+    text-color: @fg-color;
     accent-color: teal;
-    separator-color: rgba ( 195, 198, 200, 100 % );
+    separator-color: white/80%;
+    faded-color: white/20%;
 
-    urgent-background:           rgba ( 69, 90, 100, 100 % );
-    selected-urgent-background:  rgba ( 255, 82, 82, 100 % );
-    alternate-urgent-foreground: @urgent-foreground;
-    selected-urgent-foreground:  rgba ( 253, 246, 227, 100 % );
-    urgent-foreground:           rgba ( 255, 82, 82, 100 % );
-    alternate-urgent-background: rgba ( 69, 90, 100, 100 % );
+    background-color: @bg-color;
+    normal-background:           @bg-color;
+    alternate-normal-background: @normal-background;
+    selected-normal-background:  @accent-color;
+    normal-foreground:           @fg-color;
+    alternate-normal-foreground: @normal-foreground;
+    selected-normal-foreground:  #00DDFF;
 
-    normal-foreground:           @foreground;
-    normal-background:           rgba ( 69, 90, 100, 100 % );
-    selected-normal-background:  rgba ( 0, 188, 212, 100 % );
-
-    active-foreground:           rgba ( 0, 188, 212, 100 % );
-    selected-active-foreground:  rgba ( 253, 246, 227, 100 % );
-    alternate-active-background: rgba ( 69, 90, 100, 100 % );
+    active-background:           grey/70%;
+    alternate-active-background: @active-background;
+    selected-active-background:  @accent-color;
+    active-foreground:           #00DD00;
     alternate-active-foreground: @active-foreground;
-    active-background:           rgba ( 69, 90, 100, 100 % );
-    selected-active-background:  rgba ( 0, 150, 136, 100 % );
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           #800000;
+    alternate-urgent-background: @urgent-background;
+    selected-urgent-background:  @accent-color;
+    urgent-foreground:           @fg-color;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-foreground:  @urgent-background;
 }
 
 window {
-    background-color: @background;
-    border:           1;
-    border-color: yellow;
-    padding:          0;
+    border:       2;
+    border-color: @accent-color;
+    padding:      0;
 }
 
 mainbox {
@@ -171,17 +182,17 @@ entry {
     font: @inputbar-font;
     padding: 0.1em 0em 0.3em 0.3em;
     placeholder: "C-/S-Enter: Run in terminal | C-S-Delete: Remove from history";
-    placeholder-color: white/20%;
+    placeholder-color: @faded-color;
 }
 
 case-indicator {
-    spacing:    0;
+    spacing: 0;
 }
 
 listview {
-    spacing:      5px ;
-    scrollbar:    true;
-    padding:      5px 0px;
+    spacing:   5px ;
+    scrollbar: true;
+    padding:   5px 0px;
 }
 
 scrollbar {
@@ -196,7 +207,7 @@ element-icon {
 }
 
 element.normal.normal {
-    background-color: @background;
+    background-color: @bg-color;
     text-color:       @normal-foreground;
 }
 
@@ -212,7 +223,7 @@ element.normal.active {
 
 element.selected.normal {
     background-color: @accent-color;
-    text-color:       @foreground;
+    text-color:       @fg-color;
 }
 
 element.selected.urgent {
@@ -226,8 +237,8 @@ element.selected.active {
 }
 
 element.alternate.normal {
-    background-color: @background;
-    text-color:       @foreground;
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
 }
 
 element.alternate.urgent {
@@ -247,10 +258,10 @@ mode-switcher {
 
 button.selected {
     background-color: @accent-color;
-    text-color:       @foreground;
+    text-color:       @fg-color;
 }
 
 button.normal {
-    text-color: @foreground;
+    text-color: @fg-color;
 }
 

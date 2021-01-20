@@ -6,21 +6,30 @@
 
 // TODO: Put all the shortcuts and what they do in the placeholder
 configuration {
+    // Mode config
     modi: "window";
+    drun-show-actions: true;
+    matching: "glob";
+    scroll-method: 1; // 0 = per page, 1 = continuous
+
+    // Location and size
     width: 75;
     fixed-num-lines: true;
     lines: 20;
-    font: "DejaVu Sans Mono Regular 14";
     location: 0; // 0 = center, 1-8 = touching a screen border
+
+    // Text config
+    font: "DejaVu Sans Mono Regular 14";
+    display-window: "window:";
+    display-drun: "apps:";
+    matching-negate-char: '!';
+
     show-icons: true;
     icon-theme: "Papirus"; // defaults are at /usr/share/icons/
+
+    // Actions and commands
     terminal: "lxterminal";
-    sidebar-mode: false;
-    matching: "glob";
-    scroll-method: 1;
-    matching-negate-char: '!';
-    display-window: "window";
-  }
+}
 
 // Keybinds
 configuration {
@@ -50,8 +59,8 @@ configuration {
 
     kb-row-left:   "Control+Alt+Left";
     kb-row-right:  "Control+Alt+Right";
-    kb-row-up:     "Control+Alt+Up";
-    kb-row-down:   "Control+Alt+Down";
+    kb-row-up:     "Up";
+    kb-row-down:   "Down";
     kb-row-tab:    "Tab";
     kb-row-first:  "Control+Alt+G,Home";
     kb-row-last:   "Control+Alt+g,End";
