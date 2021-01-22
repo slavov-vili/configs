@@ -1,0 +1,155 @@
+/*******************************************************************************
+ *
+ * A Rofi theme largely based on PyGeek03's Adapta-Nokto theme
+ *
+ ********************************************************************************/
+
+* {
+    inputbar-font: "DejaVu Sans Mono Regular 16";
+
+    entry-placeholder: "";
+
+    // Colors
+    bg-color: #222D32;
+    fg-color: white;
+    text-color: @fg-color;
+    accent-color: teal;
+    separator-color: white/80%;
+    faded-color: white/20%;
+
+    background-color: @bg-color;
+    normal-background:           @bg-color;
+    alternate-normal-background: @normal-background;
+    selected-normal-background:  @accent-color;
+    normal-foreground:           @fg-color;
+    alternate-normal-foreground: @normal-foreground;
+    selected-normal-foreground:  #00DDFF;
+
+    active-background:           grey/70%;
+    alternate-active-background: @active-background;
+    selected-active-background:  @accent-color;
+    active-foreground:           #00DD00;
+    alternate-active-foreground: @active-foreground;
+    selected-active-foreground:  @active-foreground;
+
+    urgent-background:           #800000;
+    alternate-urgent-background: @urgent-background;
+    selected-urgent-background:  @accent-color;
+    urgent-foreground:           @fg-color;
+    alternate-urgent-foreground: @urgent-foreground;
+    selected-urgent-foreground:  @urgent-background;
+}
+
+window {
+    border:       2;
+    border-color: @accent-color;
+    padding:      0;
+}
+
+mainbox {
+    border:  0;
+    padding: 0;
+}
+
+inputbar {
+    spacing:    0;
+    padding:    0px;
+    border:     0px dash 0px 1px;
+    border-color: @separator-color;
+}
+
+prompt {
+    spacing:    0;
+    background-color: @accent-color;
+    font: @inputbar-font;
+    padding: 0.1em 0em 0.3em 0.3em;
+}
+
+entry {
+    spacing:    0;
+    font: @inputbar-font;
+    padding: 0.1em 0em 0.3em 0.3em;
+    placeholder: @entry-placeholder;
+    placeholder-color: @faded-color;
+}
+
+case-indicator {
+    spacing: 0;
+}
+
+listview {
+    spacing:   5px ;
+    scrollbar: true;
+    padding:   5px 0px;
+}
+
+scrollbar {
+    width:        4px ;
+    border:       0;
+    handle-width: 8px ;
+    padding:      0;
+}
+
+element-icon {
+    size: 24px;
+}
+
+element.normal.normal {
+    background-color: @bg-color;
+    text-color:       @normal-foreground;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background;
+    text-color:       @urgent-foreground;
+}
+
+element.normal.active {
+    background-color: @active-background;
+    text-color:       @active-foreground;
+}
+
+element.selected.normal {
+    background-color: @accent-color;
+    text-color:       @fg-color;
+}
+
+element.selected.urgent {
+    background-color: @selected-urgent-background;
+    text-color:       @selected-urgent-foreground;
+}
+
+element.selected.active {
+    background-color: @selected-active-background;
+    text-color:       @selected-active-foreground;
+}
+
+element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+
+element.alternate.urgent {
+    background-color: @alternate-urgent-background;
+    text-color:       @alternate-urgent-foreground;
+}
+
+element.alternate.active {
+    background-color: @alternate-active-background;
+    text-color:       @alternate-active-foreground;
+}
+
+mode-switcher {
+    border:       2px solid 0px 0px;
+    border-color: @accent-color;
+}
+
+button.selected {
+    background-color: @accent-color;
+    text-color:       @fg-color;
+}
+
+button.normal {
+    text-color: @fg-color;
+}
+

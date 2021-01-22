@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- * Configuration for an App Launcher
+ * Configuration for a File Launcher
  *
  ********************************************************************************/
 
@@ -9,6 +9,6 @@
 
 
 * {
-    entry-placeholder: "C/S-Enter: Run in terminal | C-S-Delete: Remove from history";
+    entry-placeholder: "C/S-Enter: Makde current dir the initial one";
 }
 

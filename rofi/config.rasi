@@ -1,17 +1,42 @@
+/*******************************************************************************
+ *
+ * Custom Rofi configuration
+ *
+ ********************************************************************************/
+
+@import "keybinds"
+
+// TODO: Configure combi mode for run, window, file, keys
+
+
 configuration {
-  modi: "drun";
-  width: 75;
-  fixed-num-lines: true;
-  lines: 20;
-  font: "DejaVu Sans Mono Regular 14";
-  location: 0; // 0 = center, 1-8 = touching a screen border
-  show-icons: true;
-  icon-theme: "Papirus"; // defaults are at /usr/share/icons/
-  terminal: "lxterminal";
-  sidebar-mode: false;
-  matching: "glob";
-  scroll-method: 1;
-  matching-negate-char: '!';
-  theme: "./custom_theme.rasi"; // defaults are at /usr/share/rofi/themes/
-  //theme: "fancy";
+    // mode config
+    modi: "";
+    drun-show-actions: true;
+    matching: "glob";
+    scroll-method: 1; // 0 = per page, 1 = continuous
+
+    // location and size
+    width: 75;
+    fixed-num-lines: true;
+    lines: 20;
+    location: 0; // 0 = center, 1-8 = touching a screen border
+
+    // text config
+    font: "dejavu sans mono regular 14";
+    display-drun:         "apps:";
+    display-file-browser: "files:";
+    display-keys:         "keys:";
+    display-window:       "window:";
+    display-windowcd:     "windowcd:";
+    matching-negate-char: '!';
+
+    show-icons: true;
+    icon-theme: "papirus"; // defaults are at /usr/share/icons/
+
+    // actions and commands
+    terminal: "lxterminal";
 }
+
+@theme "Adapta-Teal"
+
