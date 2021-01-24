@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- * Configuration for a File Launcher
+ * Configuration for a Keybind Viewer
  *
  ********************************************************************************/
 
@@ -9,6 +9,6 @@
 
 
 * {
-    entry-placeholder: "C/S-Enter: Make current dir the initial one";
+
 }
 

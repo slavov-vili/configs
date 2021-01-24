@@ -24,15 +24,15 @@ configuration {
 
     // text config
     font: "dejavu sans mono regular 14";
-    display-drun:         "apps:";
-    display-file-browser: "files:";
-    display-keys:         "keys:";
-    display-window:       "window:";
-    display-windowcd:     "windowcd:";
+    display-drun:         "Apps:";
+    display-file-browser: "Files:";
+    display-keys:         "Rofi Keybinds:";
+    display-window:       "All windows:";
+    display-windowcd:     "Desktop windows:";
     matching-negate-char: '!';
 
     show-icons: true;
-    icon-theme: "papirus"; // defaults are at /usr/share/icons/
+    icon-theme: "Papirus"; // defaults are at /usr/share/icons/
 
     // actions and commands
     terminal: "lxterminal";

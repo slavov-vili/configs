@@ -1,0 +1,56 @@
+/*******************************************************************************
+ *
+ * Configuration for an App Launcher
+ *
+ ********************************************************************************/
+
+@import "config"
+
+
+
+* {
+    entry-placeholder: "C/S-Enter: Run in terminal | C-S-Delete: Remove from history";
+}
+
+window {
+    width: 665;
+}
+
+inputbar {
+    enabled: false;
+}
+
+listview {
+    layout: horizontal;
+    padding:   0px 0px;
+}
+
+element {
+    orientation: vertical;
+    children: [element-icon, box-element-text];
+}
+
+element-icon {
+    size: 128px;
+}
+
+box-element-text {
+    orientation: horizontal;
+    width: 128px;
+    children: [textbox-expanded, element-text, textbox-expanded];
+}
+
+#box-element-text.selected {
+    background-color: @accent-color;
+}
+
+textbox-expanded {
+    expand: true;
+    background-color: inherit;
+}
+
+element-text {
+    expand: false;
+    horizontal-align: 0;
+    padding: 0 0 0 0;
+}

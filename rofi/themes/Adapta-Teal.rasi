@@ -84,9 +84,9 @@ listview {
 }
 
 scrollbar {
-    width:        4px ;
+    width:        4px;
     border:       0;
-    handle-width: 8px ;
+    handle-width: 8px;
     padding:      0;
 }
 

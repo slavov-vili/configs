@@ -385,6 +385,16 @@
           <command>sh ~/.config/rofi/app_launcher.sh</command>
       </action>
     </keybind>
+    <keybind key="W-w">
+      <action name="Execute">
+          <command>sh ~/.config/rofi/window_switcher.sh</command>
+      </action>
+    </keybind>
+    <keybind key="W-o">
+      <action name="Execute">
+          <command>sh ~/.config/rofi/file_launcher.sh</command>
+      </action>
+    </keybind>
     <keybind key="W-L">
       <action name="Execute">
         <command>light-locker-command -l</command>
@@ -392,7 +402,7 @@
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>clearine</command>
+        <command>sh ~/.config/rofi/powermenu.sh</command>
       </action>
     </keybind>
     <keybind key="W-Return">

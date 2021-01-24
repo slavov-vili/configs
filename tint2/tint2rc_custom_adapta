@@ -286,7 +286,7 @@ button_background_id = 0
 button_centered = 1
 button_padding = 0 0 0
 button_max_icon_size = 32
-button_lclick_command = clearine
+button_lclick_command = sh ~/.config/rofi/powermenu.sh
 
 
 
