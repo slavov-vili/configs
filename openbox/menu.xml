@@ -5,12 +5,12 @@
   <menu id="exit-menu" label="Exit">
     <item label="Lock">
       <action name="Execute">
-        <command>light-locker-command -l</command>
+          <command>sh ~/Scripts/lock.sh</command>
       </action>
     </item>
     <item label="Log out">
       <action name="Execute">
-        <command>openbox --exit</command>
+          <command>sh ~/Scripts/logout.sh</command>
       </action>
     </item>
     <item label="Restart">

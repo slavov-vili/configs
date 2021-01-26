@@ -1,7 +1,6 @@
 #!/bin/bash
 
 DIR=$(pwd)
-ROFI_HOME="~/.config/rofi"
 
 # Main config
 ln -svf $DIR/config.rasi ~/.config/rofi/config.rasi
