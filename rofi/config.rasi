@@ -23,7 +23,7 @@ configuration {
     location: 0; // 0 = center, 1-8 = touching a screen border
 
     // text config
-    font: "dejavu sans mono regular 14";
+    font: "Dejavu Sans Mono Regular 14";
     display-drun:         "Apps:";
     display-file-browser: "Files:";
     display-keys:         "Rofi Keybinds:";

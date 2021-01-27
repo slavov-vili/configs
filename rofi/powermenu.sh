@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# TODO: Add a script for displaying a yes/no prompt
-
 options=('cancel' 'lock' 'logout' 'reboot' 'shutdown')
 
 
-declare -A texts icons commands
+
+declare -A texts icons commands prompts
 
 texts['cancel']="Cancel"
 texts['lock']="Lock"
@@ -20,14 +19,14 @@ icons['reboot']="system-reboot"
 icons['shutdown']="system-shutdown"
 
 commands['lock']="sh ~/Scripts/lock.sh"
-commands['logout']="sh ~/Scripts/logout.sh"
-commands['reboot']="systemctl reboot"
-commands['shutdown']="systemctl poweroff"
+commands['logout']="sh ~/Scripts/prompt_logout.sh"
+commands['reboot']="sh ~/Scripts/prompt_reboot.sh"
+commands['shutdown']="sh ~/Scripts/prompt_shutdown.sh"
 
 
 
 # $1 = the list of keys which are being built into options
-buildEntries(){
+function buildEntries(){
     local entries=""
     local keys=("$@")
     for key in "${keys[@]}"; do
