@@ -38,7 +38,7 @@ function buildEntries(){
 
 
 ENTRIES=$( buildEntries ${options[@]} )
-RESULT_INDEX=$( echo -en $ENTRIES | rofi -theme ~/.config/rofi/powermenu.rasi -dmenu -format i )
+RESULT_INDEX=$( echo -en $ENTRIES | rofi -theme ~/.config/rofi/widgets/powermenu.rasi -dmenu -format i )
 RESULT_KEY=${options[$RESULT_INDEX]}
 
 eval ${commands[$RESULT_KEY]}

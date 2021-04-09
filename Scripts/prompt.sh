@@ -5,9 +5,4 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
-
-RESULT=$( echo -en "No\nYes\n" | rofi -theme ~/.config/rofi/prompt.rasi -dmenu -p "$1")
-
-if [ $RESULT == "Yes" ]; then
-    eval $2
-fi
+sh ~/.config/rofi/scripts/prompt.sh "$1" "$2"
