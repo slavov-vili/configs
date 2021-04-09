@@ -2,5 +2,9 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/TODOS.md ~/Documents/TODOS.md
+DOCS_DIR="~/Documents"
+
+mkdir $DOCS_DIR
+
+ln -svf $DIR/TODOS.md $DOCS_DIR/TODOS.md
 

@@ -2,7 +2,12 @@
 
 DIR=$(pwd)
 
+TINT2_DIR="~/.config/tint2"
+ICONS_DIR="~/.icons/tint2"
+
+mkdir -p $TINT2_DIR $ICONS_DIR
+
 # Make a link to the relevant files in the correct directory
-ln -svf $DIR/tint2rc_custom_adapta ~/.config/tint2/tint2rc
-ln -svf $DIR/start_menu.desktop    ~/.config/tint2/start_menu.desktop
-ln -vf  $DIR/icons/*               ~/.icons/tint2/
+ln -svf $DIR/tint2rc_custom_adapta $TINT2_DIR/tint2rc
+ln -svf $DIR/start_menu.desktop    $TINT2_DIR/start_menu.desktop
+ln -vf  $DIR/icons/*               $ICONS_DIR/tint2/
