@@ -64,6 +64,10 @@ function Run()
     if &filetype == 'python'
         exe '!python3 %'
 
+    elseif &filetype == 'c' 
+        exe '!echo "Compiling..." && gcc -o %:r %'
+        exe '!sh %:r'
+
     elseif &filetype == 'prolog'
         exe '!swipl %'
 

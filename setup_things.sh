@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_LIST_FILE="projects_to_install"
+PROJECT_LIST_FILE="projects_to_install.txt"
 DIR=$(pwd)
 
 while read line; do

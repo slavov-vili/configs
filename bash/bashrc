@@ -91,6 +91,11 @@ alias gPics='cd ~/Pictures'
 alias gScrs='cd ~/Screenshots'
 alias gUni='cd ~/Documents/University'
 
+# Common configs
+alias editbash='$EDITOR ~/.bashrc'
+alias editgit='$EDITOR ~/.gitconfig'
+alias edithosts='sudoedit /etc/hosts'
+
 # Reload stuff
 alias reloadBash='source ~/.bashrc'
 alias reloadWM='openbox --reconfigure'

@@ -382,17 +382,17 @@
     </keybind>
     <keybind key="W-r">
       <action name="Execute">
-          <command>sh ~/.config/rofi/app_launcher.sh</command>
+          <command>sh ~/.config/rofi/scripts/app_launcher.sh</command>
       </action>
     </keybind>
     <keybind key="W-w">
       <action name="Execute">
-          <command>sh ~/.config/rofi/window_switcher.sh</command>
+          <command>sh ~/.config/rofi/scripts/window_switcher.sh</command>
       </action>
     </keybind>
     <keybind key="W-o">
       <action name="Execute">
-          <command>sh ~/.config/rofi/file_launcher.sh</command>
+          <command>sh ~/.config/rofi/scripts/file_launcher.sh</command>
       </action>
     </keybind>
     <keybind key="W-L">
@@ -402,7 +402,7 @@
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>sh ~/.config/rofi/powermenu.sh</command>
+        <command>sh ~/.config/rofi/scripts/powermenu.sh</command>
       </action>
     </keybind>
     <keybind key="W-Return">
