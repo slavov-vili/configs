@@ -94,6 +94,7 @@ alias gUni='cd ~/Documents/University'
 # Common configs
 alias editbash='$EDITOR ~/.bashrc'
 alias editgit='$EDITOR ~/.gitconfig'
+alias editvim='$EDITOR ~/.vimrc'
 alias edithosts='sudoedit /etc/hosts'
 
 # Reload stuff

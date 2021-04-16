@@ -7,15 +7,14 @@ call plug#begin('~/.vim/vimplugs')
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
-Plug 'jiangmiao/auto-pairs'
 Plug 'itchyny/lightline.vim'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'tmsvg/pear-tree'
+Plug 'luochen1990/rainbow'
 call plug#end()
 
 " good guy vim-plug
 filetype plugin indent on            "Use auto-indenting
 syntax on                            "Enable syntax highlighting
-
 
 " [Set GUI-specific settings]
 if has('gui_running')
@@ -31,6 +30,7 @@ runtime user_functions.vim
 
 
 
+
 " [Settings]
 
 set autoindent                       "Follow indentation of last line
@@ -42,6 +42,7 @@ set cmdheight=2                      "Height of the command bar
 set completeopt=longest,menuone      "Auto-completion option menu
 set confirm                          "Confirm :q when unsaved changes
 set cursorline                       "Highlight current line
+:hi CursorLine cterm=bold guibg='#404040'
 set directory=~/.backup,.,/tmp       "Don't put swaps in current dir
 set equalalways                      "Make all windows equal in size
 set encoding=utf-8
@@ -86,6 +87,7 @@ let mapleader=","                    "Change leader key
 
 
 
+
 " [Key mappings]
 
 "Move the movement keys (ironic) 1 key to the right
@@ -107,19 +109,15 @@ noremap gg G
 "Turns out its faster than :w
 noremap <C-s> :w<cr>
 "System clipboard is bae
-noremap <C-y> "+y
-noremap <C-p> "+p
-"Optical illusion ?
+noremap <C-Y> "+y
+noremap <C-P> "+p
+"Optical illusion?
 noremap p P
 noremap P p
 "Get over here!
 "noremap za zz
 "Have to fold sometimes
 "noremap zz za
-"% too far away :(
-noremap <leader><Tab> %
-"Toggle comment state of line
-"noremap <leader>cc <leader>c<space>
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
@@ -185,12 +183,15 @@ nnoremap <leader>w; <C-W>l
 "TIP: <C-W>= makes ALL windows have normal shapes
 nnoremap <C-Left>  5<C-W>>
 nnoremap <C-Right> 5<C-W><
-nnoremap <C-Up>    5<C-W>-
-nnoremap <C-Down>  5<C-W>+
+nnoremap <C-Up>    5<C-W>+
+nnoremap <C-Down>  5<C-W>-
 "Window close current
 nnoremap <leader>we<cr> <C-W>q
 "Window close others
 nnoremap <leader>wo<cr> <C-W>o
+
+
+
 
 
 " [Shortcuts for user functions]
@@ -202,23 +203,69 @@ noremap <C-S-f> :call SearchInAllFilesWithInput(g:project_root)<cr>
 let g:my_root_markers = ['.git', 'pom.xml']
 
 
+
+
+
 " [Plugin settings]
 
-" CTRL-P
+" CTRLP
 " Some root markers are already pre-configured in ctrlp, but I like
 " to keep things consistent :)
+let g:ctrlp_regexp = 1
 let g:ctrlp_root_markers = g:my_root_markers
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_open_multiple_files = '9t'
 let g:ctrlp_prompt_mappings = {
-  \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
-  \ 'PrtSelectMove("k")':   ['<c-j>', '<up>'],
-  \ 'AcceptSelection("e")': ['<c-cr>'],
-  \ 'AcceptSelection("h")': ['<c-x>'],
-  \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ 'PrtSelectMove("k")':   ['<c-l>', '<up>'],
+    \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
+    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
+    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
+    \ 'AcceptSelection("e")': ['<c-cr>'],
+    \ 'AcceptSelection("h")': ['<c-x>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ 'PrtInsert()':          ['<c-\>'],
+    \ 'PrtCurStart()':        ['<c-s-j>'],
+    \ 'PrtCurEnd()':          ['<c-s-k>'],
+    \ 'PrtCurLeft()':         ['<c-j>', '<left>', '<c-^>'],
+    \ 'PrtCurRight()':        ['<c-;>', '<right>'],
 \ }
 
+
 " NERDTree
-noremap <leader>t :execute "NERDTree " . project_root<cr>
-" TODO: Figure out what's up with NERDCommenter mappings
+noremap <leader>t :execute "NERDTreeFind "<cr>
+
+
+" NERDCommenter
+map <leader>cc <plug>NERDCommenterToggle
+
+
+" Lightline
+let g:lightline = {
+    \ 'colorscheme': 'powerline'
+\ }
+let g:lightline.active = {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'relativepath', 'readonly', 'modified' ] ],
+    \   'right': [ [ 'lineinfo' ],
+    \              [ 'percent' ],
+    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ]
+\ }
+let g:lightline.inactive = g:lightline.active
+let g:lightline.component = {
+    \   'charvaluehex': '0x%B'
+\ }
+
+
+" PearTree
+let g:pear_tree_smart_openers   = 1
+let g:pear_tree_smart_closers   = 1
+let g:pear_tree_smart_backspace = 1
+
+
+" Rainbow
+let g:rainbow_active = 1
+
 
 
 
@@ -234,3 +281,4 @@ autocmd BufNewFile,BufRead *.rasi set syntax=css
 "autocmd BufNewFile,BufRead * :retab
 
 autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
+
