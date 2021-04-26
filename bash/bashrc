@@ -38,10 +38,15 @@ colors() {
 
 
 # [BASH PROMPTS]
-RESET="\e[0m"
-COL1="\e[32m" # Green
-COL2="\e[34m" # Blue
-COL3="\e[2;33m" # Dimmed Brown
+non_printable() {
+    echo -ne "\001$1\002"
+}
+
+RESET=$(non_printable "\e[0m")   # End of coloring
+COL1=$(non_printable "\e[32m")   # Green
+COL2=$(non_printable "\e[34m")   # Blue
+COL3=$(non_printable "\e[2;33m") # Dimmed Brown
+COL4=$(non_printable "\e[31m")   # Red
 export PROMPT_DIRTRIM=2
 export PS1="\$(find_status_color)\! $COL1\u $COL2\w $COL3[\$(find_git_branch)] $RESET: "
 
@@ -52,9 +57,9 @@ find_git_branch() {
 find_status_color() {
     if test $? -eq 0
     then
-        echo -e "\e[32m" # Green
+        echo $COL1
     else
-        echo -e "\e[31m" # Red
+        echo $COL4
     fi
 }
 
