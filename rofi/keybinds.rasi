@@ -24,10 +24,11 @@ configuration {
     kb-remove-to-eol:       "Control+Alt+k";
     kb-remove-to-sol:       "Control+Alt+j";
 
-    kb-accept-entry:  "Return";
-    kb-accept-custom: "Control+Return";
-    kb-accept-alt:    "Control+Shift+Return";
-    kb-delete-entry:  "Control+Shift+Delete";
+    kb-accept-entry:      "Return";
+    kb-accept-custom:     "Control+Return";
+    kb-accept-alt:        "Control+Shift+Return";
+    kb-accept-custom-alt: "Control+Alt+Shift+Return";
+    kb-delete-entry:      "Control+Shift+Delete";
 
     kb-row-left:   "Control+Alt+Left";
     kb-row-right:  "Control+Alt+Right";
