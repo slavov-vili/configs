@@ -91,7 +91,12 @@ scrollbar {
 }
 
 element-icon {
+    background-color: inherit;
     size: 24px;
+}
+
+element-text {
+    background-color: inherit;
 }
 
 element.normal.normal {
