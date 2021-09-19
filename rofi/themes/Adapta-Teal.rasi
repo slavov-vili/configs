@@ -54,8 +54,6 @@ mainbox {
 inputbar {
     spacing:    0;
     padding:    0px;
-    border:     0px 0px 1px dash 0px;
-    border-color: @separator-color;
 }
 
 prompt {
@@ -63,6 +61,8 @@ prompt {
     background-color: @accent-color;
     font: @inputbar-font;
     padding: 0.1em 0em 0.3em 0.3em;
+    border:     0px 0px 1px solid 0px;
+    border-color: @accent-color;
 }
 
 entry {
@@ -71,6 +71,8 @@ entry {
     padding: 0.1em 0em 0.3em 0.3em;
     placeholder: @entry-placeholder;
     placeholder-color: @faded-color;
+    border:     0px 0px 1px dash 0px;
+    border-color: @accent-color;
 }
 
 case-indicator {
