@@ -1,0 +1,46 @@
+/*******************************************************************************
+ *
+ * Configuration for a Menu with two columns of entries
+ *
+ ********************************************************************************/
+
+@import "config"
+
+
+
+* {
+    entry-placeholder: "";
+}
+
+window {
+    location: north;
+    y-offset: 20%;
+}
+
+listview {
+    padding:   4px 4px;
+    spacing: 2px;
+    columns: 2;
+    lines: 3;
+    scrollbar: false;
+    dynamic: true;
+    fixed-height: false;
+}
+
+element {
+    orientation: horizontal;
+    children: [element-icon, element-text];
+}
+
+element-icon {
+    size: 40px;
+    padding: 1px;
+}
+
+element-text {
+    expand: false;
+    width: 50%;
+    vertical-align: 0.5;
+    font: "DejaVu Sans Mono Regular 20";
+}
+

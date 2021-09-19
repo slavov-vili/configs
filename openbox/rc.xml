@@ -358,22 +358,17 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>sh ~/.config/openbox/scripts/screenshot_current_window.sh</command>
+        <command>sh ~/.config/rofi/scripts/screenshotmenu.sh</command>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <command>sh ~/.config/openbox/scripts/screenshot_selection.sh</command>
+        <command>sh ~/Scripts/screenshot.sh --window</command>
       </action>
     </keybind>
     <keybind key="C-Print">
       <action name="Execute">
-        <command>sh ~/.config/openbox/scripts/screenshot_current_window.sh --save</command>
-      </action>
-    </keybind>
-    <keybind key="A-C-Print">
-      <action name="Execute">
-        <command>sh ~/.config/openbox/scripts/screenshot_selection.sh --save</command>
+        <command>sh ~/Scripts/screenshot.sh --selection</command>
       </action>
     </keybind>
     <!-- TODO: after closing, open the next window available on the current screen -->
