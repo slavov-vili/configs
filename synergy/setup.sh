@@ -2,4 +2,4 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/synergy.conf ~/.synergy.conf
+ln -svf $DIR/synergy.conf $HOME.synergy.conf

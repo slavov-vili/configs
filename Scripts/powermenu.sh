@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sh ~/.config/rofi/scripts/powermenu.sh
+sh  $HOME.config/rofi/scripts/powermenu.sh

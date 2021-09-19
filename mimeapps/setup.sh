@@ -2,4 +2,4 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/mimeapps.list ~/.config/mimeapps.list
+ln -svf $DIR/mimeapps.list $HOME.config/mimeapps.list

@@ -3,7 +3,7 @@
 # Store the path to this file
 DIR=$(pwd)
 
-CINNAMON_DIR="~/.cinnamon/configs"
+CINNAMON_DIR=" $HOME.cinnamon/configs"
 
 ln -svf $DIR/calendar@cinnamon.org        $CINNAMON_DIR/calendar@cinnamon.org
 ln -svf $DIR/menu@cinnamon.org            $CINNAMON_DIR/menu@cinnamon.org

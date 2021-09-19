@@ -1,8 +1,8 @@
 #!/bin/bash
 
-source ~/.config/rofi/scripts/rofi_menu.sh
+source  $HOME.config/rofi/scripts/rofi_menu.sh
 
-THEME="~/.config/rofi/widgets/two_column_menu.rasi"
+THEME=" $HOME.config/rofi/widgets/two_column_menu.rasi"
 
 # $@ = further parameters to the rofi command
 function launchTwoColumnMenu(){

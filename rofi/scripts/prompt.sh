@@ -6,7 +6,7 @@ if [ $# -ne 2 ]; then
 fi
 
 
-RESULT=$( echo -en "No\nYes\n" | rofi -theme ~/.config/rofi/widgets/prompt.rasi -dmenu -p "$1")
+RESULT=$( echo -en "No\nYes\n" | rofi -theme  $HOME.config/rofi/widgets/prompt.rasi -dmenu -p "$1")
 
 if [ $RESULT == "Yes" ]; then
     eval $2

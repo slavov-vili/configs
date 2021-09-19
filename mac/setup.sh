@@ -2,4 +2,4 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/bash_profile ~/.bash_profile
+ln -svf $DIR/bash_profile $HOME.bash_profile

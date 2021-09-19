@@ -3,5 +3,5 @@
 DIR=$(pwd)
 
 # Make link to the config file
-ln -svf $DIR/dunstrc ~/.config/dunst/dunstrc
+ln -svf $DIR/dunstrc $HOME.config/dunst/dunstrc
 

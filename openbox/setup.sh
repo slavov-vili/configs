@@ -2,9 +2,9 @@
 
 DIR=$(pwd)
 
-OPENBOX_DIR="~/.config/openbox"
+OPENBOX_DIR=$HOME/.config/openbox
 
-mkdir $OPENBOX_DIR
+mkdir -p $OPENBOX_DIR
 
 # Create links to config, menus and other stuff
 ln -svf $DIR/rc.xml    $OPENBOX_DIR/rc.xml

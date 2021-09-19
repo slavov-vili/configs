@@ -13,18 +13,25 @@
 }
 
 window {
+    width: 45%;
     location: north;
     y-offset: 20%;
 }
 
+prompt {
+    font: "DejaVu Sans Mono Regular 18";
+}
+
 listview {
     padding:   4px 4px;
-    spacing: 2px;
+
     columns: 2;
     lines: 3;
+    fixed-height: false;
+    spacing: 2px;
+
     scrollbar: false;
     dynamic: true;
-    fixed-height: false;
 }
 
 element {
@@ -41,6 +48,6 @@ element-text {
     expand: false;
     width: 50%;
     vertical-align: 0.5;
-    font: "DejaVu Sans Mono Regular 20";
+    font: "DejaVu Sans Mono Regular 19";
 }
 

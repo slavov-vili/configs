@@ -2,7 +2,7 @@
 
 DIR=$(pwd)
 
-DOCS_DIR="~/Documents"
+DOCS_DIR=" $HOMEDocuments"
 
 mkdir $DOCS_DIR
 
