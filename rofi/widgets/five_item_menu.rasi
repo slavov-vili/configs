@@ -1,6 +1,6 @@
 /*******************************************************************************
  *
- * Configuration for an App Launcher
+ * Configuration for a Menu with 5 entries (hurrah for symmetry), big icons and text underneath
  *
  ********************************************************************************/
 
@@ -8,12 +8,8 @@
 
 
 
-* {
-    entry-placeholder: "C/S-Enter: Run in terminal | C-S-Delete: Remove from history";
-}
-
 window {
-    width: 665;
+    width: 630;
 }
 
 inputbar {
@@ -23,6 +19,8 @@ inputbar {
 listview {
     layout: horizontal;
     padding:   0px 0px;
+    spacing: 0px;
+    scrollbar: false;
 }
 
 element {
@@ -31,12 +29,12 @@ element {
 }
 
 element-icon {
-    size: 128px;
+    size: 125px;
 }
 
 box-element-text {
     orientation: horizontal;
-    width: 128px;
+    width: 125px;
     children: [textbox-expanded, element-text, textbox-expanded];
 }
 

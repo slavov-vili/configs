@@ -1,44 +1,29 @@
 #!/bin/bash
 
+source ~/.config/rofi/scripts/rofi_menu.sh
+
 options=('cancel' 'lock' 'logout' 'reboot' 'shutdown')
+THEME="~/.config/rofi/widgets/five_item_menu.rasi"
 
 
 
 declare -A texts icons commands prompts
 
-texts['cancel']="Cancel"
-texts['lock']="Lock"
-texts['logout']="Logout"
-texts['reboot']="Reboot"
-texts['shutdown']="Shutdown"
+texts[${options[0]}]="Cancel"
+texts[${options[1]}]="Lock"
+texts[${options[2]}]="Logout"
+texts[${options[3]}]="Reboot"
+texts[${options[4]}]="Shutdown"
 
-icons['cancel']="advert-block"
-icons['lock']="system-lock-screen"
-icons['logout']="system-log-out"
-icons['reboot']="system-reboot"
-icons['shutdown']="system-shutdown"
+icons[${options[0]}]="advert-block"
+icons[${options[1]}]="system-lock-screen"
+icons[${options[2]}]="system-log-out"
+icons[${options[3]}]="system-reboot"
+icons[${options[4]}]="system-shutdown"
 
-commands['lock']="sh ~/Scripts/lock.sh"
-commands['logout']="sh ~/Scripts/prompt_logout.sh"
-commands['reboot']="sh ~/Scripts/prompt_reboot.sh"
-commands['shutdown']="sh ~/Scripts/prompt_shutdown.sh"
+commands[${options[1]}]="sh ~/Scripts/lock.sh"
+commands[${options[2]}]="sh ~/Scripts/prompt_logout.sh"
+commands[${options[3]}]="sh ~/Scripts/prompt_reboot.sh"
+commands[${options[4]}]="sh ~/Scripts/prompt_shutdown.sh"
 
-
-
-# $1 = the list of keys which are being built into options
-function buildEntries(){
-    local entries=""
-    local keys=("$@")
-    for key in "${keys[@]}"; do
-        entries+="${texts[$key]}\0icon\x1f${icons[$key]}\n"
-    done 
-    echo $entries
-};
-
-
-
-ENTRIES=$( buildEntries ${options[@]} )
-RESULT_INDEX=$( echo -en $ENTRIES | rofi -theme ~/.config/rofi/widgets/powermenu.rasi -dmenu -format i )
-RESULT_KEY=${options[$RESULT_INDEX]}
-
-eval ${commands[$RESULT_KEY]}
+launchMenu

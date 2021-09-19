@@ -402,7 +402,7 @@
     </keybind>
     <keybind key="W-Escape">
       <action name="Execute">
-        <command>sh ~/.config/rofi/scripts/powermenu.sh</command>
+        <command>sh ~/Scripts/powermenu.sh</command>
       </action>
     </keybind>
     <keybind key="W-Return">

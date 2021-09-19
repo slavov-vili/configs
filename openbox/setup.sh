@@ -10,4 +10,3 @@ mkdir $OPENBOX_DIR
 ln -svf $DIR/rc.xml    $OPENBOX_DIR/rc.xml
 ln -svf $DIR/autostart $OPENBOX_DIR/autostart
 ln -svf $DIR/menu.xml  $OPENBOX_DIR/menu.xml
-ln -svf $DIR/scripts   $OPENBOX_DIR/scripts
