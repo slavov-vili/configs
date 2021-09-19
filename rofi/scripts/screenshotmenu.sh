@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source  $HOME.config/rofi/scripts/rofi_two_column_menu.sh
+source  $HOME/.config/rofi/scripts/rofi_two_column_menu.sh
 
 options=('capture-current-screen' 'capture-selection' 'capture-current-window' 'save-current-screen' 'save-selection' 'save-current-window')
 
@@ -22,12 +22,12 @@ icons[${options[3]}]="folder-download"
 icons[${options[4]}]="folder-download"
 icons[${options[5]}]="folder-download"
 
-commands[${options[0]}]="sh  $HOMEScripts/screenshot.sh"
-commands[${options[1]}]="sh  $HOMEScripts/screenshot.sh --selection"
-commands[${options[2]}]="sh  $HOMEScripts/screenshot.sh --window"
-commands[${options[3]}]="sh  $HOMEScripts/screenshot.sh --save"
-commands[${options[4]}]="sh  $HOMEScripts/screenshot.sh --selection --save"
-commands[${options[5]}]="sh  $HOMEScripts/screenshot.sh --window --save"
+commands[${options[0]}]="sh  $HOME/Scripts/screenshot.sh"
+commands[${options[1]}]="sh  $HOME/Scripts/screenshot.sh --selection"
+commands[${options[2]}]="sh  $HOME/Scripts/screenshot.sh --window"
+commands[${options[3]}]="sh  $HOME/Scripts/screenshot.sh --save"
+commands[${options[4]}]="sh  $HOME/Scripts/screenshot.sh --selection --save"
+commands[${options[5]}]="sh  $HOME/Scripts/screenshot.sh --window --save"
 
 launchTwoColumnMenu "-p Screenshot:"
 

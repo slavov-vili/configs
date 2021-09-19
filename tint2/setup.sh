@@ -2,8 +2,8 @@
 
 DIR=$(pwd)
 
-TINT2_DIR=" $HOME.config/tint2"
-ICONS_DIR=" $HOME.icons/tint2"
+TINT2_DIR=" $HOME/.config/tint2"
+ICONS_DIR=" $HOME/.icons/tint2"
 
 mkdir -p $TINT2_DIR $ICONS_DIR
 

@@ -5,4 +5,4 @@ if [ $# -ne 2 ]; then
     exit 0
 fi
 
-sh  $HOME.config/rofi/scripts/prompt.sh "$1" "$2"
+sh  $HOME/.config/rofi/scripts/prompt.sh "$1" "$2"

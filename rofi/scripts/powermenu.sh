@@ -1,9 +1,9 @@
 #!/bin/bash
 
-source  $HOME.config/rofi/scripts/rofi_menu.sh
+source  $HOME/.config/rofi/scripts/rofi_menu.sh
 
 options=('cancel' 'lock' 'logout' 'reboot' 'shutdown')
-THEME=" $HOME.config/rofi/widgets/five_item_menu.rasi"
+THEME=" $HOME/.config/rofi/widgets/five_item_menu.rasi"
 
 
 
@@ -21,9 +21,9 @@ icons[${options[2]}]="system-log-out"
 icons[${options[3]}]="system-reboot"
 icons[${options[4]}]="system-shutdown"
 
-commands[${options[1]}]="sh  $HOMEScripts/lock.sh"
-commands[${options[2]}]="sh  $HOMEScripts/prompt_logout.sh"
-commands[${options[3]}]="sh  $HOMEScripts/prompt_reboot.sh"
-commands[${options[4]}]="sh  $HOMEScripts/prompt_shutdown.sh"
+commands[${options[1]}]="sh  $HOME/Scripts/lock.sh"
+commands[${options[2]}]="sh  $HOME/Scripts/prompt_logout.sh"
+commands[${options[3]}]="sh  $HOME/Scripts/prompt_reboot.sh"
+commands[${options[4]}]="sh  $HOME/Scripts/prompt_shutdown.sh"
 
 launchMenu
