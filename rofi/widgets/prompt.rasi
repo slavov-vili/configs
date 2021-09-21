@@ -9,35 +9,44 @@
 
 
 window {
-    width: 665;
+    width: 30%;
 }
 
 inputbar {
-    children: [prompt];
+    background-color: @accent-color;
+    children: [textbox-expanded, prompt, textbox-expanded];
 }
 
 prompt {
-    font: "Dejavu Sans Mono Regular 18";
-    padding: 5;
+    font: "Dejavu Sans Mono Regular 16";
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
 }
 
 listview {
     layout: horizontal;
     padding: 0;
+    spacing: 0;
 }
 
 element {
-    children: [box-element-text];
+    children: [element-text];
 }
 
-box-element-text {
-    orientation: horizontal;
-    padding: 0 128;
-    children: [textbox-expanded, element-text, textbox-expanded];
+element.selected.normal {
+    background-color: @bg-color;
 }
 
-#box-element-text.selected {
-    background-color: @accent-color;
+element-text.selected.normal {
+    background-color: @accent-color-faded;
+}
+
+element-text {
+    expand: true;
+    width: 14.8%;
+    horizontal-align: 0.5;
+    margin: 5;
+    padding: 0;
 }
 
 textbox-expanded {
@@ -45,7 +54,3 @@ textbox-expanded {
     background-color: inherit;
 }
 
-element-text {
-    expand: false;
-    horizontal-align: 0;
-}
