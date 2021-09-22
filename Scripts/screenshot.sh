@@ -2,7 +2,7 @@
 
 function printUsage() {
     echo "USAGE: screenshot.sh [{--all}|--selection|--window] [--save]"
-}
+};
 
 # $1 = The command where the filepath needs to be appended
 function getFilename() {
@@ -10,7 +10,7 @@ function getFilename() {
     mkdir -p $PATH_TO_SCREENSHOTS
     FILENAME="screenshot_$(date +%Y_%m_%d_%N).png"
     echo -en "$PATH_TO_SCREENSHOTS/$FILENAME"
-}
+};
 
 
 

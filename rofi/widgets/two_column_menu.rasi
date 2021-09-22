@@ -26,7 +26,6 @@ listview {
     padding:   4px 4px;
 
     columns: 2;
-    lines: 3;
     fixed-height: false;
     spacing: 2px;
 
@@ -40,14 +39,14 @@ element {
 }
 
 element-icon {
-    size: 40px;
+    size: 12px;
     padding: 1px;
 }
 
 element-text {
-    expand: false;
+    expand: true;
     width: 50%;
     vertical-align: 0.5;
-    font: "DejaVu Sans Mono Regular 19";
+    font: "DejaVu Sans Mono Regular 14";
 }
 

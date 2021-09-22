@@ -1,33 +1,35 @@
 #!/bin/bash
 
-source $HOME/.config/rofi/scripts/rofi_two_column_menu.sh
+source $HOME/.config/rofi/scripts/rofi_menu.sh
+
+
+PROMPT="Screenshot:"
+RESULT_FORMAT="i"
+ROFI_OPTIONS+=(-scroll-method 0)
+THEME="$HOME/.config/rofi/widgets/two_column_menu.rasi"
+THEME_CHANGES="listview{lines: 3;} element-icon{size: 40px;} element-text{font: \"DejaVu Sans Mono Regular 18\";}"
 
 
 
-options=('capture-current-screen' 'capture-selection' 'capture-current-window' 'save-current-screen' 'save-selection' 'save-current-window')
+texts[0]="Capture current screen"
+texts[1]="Capture selection"
+texts[2]="Capture current window"
+texts[3]="Save current screen"
+texts[4]="Save selection"
+texts[5]="Save current window"
 
+icons[0]="preferences-desktop-gestures-screenedges"
+icons[1]="view-fullscreen"
+icons[2]="window-duplicate"
+icons[3]="folder-download"
+icons[4]="folder-download"
+icons[5]="folder-download"
 
+commands[0]="sh $HOME/Scripts/screenshot.sh"
+commands[1]="sh $HOME/Scripts/screenshot.sh --selection"
+commands[2]="sh $HOME/Scripts/screenshot.sh --window"
+commands[3]="sh $HOME/Scripts/screenshot.sh --save"
+commands[4]="sh $HOME/Scripts/screenshot.sh --selection --save"
+commands[5]="sh $HOME/Scripts/screenshot.sh --window --save"
 
-texts[${options[0]}]="Capture current screen"
-texts[${options[1]}]="Capture selection"
-texts[${options[2]}]="Capture current window"
-texts[${options[3]}]="Save current screen"
-texts[${options[4]}]="Save selection"
-texts[${options[5]}]="Save current window"
-
-icons[${options[0]}]="preferences-desktop-gestures-screenedges"
-icons[${options[1]}]="view-fullscreen"
-icons[${options[2]}]="window-duplicate"
-icons[${options[3]}]="folder-download"
-icons[${options[4]}]="folder-download"
-icons[${options[5]}]="folder-download"
-
-commands[${options[0]}]="sh $HOME/Scripts/screenshot.sh"
-commands[${options[1]}]="sh $HOME/Scripts/screenshot.sh --selection"
-commands[${options[2]}]="sh $HOME/Scripts/screenshot.sh --window"
-commands[${options[3]}]="sh $HOME/Scripts/screenshot.sh --save"
-commands[${options[4]}]="sh $HOME/Scripts/screenshot.sh --selection --save"
-commands[${options[5]}]="sh $HOME/Scripts/screenshot.sh --window --save"
-
-launchTwoColumnMenuWithBuiltEntries "-p Screenshot:"
-evaluateCommand
+evaluateCommand $(launchMenuWithBuiltEntries)

@@ -1,20 +1,21 @@
 #!/bin/bash
+declare -a texts icons commands
 
-THEME=""
+
 ENTRIES=""
-RESULT_INDEX=-1
-RESULT_KEY=""
+RESULT_FORMAT="s"
+PROMPT="dmenu:"
+ROFI_OPTIONS=(-dmenu -i)
+THEME="$HOME/.config/rofi/themes/Adapta-Teal.rasi"
+THEME_CHANGES=""
 
-declare -a options
-declare -A texts icons commands
 
 
-# $1 = the list of keys which are being built into options
 function buildEntries(){
-    local entries=""
-    local keys=("$@")
-    for key in "${keys[@]}"; do
-        entries+="${texts[$key]}\0icon\x1f${icons[$key]}\n"
+    local entries="";
+    local i=0;
+    for i in ${!texts[@]}; do
+        entries+="${texts[$i]}\0icon\x1f${icons[$i]}\n"
     done 
     echo $entries
 };
@@ -22,22 +23,27 @@ function buildEntries(){
 
 
 # $1 = a string of the entries which should be passed to rofi
-# $2 = further parameters to the rofi command
 function launchMenu(){
-    RESULT_INDEX=$( echo -en $1 | rofi -theme $THEME -dmenu -i -format i $2)
-    RESULT_KEY=${options[$RESULT_INDEX]}
+    echo $( echo -en $1 | rofi ${ROFI_OPTIONS[@]} -theme "$THEME" -theme-str "$THEME_CHANGES" -p "$PROMPT" -format $RESULT_FORMAT)
 };
 
 
 
-# $1 = further parameters to the rofi command
 function launchMenuWithBuiltEntries(){
-    ENTRIES=$( buildEntries ${options[@]} )
-    launchMenu "$ENTRIES" "$1"
+    ENTRIES=$(buildEntries)
+    launchMenu "$ENTRIES"
 };
 
 
 
+# $1 = name of the file which should be read
+function launchMenuFromFile(){
+    echo $( rofi ${ROFI_OPTIONS[@]} -theme "$THEME" -theme-str "$THEME_CHANGES" -p "$PROMPT" -format $RESULT_FORMAT -input "$1")
+};
+
+
+
+# $1 = index of the command which should be executed
 function evaluateCommand(){
-    eval ${commands[$RESULT_KEY]}
+    eval ${commands[$1]}
 };
