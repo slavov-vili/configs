@@ -3,24 +3,25 @@
 
 
 ## Customizing
-- Customize Openbox
-- Customize LightDM
-- Customize tint2 icons
-- Customize clearine icons
-- Customize rofi???
-- ddcutil profiles for different light levels
+- [X] Openbox
+- [ ] LightDM
+- [X] tint2 icons
+- [X] rofi
 
 
 
 ## Look up
-- Desktop icons (pcmanfm?)
-- Security recommendations
+- [ ] Desktop icons (pcmanfm?)
+- [ ] Security recommendations
 
 
 
 ## Scripting stuff
-- Script to generate better root menu cos all of them suck
-- Make plugin for previewing stuff (hopefully extensible)
+- [ ] Script to generate better root menu cos all of them suck
+- [ ] ddcutil profiles for different light levels
+- [ ] generalize rofi 5-item horizontal menu
+- [ ] customize main rofi run prompt (programs, scripts, etc.)
+- [ ] look for cool rofi plugins (calc, pass, etc.)
 
 
 
@@ -35,9 +36,9 @@
 - [X] Image Viewer (viewnior)
 - [X] File Manager (pcmanfm)
 - [X] Audio Player (audacious?)
-- [ ] Steam and other gaming stuff
+- [X] Steam and other gaming stuff
 - [ ] Password manager
-- [ ] Math and Engineering helpers?
+- [X] Math and Engineering helpers
 - [ ] Dictionary: see pidgin and libreoffice
 - [ ] Coding stuff: IDE or fancy text editor (vim?)
 
