@@ -226,7 +226,7 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
     \ 'AcceptSelection("e")': ['<c-cr>'],
     \ 'AcceptSelection("h")': ['<c-x>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<1-LeftMouse>'],
     \ 'PrtInsert()':          ['<c-\>'],
     \ 'PrtCurStart()':        ['<c-s-j>'],
     \ 'PrtCurEnd()':          ['<c-s-k>'],

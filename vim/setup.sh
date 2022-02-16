@@ -1,9 +1,15 @@
 #!/bin/bash
 
 DIR=$(pwd)
-VIM_DIR=" $HOME/.vim"
+NVIM_DIR=" $HOME/.config/nvim/"
 mkdir $VIM_DIR
 
-cp --verbose --force --remove-destination $DIR/vimrc     $HOME/.vimrc
+# Install vim-plug
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+cp --verbose --force --remove-destination $DIR/init.vim  $NVIM_DIR/init.vim
 cp --verbose --force --remove-destination $DIR/gvimrc    $HOME/.gvimrc
-cp --force --remove-destination --recursive $DIR/vim/*   $VIM_DIR/
+
+cp --verbose --force --remove-destination --recursive $DIR/colors  $NVIM_DIR/colors
+cp --verbose --force --remove-destination --recursive $DIR/plugin  ~/.local/share/nvim/site/
+
