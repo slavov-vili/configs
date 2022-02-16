@@ -6,5 +6,5 @@ DOCS_DIR=" $HOME/Documents"
 
 mkdir $DOCS_DIR
 
-ln -svf $DIR/TODOS.md $DOCS_DIR/TODOS.md
+cp --verbose --force --remove-destination $DIR/TODOS.md $DOCS_DIR/TODOS.md
 

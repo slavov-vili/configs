@@ -2,4 +2,4 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/mimeapps.list $HOME/.config/mimeapps.list
+cp --verbose --force --remove-destination $DIR/mimeapps.list $HOME/.config/mimeapps.list

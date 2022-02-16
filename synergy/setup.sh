@@ -2,4 +2,4 @@
 
 DIR=$(pwd)
 
-ln -svf $DIR/synergy.conf $HOME/.synergy.conf
+cp --verbose --force --remove-destination $DIR/synergy.conf $HOME/.synergy.conf

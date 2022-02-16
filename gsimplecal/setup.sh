@@ -2,5 +2,4 @@
 
 DIR=$(pwd)
 
-# Make link to the config file
-ln -svf $DIR/config $HOME/.config/gsimplecal/config
+cp --verbose --force --remove-destination $DIR/config $HOME/.config/gsimplecal/config
