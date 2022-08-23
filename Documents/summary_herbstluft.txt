@@ -1,0 +1,402 @@
+// This is a summary of the COMMANDS available to herbstclient
+// NOTE: the idea of this document is to summarize and categorize,
+//       NOT to be extensive in describing the behavior of the commands.
+//       For extensive description refer to the "herbstluftwm" man page !
+
+// !!! TABS WITHIN COMMAND ARGUMENTS ARE NOT ESCAPED !!!
+// !!! DO NOT PUT TABS IN TAG NAMES EITHER !!!
+
+
+// TODO: focus [-i|-e] DIRECTION =
+// TODO: focus_edge [-i|-e] DIRECTION =
+// TODO: resize DIRECTION FRACTIONDELTA
+// TODO: shift_edge [-i|-e] DIRECTION
+// TODO: shift [-i|-e] DIRECTION
+// TODO: disjoin_rects RECTS ...
+// TODO: detect_monitors -l|--list|--no-disjoin
+// TODO: add_monitor RECT [TAG [NAME]]
+// TODO: move_monitor MONITOR RECT [PADUP [PADRIGHT [PADDOWN [PADLEFT]]]]
+// TODO: monitor_rect [[-p] MONITOR]
+// TODO: list_padding [MONITOR]
+// TODO: layout [TAG [INDEX]]
+// TODO: dump [TAG [INDEX]]
+// TODO: load [TAG] LAYOUT
+// TODO: complete POSITION [COMMAND ARGS …]
+// TODO: complete_shell POSITION [COMMAND ARGS …]
+// TODO: floating [[TAG] on|off|toggle|status]
+// TODO: attr [PATH [NEWVALUE]
+// TODO: substitute IDENTIFIER ATTRIBUTE COMMAND [ARGS …]
+// TODO: sprintf IDENTIFIER FORMAT [ATTRIBUTES …] COMMAND [ARGS …]
+// TODO: mktemp [bool|int|string|uint] IDENTIFIER COMMAND [ARGS …]
+// TODO: compare ATTRIBUTE OPERATOR VALUE
+
+
+1. SYSTEM
+  - quit = quits the WM
+  - reload = reloads the 'autostart' file
+  - version = prints the version of the running WM instance
+
+2. RANDOM
+  - echo [el1 el2 ...] = prints all elements of the list, sepating them with a space and a newline
+  - true = ignores all other arguments and always returns success (error code 0)
+  - false = ignores all other arguments and always returns failure (error code 1)
+  - lock = increases the monitors_locked setting (useful for multiple window actions without redrawing inbetween)
+  - unlock = decreases the monitors_locked setting
+
+3. OUTPUTS
+  - list_commands = lists all available commands
+  - list_monitors = lists all currently configured monitors (index, area, name, current tag)
+  - list_rules = lists all active rules. Each line shows rule + all parameters + label
+  - list_keybinds = lists all key bindings. Each line shows keybind + command + args
+  - object_tree PATH = prints the tree of objects (if PATH is given, then its used as the root)
+
+4. BINDS
+  - kebind KEY COMMAND [arg1 arg2 ...] = binds a KEY to execute a COMMAND with its args. KEY = list of mods (can be empty) + 1 key. Existing bindings will be overwritten!!! (see keysymdef.h for a list of keys)
+  - keyunbind KEY | -F | --all = removes the binding of a key. (-F and --all remove ALL key bindings)
+  - mousebind BUTTON ACTION [COMMAND ...] = Adds mouse binding for FLOATING mode. When BUTTON is pressed, ACTION is executed. actions={move: move by dragging; resize: resize by dragging corner; zoom: resizes in all directions and keeps center; call: calls COMMAND on client being dragged}
+  - mouseunbind = removes all mouse bindings
+
+5. EXECUTE
+  - spawn EXECUTABLE [arg1 arg2 ...] = spawns an EXECUTABLE with its args
+  - wmexec [WM [arg1 arg2 ...]] = runs the WM with its args (used to switch WMs mid-session)
+  - chain SEP [cmd1 SEP cmd2 SEP ...] = expects a SEParator and a list of commands, separated by it. output the concatenated output of all commands and returns last cmd's error code
+  - and SEP [cmd1 SEP cmd2 SEP ...] = like "chain", but only executes WHILE cmds return exit code 0
+  - or SEP [cmd1 SEP cmd2 SEP ...] = like "chain", but only executes UNTIL a cmd returns exit code 0
+  - ! COMMAND = executes command, but inverts the return value (if 0, then 1; if 1, then 0)
+  - try COMMAND = executes command, prints output, but ALWAYS returns 0
+  - silent COMMAND = executes command, but ignores output and just returns exit code
+
+6. WINDOW COMMANDS
+  - focus_nth INDEX = focuses the Nth WINDOW in a FRAME. (start from 0). if N<0 || N>last_idx, then LAST window is focused
+  - cycle [DELTA] = cycle between the windows of the CURRENT frame by DELTA (default = 1; -1 = cycle in reverse)
+  - cycle_all [--skip-invisible] [DIRECTION] = cycle between ALL windows of ALL frames of the CURRENT tag. (DIRECTION = 1 = forward = default; -1 = backwards; 0 = nothing). Focuses the next LEAF on the layout tree. "--skip-invisible" might only work on max layout
+  - close WINID = closes the given WINDOW (closes focused one if no arg is given)
+  - raise WINID = raises the specified WINDOW (result only visible in floating mode)
+  - jumpto WINID = put focus on specified WINDOW
+  - bring WINID = moves specified window to CURRENT frame and focuses it
+  - shift_to_monitor MONITOR = moves focused window to tag on specified monitor
+  - move TAG = moves focused window to TAG
+  - move_index INDEX [--skip-visible] = moves focused window to tag with INDEX (similar to use_index)
+
+7. LAYOUT COMMANDS
+  - cycle_layout [DELTA [layout1 ...]] = cycle through ALL layouts in the CURRENT frame by DELTA (if list of layours is given, its used)
+  - set_layout LAYOUT = sets the layout of the CURRENT frame
+  - rotate = rotates layour of focused TAG 90 deg counterclockwise
+  - fullscreen [on|off|toggle] = sets or toggles focused CLIENT to fullscreen (default is toggle)
+  - pseudotile [on|off|toggle] = sets of roggles focused CLIENT to pseudotile mode
+
+8. FRAME COMMANDS
+  - cycle_frame [DIRECTION] = cycle through all frames of the CURRENT tag (DIRECTION works like "cycle_all")
+  - close_or_remove = closes focused window OR removes frame if empty
+  - close_and_remove = closes focused window AND removes frame if empty
+  - split ALIGN [FRACTION] = splits focused FRAME in 2 with FRACTION in [0;1] (default is 0.5) ALIGN=[top|bottom(horizontal)|left|right(vertical)|explode|auto(longest side)]. ALIGN = which side is empty after split
+  - remove = removes focused frame
+
+9. SETTINGS COMMANDS
+  - set NAME VALUE = sets setting NAME to VALUE
+  - get NAME = returns the value of setting NAME
+  - toggle NAME = toggles setting NAME (if integer - toggles between 0 and NON 0)
+  - cycle_value NAME [val1 val2 ...] = cycles between the specified values of the setting
+
+10. MONITOR COMMANDS
+  - cycle_monitor DELTA = cycles focused monitor by DELTA (default is 1)
+  - focus_monitor MONITOR = focuses specified monitor
+  - use TAG = switches focused monitor to TAG
+  - use_index IDNEX [--skip-visible] = switches focused monitor to the TAG with specified INDEX (+\- = relative to the current one). --skip-visible && relative INDEX, then skips already visible tags
+  - use_previous = switches focused monitor to PREVIOUSLY VIEWED tag
+  - lock_tag MONITOR = locks tag switching for specified MONITOR (if not specified, then focused monitor is used). When locked, "use" and "use_index" have NO effect
+  - unlock_tag MONITOR = reverse of "lock_tag"
+  - remove_monitor MONITOR = remove specified monitor
+  - raise_monitor MONITOR = raise specified monitor
+  - rename_monitor MONITOR NAME = renames an EXISTING monitor
+  - stack = prints the stack of MONITORS with visible tags and layers as a tree. order = top -> bottom. style defined by "tree_style" setting
+
+11. TAG COMMANDS
+  - add TAG = creates new empty tag called TAG
+  - merge_tag TAG TARGET = removes TAG and moves all windows to TARGET (if no TARGET, then focused tag is used)
+  - rename OLDTAG NEWTAG = renames OLDTAG to NEWTAG
+  - tag_status MONITOR = prints all tags for specified monitor. (tag_state = {'.': empty; ':': not_empty; '+': tag_on_monitor_not_focused; '#': tag_on_monitor_focused; '-': tag_on_diff_monitor_not_focused; '%': tag_on_diff_monitor_focused; '!': tag_contains_urgent_window;})
+
+12. HOOK COMMANDS
+  - emit_hook [arg1 arg2 ...] = emits custom hook to IDLING herbstclient
+
+13. RULE COMMANDS
+  - rule [[--]FLAG|[--]LABEL|[--]CONDITION|[--]CONSEQUENCE …] = defines rule applied to all clients
+  - unrule [LABEL|--all|-F] = removes all rules named LABEL (or all rules)
+
+14. ATTRIBUTE COMMANDS
+  - get_attr ATTRIBUTE = prints value of specified ATTRIBUTE
+  - set_attr ATTRIVUTE NEWVALUE = assigns NEWVALUE to ATTRIBUTE
+  - new_attr [bool|color|int|string|uint] PATH = make new attribute with specified type at object PATH (name HAS TO begin with "my_")
+  - remove_attr PATH = removes user-defined attribute at PATH
+
+15. ENV VARIABLES COMMANDS
+  - getenv NAME = gets value of env variable NAME
+  - setenv NAME VALUE = sets value of env variable NAME to VALUE
+  - unsetenv NAME = unsets env variable NAME
+
+
+
+// !!! LAYOUTS:
+//  0 = vertical;
+//  1 = horizontal;
+//  2 = max;
+//  3 = grid
+
+
+// !!! WINIDS: 
+//  "" OR
+//  <no_arg> = currently focused window;
+//  urgent   = some urgent window;
+//  0xHEXID  = the window with hex X11 ID;
+//  DECID    = the window with dec X11 ID;
+
+
+// !!! FRAME INDEX:
+//  Frame index = position of frame in layour tree (sequence of characters)
+//  - Characters:
+//    '0' = first  subtree;
+//    '1' = second subtree;
+//    '.' = select subtree having focus;
+//    '/' = select subtree without having focus;
+
+
+// !!! STACKING:
+//  every TAG has a stack of CLIENTS.
+//  - Stack layers:
+//    focused    client;
+//    fullscreen clients;
+//    normal     clients;
+//    frame decor;
+
+
+// !!! EWMH:
+//  - EWMH compliance:
+//    info about tag names and client lists
+//    desktop windows from DEs are kept underneath the others
+//    client requests for focus only allowed when focus_stealing_prevention is NOT set
+
+
+// !!! AUTOSTART FILE:
+//  executed on startup (or on reload)
+//  default = ~/.config/herbstluftwm/autostart
+
+
+// !!! OBJECTS:
+//  object tree = collection of objects (tags, monitors, clients, etc.) with attributes
+//  print subtree = give PATH to subtree (objects, separated by '.') to "object_tree"
+//  query attributes by passing PATH to the "attr" command
+//  "attr" lists:
+//  - Child objects names
+//  - Attributes:
+//    attribute type   ('s'=string; 'i'=int; 'b'=bool; 'u'=uint)
+//    writable by user ('w'=yes; '-'=no)
+//    attribute name
+//    current value    (quoted if string)
+//  - SUBTREES:
+//    : TAGS - contains all TAG objects
+//      u - count = number of tags
+//      selectable by index, name and "focus"(currently focused tag)
+//      TAG object attributes:
+//        t w name               = description
+//        b w floating           = whether the tag is in floating mode
+//        i - index              = index of the tag
+//        i - frame_count        = number of frames in this tag
+//        i - client_count       = number of clients in this tag
+//        i - curframe_windex    = index of focused client in selected frame
+//        i - curframe_wcount    = number of clients in selected frame
+//    : CLIENTS - contains all WINID objects
+//      selectable by focus, dragged(object of client, dragged by mouse)
+//      CLIENT object attributes:
+//        t w name               = description
+//        s - winid              = window ID of client
+//        s - title              = window title of client
+//        s - tag                = tag of current client
+//        i - pid                = process ID of client
+//        s - class              = class of client
+//        s - instance           = instance of client
+//        b w fullscreen         = whether client is in fullscreen mode
+//        b w pseudotile         = whether client is in pseudotile mode
+//        b w ewmhrequests       = if ewmh requests are allowed for client
+//        b w ewmhnotify         = if client is notified about its state by ewmh
+//        b w urgent             = whether client is urgent
+//        b w sizehints_tiling   = if sizehints should be respected in tiling mode
+//        b w sizehints_floating = if sizehints should be respected in floating mode
+//    : MONITORS - contains all INDEX objects
+//      INDEX object = object, which contains each window with its index
+//      selectable by name, focuse
+//      INDEX object attributes:
+//        t w name     = description
+//        s - name     = window name
+//        i - index    = window index
+//        s - tag      = tag where the window is
+//        b - lock_tag = 
+//    : SETTINGS - contains an attribute for each setting
+//    : THEME - contains attributes to configure window decorations
+//      THEME (and some children's) attributes:
+//        t w name                = description
+//        i w border_width        = base border width
+//        i w pdding_top          = additional border width top
+//        i w padding_right       = additional border width right
+//        i w padding_bottom      = additional border width bottom
+//        i w padding_left        = additional border width left
+//        c w color               = border background color
+//        i w inner_width         = width of border around client contets
+//        c w inner_color         = inner border color
+//        i w outer_width         = width of additional border close to edge
+//        c w outer_color         = color of additional border close to edge
+//        c w background_color    = color behind window contents (visible on resize)
+//        s w reset               = resets all attributes to default value
+//    parts of window
+//    inner_color/inner_width
+//          ╻        outer_color/outer_width
+//          │                  ╻
+//          │                  │
+//    ┌────╴│╶─────────────────┷─────┐ ⎫ border_width
+//    │     │      color             │ ⎬     +
+//    │  ┌──┷─────────────────────┐  │ ⎭ padding_top
+//    │  │====================....│  │
+//    │  │== window content ==....│  │
+//    │  │====================..╾──────── background_color
+//    │  │........................│  │
+//    │  └────────────────────────┘  │ ⎱ border_width +
+//    └──────────────────────────────┘ ⎰ padding_bottom
+//    TODO: whatever is after ^
+
+
+// !!! RULES:
+//  used to change default properties for special clients (when they appear)
+//  each rule defines a set of properties (CONSEQUENCES) for a subset of all clients
+//  rule [[--]FLAG || [--]LABEL || [--]CONDITION || [--]CONSEQUENCE ...] = defines a new rule
+//  - RULES consist of:
+//    list of FLAGs
+//    list of CONDITIONs
+//    list of CONSEQUENCEs
+//    optional LABEL
+//  When new client appears: if (all CONDITIONs apply) execute every CONSEQUENCE
+//  if no conditions, then rule applies to ALL clients
+//  - CONDITIONS consist of PROPERTY name, OPERATOR and VALUE:
+//    : OPERATORS
+//      '~' = matches if client's property is matched by regex VALUE
+//      '=' = matches if client's property is equal to VALUE
+//    : PROPERTIES
+//      instance = first entry in client's WM_CLASS
+//      class = second entry in client's WM_CLASS
+//      title = client window's title
+//      pid = client's process ID
+//      maxage = matches if age of rule DOESN'T exceed VALUE
+//      windowtype = matches _NET_WM_WINDOW_TYPE of a window
+//      windowrole = matches WM_WINDOW_ROLE of a window (if set)
+//  - CONSEQUENCES consist of NAME=VALUE pair
+//    : NAMES
+//      tag = moves client to tag VALUE
+//      monitor = moves client to monitor VALUE
+//      focus = whether client gets input focus for tag (VALUES = on || off || toggle)
+//      TODO: switchtag = 
+//      manage = whether client is managed or not (VALUES = on || off || toggle)
+//      index = moves window to specified index in the tree
+//      pseudotile = sets pseudotile state of client (on || off || toggle)
+//      TODO: ewmhrequests = 
+//      TODO: ewmhnotify = 
+//      fullscreen = fulscreen flag of a client (on || off || toggle)
+//      TODO: hook = 
+//      TODO: keymask =
+//  - RULE MODIFIERS:
+//    not = negates next CONDITION
+//    ! = not
+//    once = only apply rule once
+//    printlabel = prints label of new rule to stdout
+//    prepend = prepend rule to list instead of appending
+//  - EXAMPLES:
+//    "rule --class=Netscape --tag=6 --focus=off" = moves all Netscapes to tag 6, but doesn't focus
+//    "rule not class~.*[Tt]erm tag=2" = moves all clients which DON'T end in "term" or "Term" to tag2
+//    "rule class=Thunderbird index=/0" = insert all Thunderbirds in first child of unfocused tree
+//    "rule --windowtype=_NET_WM_WINDOW_TYPE_DIALOG --focus=on" = sets focus to new dialogs
+
+
+// !!! MONITORS:
+//  monitors != physical screens
+//  monitor = displays one tag in a specified rectangle on the screen
+//  monitors can have names (add_\rename_monitor)
+//  monitor name = non-empty string, which DOESN'T start with (+||-||digit)
+//  - HOW TO REFERENCE A MONITOR:
+//    absolute index (from "list_monitors")
+//    relative index (+/- and a delta)
+//    relative position to focused monitor (-l = left; -r; -u; -d)
+//    "" = current monitor
+//    name
+
+
+// !!! HOOKS:
+//  emitted on special events (can wait/receive with herbstclient)
+//  emit_hook = emits custom hook
+//  - EMITTED AUTOMATICALLY:
+//    : WINDOWS
+//      fullscreen [on|off] WINID STATE = fullscreen state of window has changed
+//      focus_changed WINID TITLE = window with TITLE was focused
+//      window_title_changed WINID TITLE = title of focused window has changed to TITLE
+//      urgent [on|off] WINID = urgent state of client WINID has changed
+//    : TAGS
+//      tag_changed TAG MONITOR = TAG was selected on MONITOR
+//      tag_flags = flags (urgent || filled) have changed
+//      tag_added TAG = new tag TAG was added
+//      tag_removed TAG = tag TAG was removed
+//    : RULES
+//      rule NAME WINID = new window WINID triggered a rule => hook=NAME
+//  - CAN BE EMITTED:
+//    : SYSTEM
+//      quit_panel = tells panel to quit
+//      reload = tells all deamons, that autostart is reloaded
+
+
+// !!! SETTINGS:
+//  CAN HAVE VALUES OF TYPES: String and int
+//  - GAPS AND SPACING
+//    frame_gap <int> = gap between frames
+//    frame_padding <int> = space between FRAME border and windows within the FRAME
+//    window_gap <int> = gap between windows withing a FRAME
+//    snap_distance <int> = min distance before snapping to neighbor actives (in floating mode)
+//    snap_gap <int> = gap when dragged client snaps to edge
+//    mouse_recenter_gap <int> = gap within which mouse will be recentered
+//    gapless_grid <int> = whether last client in frame should fill the gaps
+//    pseudotile_center_threshold <int> = min distance between PSEUDOTILE window and frame borders
+//  - COLORS AND GRAPHICS
+//    tree_style <String> = characters to be used when printing ascii tree (min 8)
+//    update_dragged_clients <int> = whether window content should be redraw while resizing
+//    : FRAMES
+//      frame_border_active_color <String/Color> = border color of FOCUSED frame
+//      frame_border_normal_color <String/Color> = border color of UNFOCUSED frame
+//      frame_border_inner_color <String/Color> = border of INNER color of frame
+//      frame_bg_active_color <String/Color> = bg color of FOCUSED frame
+//      frame_bg_normal_color <String/Color> = bg color of UNFOCUSED frame
+//      frame_bg_transparent <int> = bg of frames is transparent
+//      frame_transparent_width <int> = width of remaining frame from "frame_bg_active_color"
+//      frame_border_width <int> = SELF EXPLANATORY
+//      frame_border_inner_width <int> = inner border width (must be less than "frame_border_width", because its part of it)
+//      frame_active_opacity <int> = opacity of FOCUSED frame (in %)
+//      frame_normal_opacity <int> = opacity of UNFOCUSED frame (in %)
+//      smart_frame_surroundings <int> = whether to remove frame BORDERS and GAPS when no ambiguity regarding focused frame
+//    : WINDOWS
+//      raise_on_focus <int> = WINDOW is raised when focused in FLOATING mode
+//      raise_on_focus_temporarily <int> = WINDOW is raised when focused until another on is focused
+//      raise_on_click <int> = WINDOW is raised when clicked in FLOATING mode
+//      window_border_width <int> = SELF EXPLANATORY
+//      window_border_inner_width <int> = inner border width (must be less than "window_border_width", because its part of it)
+//      window_border_active_color <String/Color> = border color of FOCUSED window
+//      window_border_normal_color <String/Color> = border color of UNFOCUSED window
+//      window_border_urgent_color <String/Color> = border color of UNFOCUSED urgent window
+//      window_border_inner_color <String/Color> = inner border color of window
+//      smart_window_surroundings <int> = whether to remove window BORDERS and GAPS when no ambiguity regarding focused window (when removed they are made minimal (see "OBJECTS/theme.minimal"))
+//      focus_follows_mouse <int> = whether focus should be changed just by dragging cursor (else click is required)
+//      focus_stealing_prevention <int> = whether ALL applications should be able to request focus change (else only pagers and taskbars)
+//    : MONITORS
+//      monitors_locked <int> = whether monitor contents should be changed (DO NOT MANUALLY CHANGE, use "lock" and "unlock" instead)
+//      swap_monitors_to_get_tag <int> = whether monitors should be swapped when another monitor's tag is requested
+//      auto_detect_monitors <int> = whether "detect_monitors" should be called automatically when monitor is (dis)connected or resized
+//    : RANDOM
+//      focus_crosses_monitor_boundaries <int> = SELF EXPLANATORY
+//      always_show_frame <int> = should ALL frames be displayed ? (else UNFOCUSED and EMPTY are ignored)
+//      default_frame_layout <int> = IDX of default LAYOURT when new frame is created
+//      verbose <int> = whether output of "--verbose" should be logged to herbstluftwm's stderr
+// TODO: default_direction_external_only (Integer)
+// TODO: wmname (String)
