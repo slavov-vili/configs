@@ -3,15 +3,6 @@ As well as include some useful tips and technical details
 
 I encourage you to look up the **bolded** terms in vim help and the *italicized* ones in here for a short description.
 
-
-- TODO: Make it stay in visual block mode after indentation
-- TODO: Figure out a better way to join lines than 'J'
-- TODO: Figure out keybinds for moving around in the edit window, not just text
-- TODO: find new mappings for ';' and ',' since they are supposed to repeat the character searches
-- TODO: figure out better mapping for 'H', 'M' and 'L' to get to top, middle or bottom visible line
-- TODO: Remap 'Y' to copy from cursor to end of line (to be consistent with 'D')
-
-
 # Features
 1. How to exit: **:quit!**
 * **:** = enter **Command-line-mode** and execute a command

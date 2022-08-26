@@ -64,7 +64,7 @@ set laststatus=2                     "Always show statusline
 set lazyredraw                       "Redraw screen only when need to
 set linebreak                        "Don't split words when wrapping
 set list
-set listchars=tab:▸\ ,eol:¬          "Set Tab and EOL characters
+set listchars=tab:\|\ ,eol:¬          "Set Tab and EOL characters
 set mouse=a                          "Enable mouse in all modes
 set nobomb                           "No BOM
 set noerrorbells visualbell t_vb=
@@ -72,6 +72,7 @@ set noswapfile                       "Disable swap files
 " set nowrap                           "Disable line wrapping
 set number                           "Turn on line numbers
 set omnifunc=syntaxcomplete#Complete "Native auto-complete 
+set scroll=10
 set shell=/bin/bash                  "Set the default shell
 set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
 set shiftwidth=4                     "Indentation size
@@ -98,35 +99,31 @@ noremap j h
 noremap k j
 noremap l k
 noremap ; l
-"Go to the Beginning/End/Middle of line
+"Move around line
 noremap J ^
 noremap K $
 noremap L :call cursor(line('.'), len(getline('.'))/2)<cr>
-"Go to the Top/Bottom/Middle of screen
-noremap <C-j> H
-noremap <C-k> L
-noremap <C-l> M
+"Move to top/middle/bottom of edit window
+noremap <C-h> H
+"FIXME: why you no work?
+noremap <C-m> M
+noremap <C-l> L
 "gg => END
 noremap G gg
 noremap gg G
+"Join lines
+noremap <C-j> J
 "Turns out its faster than :w
 noremap <C-s> :w<cr>
 "System clipboard is bae
 noremap <C-Y> "+y
 noremap <C-P> "+p
-"Optical illusion?
-noremap p P
-noremap P p
-"Get over here!
-"noremap za zz
-"Have to fold sometimes
-"noremap zz za
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
 noremap <leader><leader> :set cursorcolumn!<cr>
 "I found it, now go away!
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :nohlsearch<cr>
 "Toggle spellchecker
 nnoremap <leader>en :setlocal spell! spelllang=en_us<cr>
 nnoremap <leader>de :setlocal spell! spelllang=de_de<cr>
@@ -137,6 +134,14 @@ noremap <leader>r :Run<cr>
 noremap <leader>o :Open<cr>
 "Reload .vimrc
 noremap <leader><F5> :so $MYVIMRC<cr>
+"Constitency is good :)
+noremap Y y$
+noremap h ;
+noremap H ,
+
+"Reopen visual mode after indentation
+vnoremap > >gv
+vnoremap < <gv
 
 " Insert-Completion
 " Omni-completion
@@ -150,48 +155,29 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 "Tab manipulation
-"Open file in new tab
-nnoremap <Tab>n      :tabnew 
-"Tab goto
-nnoremap <Tab>l :tabnext 
-"Tab goto previous/next
-nnoremap <Tab>j :<C-U>execute "tabnext " . (tabpagenr() - v:count1)<cr>
-nnoremap <Tab>k :<C-U>execute "tabnext " . (tabpagenr() + v:count1)<cr>
-"Tab goto first/last
-nnoremap <Tab>J :tabfirst<cr>
-nnoremap <Tab>K :tablast<cr>
-"Tab moving
-nnoremap <Tab>mj :tabm -1<cr>
-nnoremap <Tab>mk :tabm +1<cr>
-"Tab closing
-nnoremap <Tab>e :tabclose<cr>
+nnoremap <Tab>n  :tabnew<cr>
+nnoremap <Tab>l  :tabnext
+nnoremap <Tab>o  :tabonly<cr>
+nnoremap <Tab>j  gT
+nnoremap <Tab>k  gt
+nnoremap <Tab>J  :tabfirst<cr>
+nnoremap <Tab>K  :tablast<cr>
+nnoremap <Tab>mj :tabmove -1<cr>
+nnoremap <Tab>mk :tabmove +1<cr>
+nnoremap <Tab>c  :tabclose<cr>
 
 "Window manipulation
-"Vertical split
-nnoremap <leader>wds<cr> <C-W>v
-"Horizontal split
-nnoremap <leader>wss<cr> <C-W>s
-"New (empty) window
-nnoremap <leader>wdn :vnew 
-nnoremap <leader>wsn :new 
-"Move current window to its own tab
-nnoremap <leader>w<Tab> <C-W>T
+nnoremap <C-W><Tab> <C-W>T
 "Window navigation
-nnoremap <leader>ww <C-W>w
-nnoremap <leader>wj <C-W>h
-nnoremap <leader>wk <C-W>j
-nnoremap <leader>wl <C-W>k
-nnoremap <leader>w; <C-W>l
+nnoremap <C-W>j <C-W>h
+nnoremap <C-W>k <C-W>j
+nnoremap <C-W>l <C-W>k
+nnoremap <C-W>; <C-W>l
 "Window resizing
-"TIP: <C-W>= makes ALL windows have normal shapes
-nnoremap <C-Left>  5<C-W>>
-nnoremap <C-Right> 5<C-W><
+nnoremap <C-Right> 5<C-W>>
+nnoremap <C-Left>  5<C-W><
 nnoremap <C-Up>    5<C-W>+
 nnoremap <C-Down>  5<C-W>-
-"Window close current
-nnoremap <leader>we<cr> <C-W>q
-"Window close others
-nnoremap <leader>wo<cr> <C-W>o
 
 
 

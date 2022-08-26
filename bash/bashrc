@@ -83,6 +83,7 @@ alias untar='tar -xvzf'
 alias findkey='xev -event keyboard &'
 alias showmimes='cat /usr/share/applications/mimeinfo.cache'
 alias pacman='pacman --color always'
+alias vim='nvim'
 
 # Applications
 alias browse='firefox'
