@@ -104,15 +104,14 @@ noremap J ^
 noremap K $
 noremap L :call cursor(line('.'), len(getline('.'))/2)<cr>
 "Move to top/middle/bottom of edit window
-noremap <C-h> H
-"FIXME: why you no work?
-noremap <C-m> M
-noremap <C-l> L
+noremap <C-j> H
+noremap <C-l> M
+noremap <C-k> L
 "gg => END
 noremap G gg
 noremap gg G
 "Join lines
-noremap <C-j> J
+noremap <leader>j J
 "Turns out its faster than :w
 noremap <C-s> :w<cr>
 "System clipboard is bae
@@ -156,6 +155,7 @@ inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 "Tab manipulation
 nnoremap <Tab>n  :tabnew<cr>
+nnoremap <Tab>e  :tabedit 
 nnoremap <Tab>l  :tabnext
 nnoremap <Tab>o  :tabonly<cr>
 nnoremap <Tab>j  gT

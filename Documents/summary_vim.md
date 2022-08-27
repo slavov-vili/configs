@@ -33,10 +33,10 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
   + **up-down-motions**    = move between lines
   + **word-motions**       = move between words
   + **object-motions**     = move between text objects
-      - **object-select**    = select text objects
+    - **object-select**    = select text objects
   + **various-motions**    = move between braces, methods, if/else, etc.
   + **jump-motions**
-      - ":jumps"             = list all jumps
+    - ":jumps"             = list all jumps
 
 5. **Scrolling**
 > Moving the edit window (part of the buffer that you see)
