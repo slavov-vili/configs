@@ -49,3 +49,6 @@
 - File searchers (ripgrep?)
 - Conky
 - pass, bzw. qtpass
+- Terminal eools
+  + [X] Weather (wttr.in)
+  + [X] neofetch

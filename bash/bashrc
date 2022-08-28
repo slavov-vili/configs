@@ -119,3 +119,4 @@ open () { xdg-open "$1" & };
 vimman () { man "$1" | vim -; }
 gvimman () { man "$1" | gvim -; }
 
+neofetch
