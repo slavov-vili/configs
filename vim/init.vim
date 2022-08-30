@@ -60,7 +60,7 @@ set helplang=                        "Set help language to English
 set hlsearch                         "Highlight search results
 set ignorecase                       "Ignore case when searching
 set incsearch                        "HL search matches while typing
-set laststatus=2                     "Always show statusline
+set laststatus=3                     "Always show statusline
 set lazyredraw                       "Redraw screen only when need to
 set linebreak                        "Don't split words when wrapping
 set list
@@ -110,13 +110,13 @@ noremap <C-k> L
 "gg => END
 noremap G gg
 noremap gg G
+" Optical illusion?
+noremap P p
+noremap p P
 "Join lines
 noremap <leader>j J
 "Turns out its faster than :w
 noremap <C-s> :w<cr>
-"System clipboard is bae
-noremap <C-Y> "+y
-noremap <C-P> "+p
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
@@ -154,9 +154,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
 "Tab manipulation
-nnoremap <Tab>n  :tabnew<cr>
-nnoremap <Tab>e  :tabedit 
-nnoremap <Tab>l  :tabnext
+nnoremap <Tab>n  :tabnew 
 nnoremap <Tab>o  :tabonly<cr>
 nnoremap <Tab>j  gT
 nnoremap <Tab>k  gt
@@ -167,17 +165,18 @@ nnoremap <Tab>mk :tabmove +1<cr>
 nnoremap <Tab>c  :tabclose<cr>
 
 "Window manipulation
+nnoremap <leader>s :split 
+nnoremap <leader>v :vsplit 
 nnoremap <C-W><Tab> <C-W>T
+nnoremap <C-W>J <C-W>H
+nnoremap <C-W>K <C-W>J
+nnoremap <C-W>L <C-W>K
+nnoremap <C-W>: <C-W>L
 "Window navigation
 nnoremap <C-W>j <C-W>h
 nnoremap <C-W>k <C-W>j
 nnoremap <C-W>l <C-W>k
 nnoremap <C-W>; <C-W>l
-"Window resizing
-nnoremap <C-Right> 5<C-W>>
-nnoremap <C-Left>  5<C-W><
-nnoremap <C-Up>    5<C-W>+
-nnoremap <C-Down>  5<C-W>-
 
 
 
