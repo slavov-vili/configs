@@ -138,10 +138,12 @@ noremap Y y$
 noremap h ;
 noremap H ,
 
+" Visual mode mappings
 "Reopen visual mode after indentation
 vnoremap > >gv
 vnoremap < <gv
 
+" Insert mode mappings
 " Insert-Completion
 " Omni-completion
 inoremap <C-space> <C-x><C-o>
@@ -152,6 +154,16 @@ inoremap <expr> <C-l> pumvisible() ? "\<C-p>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
 " Close the popup menu like any other mode
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
+
+" Terminal mode mappings
+autocmd TermOpen * startinsert
+tnoremap <Esc> <C-\><C-n>
+nnoremap <leader>; :vsplit term://bash<cr>
+
+" Execute line under cursor as vim command
+nnoremap <leader>: yy:@"<cr>
+" Execute selection as vim command
+vnoremap <leader>: y:@"<cr>
 
 "Tab manipulation
 nnoremap <Tab>n  :tabnew 
