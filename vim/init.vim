@@ -11,6 +11,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'luochen1990/rainbow'
 Plug 'airblade/vim-gitgutter'
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 packadd! matchit
 

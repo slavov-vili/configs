@@ -11,5 +11,5 @@ cp --verbose --force --remove-destination $DIR/init.vim  $VIM_DIR/init.vim
 cp --verbose --force --remove-destination $DIR/gvimrc    $HOME/.gvimrc
 
 cp --verbose --force --remove-destination --recursive $DIR/colors  $VIM_DIR/colors
-cp --verbose --force --remove-destination --recursive $DIR/plugin  ~/.local/share/nvim/site/
+cp --verbose --force --remove-destination --recursive $DIR/plugin  ~/.config/nvim/site/
 
