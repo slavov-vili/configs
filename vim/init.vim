@@ -234,7 +234,16 @@ let g:ctrlp_prompt_mappings = {
 
 
 " NERDTree
-noremap <leader>t :execute "NERDTreeFind "<cr>
+noremap <leader>tt :execute "NERDTree "<cr>
+noremap <leader>tT :execute "NERDTreeToggle "<cr>
+noremap <leader>tg :execute "NERDTreeVCS "<cr>
+noremap <leader>tG :execute "NERDTreeToggleVCS "<cr>
+noremap <leader>tf :execute "NERDTreeFocus "<cr>
+noremap <leader>tF :execute "NERDTreeFind "<cr>
+noremap <leader>tm :execute "NERDTreeMirror "<cr>
+noremap <leader>tc :execute "NERDTreeClose "<cr>
+noremap <leader>tC :execute "NERDTreeCWD "<cr>
+noremap <leader>tr :execute "NERDTreeRefreshRoot "<cr>
 
 
 " NERDCommenter
