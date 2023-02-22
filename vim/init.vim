@@ -45,7 +45,7 @@ set cmdheight=2                      "Height of the command bar
 set completeopt=longest,menuone      "Auto-completion option menu
 set confirm                          "Confirm :q when unsaved changes
 set cursorline                       "Highlight current line
-:hi CursorLine cterm=bold guibg='#404040'
+set diffopt=internal,filler,closeoff,algorithm:patience
 set directory=~/.backup,.,/tmp       "Don't put swaps in current dir
 set equalalways                      "Make all windows equal in size
 set encoding=utf-8
@@ -74,6 +74,7 @@ set noswapfile                       "Disable swap files
 set number                           "Turn on line numbers
 set omnifunc=syntaxcomplete#Complete "Native auto-complete 
 set scroll=10
+set scrolloff=7
 set shell=/bin/bash                  "Set the default shell
 set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
 set shiftwidth=4                     "Indentation size
@@ -88,6 +89,16 @@ set tabstop=4
 set updatetime=100                   "Write after this many seconds of being idle
 set wildmenu                         "Better auto-completion for cmd
 let mapleader=","                    "Change leader key
+
+
+
+" [Highlighting]
+" WARNING: this assumes that the used font is dark (elflord)
+hi CursorLine cterm=bold guibg='#404040'
+" TODO: also set for gui
+hi DiffChange ctermbg=NONE
+hi DiffText ctermbg=100
+hi DiffDelete ctermbg=52
 
 
 
@@ -234,10 +245,10 @@ let g:ctrlp_prompt_mappings = {
 
 
 " NERDTree
-noremap <leader>tt :execute "NERDTree "<cr>
-noremap <leader>tT :execute "NERDTreeToggle "<cr>
-noremap <leader>tg :execute "NERDTreeVCS "<cr>
-noremap <leader>tG :execute "NERDTreeToggleVCS "<cr>
+noremap <leader>tt :execute "NERDTreeToggle "<cr>
+noremap <leader>tT :execute "NERDTree "<cr>
+noremap <leader>tg :execute "NERDTreeToggleVCS "<cr>
+noremap <leader>tG :execute "NERDTreeVCS "<cr>
 noremap <leader>tf :execute "NERDTreeFocus "<cr>
 noremap <leader>tF :execute "NERDTreeFind "<cr>
 noremap <leader>tm :execute "NERDTreeMirror "<cr>
@@ -246,27 +257,28 @@ noremap <leader>tC :execute "NERDTreeCWD "<cr>
 noremap <leader>tr :execute "NERDTreeRefreshRoot "<cr>
 
 
-" NERDCommenter
-map <leader>cc <plug>NERDCommenterToggle
-
-
 " Lightline
 let g:lightline = {
-    \ 'colorscheme': 'powerline'
-\ }
+    \ 'colorscheme': 'powerline' }
 let g:lightline.active = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'relativepath', 'readonly', 'modified' ],
-    \             [ 'gitstatus'] ],
+    \             [ 'gitstatus', 'mappings' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ]
-\ }
+    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ] }
 let g:lightline.inactive = g:lightline.active
 let g:lightline.component = {
-    \   'charvaluehex': '0x%B',
-    \   'gitstatus': '%{GitStatus()}'
-\ }
+    \   'charvaluehex': '0x%B' }
+let g:lightline.component_function = {
+    \   'gitstatus': 'GitStatus',
+    \   'mappings': 'Mappings'}
+" TODO: format mapping better: bold? bgcolor?
+function! Mappings()
+    if &diff
+        return 'Next/Prev Change: ]c/[c, Take ours/theirs: do/dp'
+    endif
+endfunction
 
 
 " PearTree
@@ -301,8 +313,6 @@ let g:slime_target = "tmux"          "Tell slime to use tmux
 " Prolog
 autocmd BufNewFile,BufRead *.pl set syntax=prolog
 autocmd BufNewFile,BufRead *.rasi set syntax=css
-"Automatically retab files when opened
-"autocmd BufNewFile,BufRead * :retab
 
 autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
 

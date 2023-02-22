@@ -137,6 +137,9 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
   + vim -M = start in un**modifiable** mode (can't make changes)
   + vim -  = read from stdin
   + vim -O = open a window per file
+  + vim -d = open a diff of a list of files
+    - Use -R for readonly
+    - If second arg is dir - looks for same filename
 * Running external commands
   + **:r!**       = run command and read its output
   + **:w_c!**     = run command and pass lines to its input
@@ -146,7 +149,7 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
   + **:tab**       = run command and open window in new tab instead
   + **:argedit**   = open a bunch of files to edit from inside vim
   + **:all**       = open a window for each buffer (vim argument)
-  + **:find)**     = find file in path and edit it
+  + **:find**      = find file in path and edit it
   + **:read**      = insert the contents of a file under the cursor (or somewhere if range is specified)
   + **updatetime** = when should the swap file be written (see **updatecount** as well)
 * Iterating through files
@@ -157,7 +160,7 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
 * Closing/Writing files
   + **:close**    = close current window
   + **:only**     = close all other windows
-  + **wall/qall** = like **:write** and **:quit**, but for all windows
+  + **:wall/qall** = like **:write** and **:quit**, but for all windows
   + **:write >>** = append the contents of the current file to another one
   + **:saveas**   = save the contents of the current file into a different file
   + **:file**     = print the contents of the current file, the cursor position and more
@@ -205,6 +208,9 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
 * Undo tree
   + **:earlier/later** = go to prev/next state of file
   + **:undolist**      = show tree leaves
+* Comparing files (diffs)
+  + **:diffupdate!**    = reload changes
+  + **:diffpatch**     = diff of current buffer + its patched version
 * Saving file state
   + **backup**           = tell vim to create backups of files when writing
   + **patchmode**        = create copy of the original file when writing
@@ -214,6 +220,6 @@ I encourage you to look up the **bolded** terms in vim help and the *italicized*
     - Writing the shada stores cursor positions in '0...'9
   + **view-file**        = a bunch of settions which apply to one window
   + **session-file**     = a collection of views
-* **quickfix** = tries to speed up the edit-compile-edit cycle
+* **quickfix** = a list of errors that need to be fixed
   + **:make**  = run compiler or other program
 
