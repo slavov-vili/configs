@@ -2,7 +2,7 @@ set nocompatible                     "Use Vim mode instead of Vi
 
 " [Plugin setup]
 "Load obligatory plugins
-call plug#begin('~/.vim/vimplugs')
+call plug#begin('~/.local/share/nvim/vimplugs')
 " Vim-plug automatically adds 'https://github.com/'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -259,11 +259,12 @@ noremap <leader>tr :execute "NERDTreeRefreshRoot "<cr>
 
 " Lightline
 let g:lightline = {
-    \ 'colorscheme': 'powerline' }
+    \ 'colorscheme': 'powerlineVSL' }
 let g:lightline.active = {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'relativepath', 'readonly', 'modified' ],
-    \             [ 'gitstatus', 'mappings' ] ],
+    \             [ 'gitstatus' ],
+    \             [ 'mappings' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
     \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ] }
@@ -271,12 +272,16 @@ let g:lightline.inactive = g:lightline.active
 let g:lightline.component = {
     \   'charvaluehex': '0x%B' }
 let g:lightline.component_function = {
-    \   'gitstatus': 'GitStatus',
-    \   'mappings': 'Mappings'}
-" TODO: format mapping better: bold? bgcolor?
+    \   'gitstatus': 'GitStatus' }
+let g:lightline.component_expand = {
+    \   'mappings': 'Mappings' }
+let g:lightline.component_type = {
+    \   'mappings': 'hint' }
 function! Mappings()
     if &diff
-        return 'Next/Prev Change: ]c/[c, Take ours/theirs: do/dp'
+        return 'Next/Prev Change: ]c/[c | Take ours/theirs: do/dp'
+    else
+        return ''
     endif
 endfunction
 
