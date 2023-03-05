@@ -5,8 +5,8 @@
  ********************************************************************************/
 
 configuration {
-    kb-primary-paste:   "Control+p,Control+v,Shift+Insert";
-    kb-secondary-paste: "Control+P,Control+V,Insert";
+    kb-primary-paste:   "Control+v,Shift+Insert";
+    kb-secondary-paste: "Control+V,Insert";
     kb-clear-line:      "Control+d";
     kb-cancel:          "Escape";
 
@@ -18,7 +18,6 @@ configuration {
     kb-move-char-back:    "Left";
 
     kb-remove-char-forward: "Control+x,Delete";
-    kb-remove-char-back:    "BackSpace";
     kb-remove-word-forward: "Control+Alt+w,Control+Delete";
     kb-remove-word-back:    "Control+Alt+b,Control+BackSpace";
     kb-remove-to-eol:       "Control+Alt+k";
@@ -32,12 +31,8 @@ configuration {
 
     kb-row-left:   "Control+Alt+Left";
     kb-row-right:  "Control+Alt+Right";
-    kb-row-up:     "Up";
-    kb-row-down:   "Down";
-    kb-row-tab:    "Tab";
     kb-row-first:  "Control+Alt+G,Home";
     kb-row-last:   "Control+Alt+g,End";
-    kb-row-select: "Control+space";
 
     kb-mode-next:     "Control+Tab";
     kb-mode-previous: "Control+Shift+Tab";
