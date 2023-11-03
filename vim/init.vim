@@ -86,7 +86,7 @@ set smarttab                         "Use smart tabs
 set splitbelow                       "New splits always below
 set splitright                       "New vSplits always to the right"
 set tabstop=4
-set updatetime=100                   "Write after this many seconds of being idle
+set updatetime=300                   "Write after this many miliseconds of being idle
 set wildmenu                         "Better auto-completion for cmd
 let mapleader=","                    "Change leader key
 
@@ -94,11 +94,11 @@ let mapleader=","                    "Change leader key
 
 " [Highlighting]
 " WARNING: this assumes that the used font is dark (elflord)
-hi CursorLine cterm=bold guibg='#404040'
+highlight CursorLine cterm=bold guibg='#404040'
 " TODO: also set for gui
-hi DiffChange ctermbg=NONE
-hi DiffText ctermbg=100
-hi DiffDelete ctermbg=52
+highlight DiffChange ctermbg=NONE
+highlight DiffText ctermbg=100
+highlight DiffDelete ctermbg=52
 
 
 
@@ -297,7 +297,7 @@ let g:rainbow_active = 1
 
 
 " Git-Gutter
-highlight SignColumn guibg=bg ctermbg=none
+highlight SignColumn      guibg=bg ctermbg=none
 highlight GitGutterAdd    guibg=bg guifg=#009900 ctermbg=none ctermfg=2
 highlight GitGutterChange guibg=bg guifg=#bbbb00 ctermbg=none ctermfg=7
 highlight GitGutterDelete guibg=bg guifg=#ff2222 ctermbg=none ctermfg=1
