@@ -3,19 +3,22 @@ set nocompatible                     "Use Vim mode instead of Vi
 " [Plugin setup]
 "Load obligatory plugins
 call plug#begin('~/.local/share/nvim/vimplugs')
-" Vim-plug automatically adds 'https://github.com/'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
+Plug 'airblade/vim-gitgutter'
+"Plug 'smoka7/hop.nvim'
 Plug 'itchyny/lightline.vim'
+Plug 'neovim/nvim-lspconfig'
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
 Plug 'tmsvg/pear-tree'
 Plug 'luochen1990/rainbow'
-Plug 'airblade/vim-gitgutter'
-Plug 'neovim/nvim-lspconfig'
 call plug#end()
 packadd! matchit
 
-" good guy vim-plug
+"Load stuff from runtimepath
+runtime plugin-config/*.lua          "Plugin configs
+runtime plugin-config/*.vim          "Plugin configs
+runtime user_functions.vim           "Custom functions
+
 filetype plugin indent on            "Use auto-indenting
 syntax on                            "Enable syntax highlighting
 
@@ -27,15 +30,8 @@ else
 endif
 
 
-" [Includes]
-runtime user_functions.vim
-
-
-
-
 
 " [Settings]
-
 set autoindent                       "Follow indentation of last line
 set autoread                         "Auto-detect file changes
 set autowrite                        "Auto-save file before running
@@ -99,8 +95,6 @@ highlight CursorLine cterm=bold guibg='#404040'
 highlight DiffChange ctermbg=NONE
 highlight DiffText ctermbg=100
 highlight DiffDelete ctermbg=52
-
-
 
 
 
@@ -204,120 +198,12 @@ nnoremap <C-W>; <C-W>l
 
 
 
+" [Variables]
+let g:my_root_markers = ['.git', 'pom.xml']
+autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
+
 
 
 " [Shortcuts for user functions]
 noremap <C-S-f> :call SearchInAllFilesWithInput(g:project_root)<cr>
-
-
-
-" [Variables]
-let g:my_root_markers = ['.git', 'pom.xml']
-
-
-
-
-
-" [Plugin settings]
-
-" CTRLP
-" Some root markers are already pre-configured in ctrlp, but I like
-" to keep things consistent :)
-let g:ctrlp_regexp = 1
-let g:ctrlp_root_markers = g:my_root_markers
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_open_multiple_files = '9t'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("k")':   ['<c-l>', '<up>'],
-    \ 'PrtSelectMove("j")':   ['<c-k>', '<down>'],
-    \ 'PrtSelectMove("t")':   ['<Home>', '<kHome>'],
-    \ 'PrtSelectMove("b")':   ['<End>', '<kEnd>'],
-    \ 'AcceptSelection("e")': ['<c-cr>'],
-    \ 'AcceptSelection("h")': ['<c-x>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<1-LeftMouse>'],
-    \ 'PrtInsert()':          ['<c-\>'],
-    \ 'PrtCurStart()':        ['<c-s-j>'],
-    \ 'PrtCurEnd()':          ['<c-s-k>'],
-    \ 'PrtCurLeft()':         ['<c-j>', '<left>', '<c-^>'],
-    \ 'PrtCurRight()':        ['<c-;>', '<right>'],
-\ }
-
-
-" NERDTree
-noremap <leader>tt :execute "NERDTreeToggle "<cr>
-noremap <leader>tT :execute "NERDTree "<cr>
-noremap <leader>tg :execute "NERDTreeToggleVCS "<cr>
-noremap <leader>tG :execute "NERDTreeVCS "<cr>
-noremap <leader>tf :execute "NERDTreeFocus "<cr>
-noremap <leader>tF :execute "NERDTreeFind "<cr>
-noremap <leader>tm :execute "NERDTreeMirror "<cr>
-noremap <leader>tc :execute "NERDTreeClose "<cr>
-noremap <leader>tC :execute "NERDTreeCWD "<cr>
-noremap <leader>tr :execute "NERDTreeRefreshRoot "<cr>
-
-
-" Lightline
-let g:lightline = {
-    \ 'colorscheme': 'powerlineVSL' }
-let g:lightline.active = {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'relativepath', 'readonly', 'modified' ],
-    \             [ 'gitstatus' ],
-    \             [ 'mappings' ] ],
-    \   'right': [ [ 'lineinfo' ],
-    \              [ 'percent' ],
-    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ] }
-let g:lightline.inactive = g:lightline.active
-let g:lightline.component = {
-    \   'charvaluehex': '0x%B' }
-let g:lightline.component_function = {
-    \   'gitstatus': 'GitStatus' }
-let g:lightline.component_expand = {
-    \   'mappings': 'Mappings' }
-let g:lightline.component_type = {
-    \   'mappings': 'hint' }
-function! Mappings()
-    if &diff
-        return 'Next/Prev Change: ]c/[c | Take ours/theirs: do/dp'
-    else
-        return ''
-    endif
-endfunction
-
-
-" PearTree
-let g:pear_tree_smart_openers   = 1
-let g:pear_tree_smart_closers   = 1
-let g:pear_tree_smart_backspace = 1
-
-
-" Rainbow
-let g:rainbow_active = 1
-
-
-" Git-Gutter
-highlight SignColumn      guibg=bg ctermbg=none
-highlight GitGutterAdd    guibg=bg guifg=#009900 ctermbg=none ctermfg=2
-highlight GitGutterChange guibg=bg guifg=#bbbb00 ctermbg=none ctermfg=7
-highlight GitGutterDelete guibg=bg guifg=#ff2222 ctermbg=none ctermfg=1
-function! GitStatus()
-    let [added, modified, removed] = GitGutterGetHunkSummary()
-    return printf('+%d ~%d -%d', added, modified, removed)
-endfunction
-
-
-
-
-
-" [Others]
-
-let g:slime_target = "tmux"          "Tell slime to use tmux
-
-" [File syntax]
-" Prolog
-autocmd BufNewFile,BufRead *.pl set syntax=prolog
-autocmd BufNewFile,BufRead *.rasi set syntax=css
-
-autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
 

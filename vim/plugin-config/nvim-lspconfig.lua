@@ -5,8 +5,12 @@ vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev,  opts)
 vim.keymap.set('n', ']d',       vim.diagnostic.goto_next,  opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
+
+
 -- colors
 local hl_colors = vim.api.nvim_get_hl(0, { name="CursorLine"})
+
+
 
 local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -65,6 +69,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>wl', vim.lsp.buf.list_workspace_folders, bufopts)
 end
 
+
+
+-- configure hover windows
 local border =  {
     {"┌", "FloatBorder"},
     {"─", "FloatBorder"},
@@ -76,7 +83,6 @@ local border =  {
     {"│", "FloatBorder"},
 }
 
--- configure hover windows
 vim.api.nvim_set_hl(0, "NormalFloat", hl_colors )
 vim.api.nvim_set_hl(0, "FloatBorder", hl_colors)
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
@@ -85,6 +91,8 @@ function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
   opts.border = opts.border or border
   return orig_util_open_floating_preview(contents, syntax, opts, ...)
 end
+
+
 
 local signs = {
     Error = "E",
@@ -96,6 +104,8 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+
+
 
 require('lspconfig')['pylsp'].setup{
     on_attach = on_attach,
