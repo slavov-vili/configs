@@ -4,7 +4,7 @@ set nocompatible                     "Use Vim mode instead of Vi
 "Load obligatory plugins
 call plug#begin('~/.local/share/nvim/vimplugs')
 Plug 'airblade/vim-gitgutter'
-"Plug 'smoka7/hop.nvim'
+Plug 'smoka7/hop.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'preservim/nerdcommenter'
@@ -13,11 +13,6 @@ Plug 'tmsvg/pear-tree'
 Plug 'luochen1990/rainbow'
 call plug#end()
 packadd! matchit
-
-"Load stuff from runtimepath
-runtime plugin-config/*.lua          "Plugin configs
-runtime plugin-config/*.vim          "Plugin configs
-runtime user_functions.vim           "Custom functions
 
 filetype plugin indent on            "Use auto-indenting
 syntax on                            "Enable syntax highlighting
@@ -76,7 +71,7 @@ set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my a
 set shiftwidth=4                     "Indentation size
 set showcmd                          "Show incomplete commands (fd, cw, etc.)
 set showmatch                        "Highlight matching brackets
-set smartcase                        "Except when using capital letters
+set smartcase                        "Respect capital letters in searches
 set smartindent                      "Use smart indentation
 set smarttab                         "Use smart tabs
 set splitbelow                       "New splits always below
@@ -195,6 +190,13 @@ nnoremap <C-W>j <C-W>h
 nnoremap <C-W>k <C-W>j
 nnoremap <C-W>l <C-W>k
 nnoremap <C-W>; <C-W>l
+
+
+
+"Load stuff from runtimepath
+runtime! plugin-config/*.lua "Plugin configs
+runtime! plugin-config/*.vim "Plugin configs
+runtime user_functions.vim   "Custom functions
 
 
 
