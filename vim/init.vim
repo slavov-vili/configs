@@ -5,6 +5,8 @@ set nocompatible                     "Use Vim mode instead of Vi
 call plug#begin('~/.local/share/nvim/vimplugs')
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'chrisgrieser/nvim-genghis'
 Plug 'smoka7/hop.nvim'
 Plug 'itchyny/lightline.vim'
@@ -42,7 +44,7 @@ set diffopt=internal,filler,closeoff,algorithm:patience
 set directory=~/.backup,.,/tmp       "Don't put swaps in current dir
 set equalalways                      "Make all windows equal in size
 set encoding=utf-8
-set expandtab                        "Replace tabs with spaces
+set expandtab                        "Replace tabs with spaces (overwritten by vim-sleuth)
 set fileencoding=utf-8
 set fileformat=unix
 set foldenable                       "Enable folding
@@ -70,12 +72,12 @@ set scroll=10
 set scrolloff=7
 set shell=/bin/bash                  "Set the default shell
 set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my aliases too much)
-set shiftwidth=4                     "Indentation size
+set shiftwidth=4                     "Indentation size (overwritten by vim-sleuth)
 set showcmd                          "Show incomplete commands (fd, cw, etc.)
 set showmatch                        "Highlight matching brackets
 set smartcase                        "Respect capital letters in searches
 set smartindent                      "Use smart indentation
-set smarttab                         "Use smart tabs
+set smarttab                         "Use smart tabs (overwritten by vim-sleuth)
 set splitbelow                       "New splits always below
 set splitright                       "New vSplits always to the right"
 set tabstop=4
