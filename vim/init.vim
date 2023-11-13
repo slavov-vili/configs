@@ -5,6 +5,7 @@ set nocompatible                     "Use Vim mode instead of Vi
 call plug#begin('~/.local/share/nvim/vimplugs')
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'chrisgrieser/nvim-genghis'
 Plug 'smoka7/hop.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
