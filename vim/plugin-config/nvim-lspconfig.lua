@@ -1,6 +1,6 @@
 -- Diagnostics Mappings
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev,  opts)
 vim.keymap.set('n', ']d',       vim.diagnostic.goto_next,  opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
@@ -8,6 +8,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 
 -- colors
+-- FIXME: make matches more prominent
 local hl_colors = vim.api.nvim_get_hl(0, { name="CursorLine"})
 
 
@@ -41,32 +42,32 @@ local on_attach = function(client, bufnr)
     end
 
     -- Mappings
+    local PREFIX = '<leader>l'
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
-    vim.keymap.set('n', 'gd', function()
+    -- FIXME: only if in a different file
+    vim.keymap.set('n', PREFIX..'C', vim.lsp.buf.incoming_calls, bufopts)
+    vim.keymap.set('n', PREFIX..'d', function()
       vim.cmd('tab split +lua\\ =vim.lsp.buf.definition()')
     end, bufopts)
-    vim.keymap.set('n', 'gD',        vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', '<space>D',  vim.lsp.buf.type_definition, bufopts)
-
-    vim.keymap.set('n', '<C-h>',     vim.lsp.buf.hover, bufopts)
-    vim.keymap.set('n', '<C-k>',     vim.lsp.buf.signature_help, bufopts)
-
-    vim.keymap.set('n', 'gi',        vim.lsp.buf.implementation, bufopts)
-    vim.keymap.set('n', 'gs',        vim.lsp.buf.document_symbol, bufopts)
-    vim.keymap.set('n', '<space>ws', vim.lsp.buf.workspace_symbol, bufopts)
-    vim.keymap.set('n', '<space>ic', vim.lsp.buf.incoming_calls, bufopts)
-    vim.keymap.set('n', '<space>oc', vim.lsp.buf.outgoing_calls, bufopts)
-    vim.keymap.set('n', 'gr',        vim.lsp.buf.references, bufopts)
-    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', PREFIX..'D', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', PREFIX..'H', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', PREFIX..'S', vim.lsp.buf.workspace_symbol, bufopts)
+    vim.keymap.set('n', PREFIX..'a', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', PREFIX..'c', vim.lsp.buf.outgoing_calls, bufopts)
+    vim.keymap.set('n', PREFIX..'f', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', PREFIX..'h', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', PREFIX..'i', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', PREFIX..'s', vim.lsp.buf.document_symbol, bufopts)
+    vim.keymap.set('n', PREFIX..'t', vim.lsp.buf.type_definition, bufopts)
 
     -- Refactoring mappings
-    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-    vim.keymap.set('n', '<space>f',  function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', PREFIX..'F', function() vim.lsp.buf.format { async = true } end, bufopts)
+    vim.keymap.set('n', PREFIX..'r', vim.lsp.buf.rename, bufopts)
 
     -- Workspace mappings
-    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-    vim.keymap.set('n', '<space>wl', vim.lsp.buf.list_workspace_folders, bufopts)
+    vim.keymap.set('n', PREFIX..'L', vim.lsp.buf.list_workspace_folders, bufopts)
+    vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', PREFIX..'R', vim.lsp.buf.remove_workspace_folder, bufopts)
 end
 
 
@@ -107,13 +108,38 @@ end
 
 
 
-require('lspconfig')['pylsp'].setup{
-    on_attach = on_attach,
-    settings = {
-        pylsp = {
-            plugins = {
-                pylint = { enabled = true, executable = "pylint" },
+-- IMPORTANT: this has to be in this order and before lspconfig
+require("mason").setup()
+local lspconfig = require('lspconfig')
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        'pylsp',
+        'lua_ls',
+        'eslint',
+        'html',
+        'cssls',
+        'ts_ls',
+    },
+    handlers = {
+        function(server)
+          lspconfig[server].setup({
+            on_attach = on_attach,
+            -- capabilities = lsp_capabilities,
+          })
+        end,
+        ['pylsp'] = function()
+          lspconfig.pylsp.setup({
+            on_attach = on_attach,
+            -- capabilities = lsp_capabilities,
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pylint = { enabled = true, executable = "pylint" },
+                    }
+                }
             }
-        }
-    }
-}
+          })
+        end
+      }
+})
+

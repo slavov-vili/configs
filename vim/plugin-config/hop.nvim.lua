@@ -1,63 +1,67 @@
 local hop = require('hop')
-hop.setup{}
+hop.setup{
+    extensions = { 'hop-yank', 'hop-treesitter' }
+}
+local PREFIX = '<leader>h'
 
 
 
--- Common options
-local current_line = { current_line_only = true }
-local multi_windows = { multi_windows = true }
+local function current_line(action) 
+    return function()
+        action({current_line_only = true})
+    end
+end
+
+local function multi_windows(action)
+    return function()
+        action({ multi_windows = true })
+    end
+end
+
+local function keymap(key, action)
+    vim.keymap.set({'n', 'x'}, PREFIX..key, action, { remap=true })
+end
 
 
 
 -- Hop anywhere
-vim.keymap.set('', 'hh', function() hop.hint_anywhere(current_line)  end, { remap=true })
-vim.keymap.set('', 'hH', function() hop.hint_anywhere()              end, { remap=true })
-vim.keymap.set('', 'HH', function() hop.hint_anywhere(multi_windows) end, { remap=true })
-
-
-
+keymap('a', current_line(hop.hint_anywhere))
+keymap('A', hop.hint_anywhere)
+-- map('A', multi_windows(hop.hint_anywhere))
 -- Hop to character
-vim.keymap.set('', 'hf', function() hop.hint_char1(current_line)  end, { remap=true })
-vim.keymap.set('', 'hF', function() hop.hint_char1()              end, { remap=true })
-vim.keymap.set('', 'HF', function() hop.hint_char1(multi_windows) end, { remap=true })
-vim.keymap.set('', 'ht', function() hop.hint_char2(current_line)  end, { remap=true })
-vim.keymap.set('', 'hT', function() hop.hint_char2()              end, { remap=true })
-vim.keymap.set('', 'HT', function() hop.hint_char2(multi_windows) end, { remap=true })
-
-
-
+keymap('f', current_line(hop.hint_char1))
+keymap('F', hop.hint_char1)
+keymap('f', multi_windows(hop.hint_char1))
+keymap('t', current_line(hop.hint_char2))
+keymap('T', hop.hint_char2)
+keymap('t', multi_windows(hop.hint_char2))
 -- Hop to word
-vim.keymap.set('', 'hw', function() hop.hint_words(current_line)  end, { remap=true })
-vim.keymap.set('', 'hW', function() hop.hint_words()              end, { remap=true })
-vim.keymap.set('', 'HW', function() hop.hint_words(multi_windows) end, { remap=true })
-
-
-
+keymap('w', current_line(hop.hint_words))
+keymap('W', hop.hint_words)
+keymap('M', multi_windows(hop.hint_words))
 -- Hop to pattern
-vim.keymap.set('', 'h/', function() hop.hint_patterns()              end, { remap=true })
-vim.keymap.set('', 'H/', function() hop.hint_patterns(multi_windows) end, { remap=true })
-
-
-
+keymap('/', hop.hint_patterns)
+keymap('?', multi_windows(hop.hint_patterns))
 -- Hop to line
-vim.keymap.set('', 'hl', function() hop.hint_lines_skip_whitespace()              end, { remap=true })
-vim.keymap.set('', 'Hl', function() hop.hint_lines_skip_whitespace(multi_windows) end, { remap=true })
-vim.keymap.set('', 'hL', function() hop.hint_lines()                              end, { remap=true })
-vim.keymap.set('', 'HL', function() hop.hint_lines(multi_windows)                 end, { remap=true })
-vim.keymap.set('', 'h:', function() hop.hint_vertical()                           end, { remap=true })
-vim.keymap.set('', 'H:', function() hop.hint_vertical(multi_windows)              end, { remap=true })
+keymap('l', hop.hint_lines_skip_whitespace)
+keymap('L', multi_windows(hop.hint_lines_skip_whitespace))
+keymap('<space>', hop.hint_lines)
+keymap('<space>', multi_windows(hop.hint_lines))
+keymap('v', hop.hint_vertical)
+keymap('V', multi_windows(hop.hint_vertical))
 
 
 
+-- FIXME: this stuff requires extensions
 -- Yank from char to char
-vim.keymap.set('', 'hy', function() hop.yank_char1(current_line)  end, { remap=true })
-vim.keymap.set('', 'hY', function() hop.yank_char1()              end, { remap=true })
--- Paste to char
-vim.keymap.set('', 'hp', function() hop.paste_char1(current_line) end, { remap=true })
-vim.keymap.set('', 'hP', function() hop.paste_char1()             end, { remap=true })
+-- keymap('y', current_line(hop.yank_char1))
+-- keymap('Y', hop.yank_char1)
+-- -- Paste to char
+-- keymap('p', current_line(hop.paste_char1))
+-- keymap('P', hop.paste_char1)
 
 
 
--- Hop to TreeSitter node
-vim.keymap.set('', 'hn', function() hop.hint_nodes() end, { remap=true })
+-- -- Hop to TreeSitter node
+-- keymap('n', hop.hint_nodes)
 

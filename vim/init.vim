@@ -1,20 +1,35 @@
 set nocompatible                     "Use Vim mode instead of Vi
 
+" Because nvim-tree
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
+
+" TODO: check plugin configs (pear-tree kinda slow, do I need sleuth?, configure fzf?)
 " [Plugin setup]
-"Load obligatory plugins
 call plug#begin('~/.local/share/nvim/vimplugs')
+" Movement
+Plug 'smoka7/hop.nvim'
+" Editing
+Plug 'tmsvg/pear-tree'
+Plug 'tpope/vim-surround'
+" Files
+Plug 'chrisgrieser/nvim-genghis'
+Plug 'nvim-tree/nvim-tree.lua'
+" Git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-sleuth'
-Plug 'chrisgrieser/nvim-genghis'
-Plug 'smoka7/hop.nvim'
-Plug 'itchyny/lightline.vim'
+" LSP
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'neovim/nvim-lspconfig'
-Plug 'preservim/nerdcommenter'
-Plug 'preservim/nerdtree'
-Plug 'tmsvg/pear-tree'
+" Visual
+Plug 'itchyny/lightline.vim'
+Plug 'nvim-tree/nvim-web-devicons'
 Plug 'luochen1990/rainbow'
+" Others
+Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+Plug 'tpope/vim-sleuth'
 call plug#end()
 packadd! matchit
 
@@ -98,30 +113,12 @@ highlight DiffDelete ctermbg=52
 
 
 " [Key mappings]
-
-"Move the movement keys (ironic) 1 key to the right
-noremap j h
-noremap k j
-noremap l k
-noremap ; l
-"Move around line
-noremap J ^
-noremap K $
-noremap L :call cursor(line('.'), len(getline('.'))/2)<cr>
-"Move to top/middle/bottom of edit window
-noremap <C-j> H
-noremap <C-l> M
-noremap <C-k> L
 "gg => END
 noremap G gg
 noremap gg G
 " Optical illusion?
 noremap P p
 noremap p P
-"Join lines
-noremap <leader>j J
-"Turns out its faster than :w
-noremap <C-s> :w<cr>
 "Toggle whether to show relative line numbers
 noremap <leader>` :set rnu!<cr>
 "Toggle whether to highlight current column
@@ -138,10 +135,6 @@ noremap <leader>r :Run<cr>
 noremap <leader>o :Open<cr>
 "Reload .vimrc
 noremap <leader><F5> :so $MYVIMRC<cr>
-"Constitency is good :)
-noremap Y y$
-noremap h ;
-noremap H ,
 
 " Visual mode mappings
 "Reopen visual mode after indentation
@@ -154,9 +147,6 @@ vnoremap < <gv
 inoremap <C-space> <C-x><C-o>
 " Choose popup menu item also with Enter instead of only Ctrl-Y
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-" Move up and down in the popup menu using MY movement keys
-inoremap <expr> <C-l> pumvisible() ? "\<C-p>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-n>" : "\<C-k>"
 " Close the popup menu like any other mode
 inoremap <expr> <Esc> pumvisible() ? "\<C-e>" : "\<Esc>"
 
@@ -185,21 +175,13 @@ nnoremap <Tab>c  :tabclose<cr>
 nnoremap <leader>s :split 
 nnoremap <leader>v :vsplit 
 nnoremap <C-W><Tab> <C-W>T
-nnoremap <C-W>J <C-W>H
-nnoremap <C-W>K <C-W>J
-nnoremap <C-W>L <C-W>K
-nnoremap <C-W>: <C-W>L
-"Window navigation
-nnoremap <C-W>j <C-W>h
-nnoremap <C-W>k <C-W>j
-nnoremap <C-W>l <C-W>k
-nnoremap <C-W>; <C-W>l
 
 
 
 "Load stuff from runtimepath
 runtime! plugin-config/*.lua "Plugin configs
 runtime! plugin-config/*.vim "Plugin configs
+"FIXME do I need this stuff below?
 runtime user_functions.vim   "Custom functions
 
 
