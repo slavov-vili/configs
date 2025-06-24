@@ -8,10 +8,7 @@ mkdir $VIM_DIR
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 cp --verbose --force --remove-destination $DIR/init.vim  $VIM_DIR/init.vim
-cp --verbose --force --remove-destination $DIR/gvimrc    $HOME/.gvimrc
 
 cp --verbose --force --remove-destination --recursive $DIR/colors  $VIM_DIR/
-cp --verbose --force --remove-destination --recursive $DIR/autoload/lightline  $VIM_DIR/autoload
-cp --verbose --force --remove-destination --recursive $DIR/plugin  ~/.local/share/nvim/site
 cp --verbose --force --remove-destination --recursive $DIR/plugin-config  $VIM_DIR/
 

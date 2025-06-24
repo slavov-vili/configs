@@ -181,17 +181,4 @@ nnoremap <C-W><Tab> <C-W>T
 "Load stuff from runtimepath
 runtime! plugin-config/*.lua "Plugin configs
 runtime! plugin-config/*.vim "Plugin configs
-"FIXME do I need this stuff below?
-runtime user_functions.vim   "Custom functions
-
-
-
-" [Variables]
-let g:my_root_markers = ['.git', 'pom.xml']
-autocmd VimEnter * let g:project_root = FindProjectRoot(getcwd(), g:my_root_markers)
-
-
-
-" [Shortcuts for user functions]
-noremap <C-S-f> :call SearchInAllFilesWithInput(g:project_root)<cr>
 
