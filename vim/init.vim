@@ -4,7 +4,6 @@ set nocompatible                     "Use Vim mode instead of Vi
 let g:loaded_netrw = 1
 let g:loaded_netrwPlugin = 1
 
-
 " TODO: check plugin configs (pear-tree kinda slow, do I need sleuth?, configure fzf?)
 " [Plugin setup]
 call plug#begin('~/.local/share/nvim/vimplugs')
@@ -13,6 +12,12 @@ Plug 'smoka7/hop.nvim'
 " Editing
 Plug 'tmsvg/pear-tree'
 Plug 'tpope/vim-surround'
+" Completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 " Files
 Plug 'chrisgrieser/nvim-genghis'
 Plug 'nvim-tree/nvim-tree.lua'
