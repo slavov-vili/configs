@@ -90,7 +90,7 @@ cmp.setup.cmdline(':',
     mapping = cmp.mapping.preset.cmdline(),
     matching = { disallow_symbol_nonprefix_matching = false },
     window = {
-      completion =  { winblend = 45 },
+      completion =  { winblend = 25 },
     }
   }
 )

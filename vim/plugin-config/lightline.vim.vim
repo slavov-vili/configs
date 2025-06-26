@@ -1,5 +1,5 @@
 let g:lightline = {
-    \ 'colorscheme': 'powerlineVSL',
+    \ 'colorscheme': 'one',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'relativepath', 'readonly', 'modified' ],
@@ -7,14 +7,19 @@ let g:lightline = {
     \             [ 'mappings' ] ],
     \   'right': [ [ 'lineinfo' ],
     \              [ 'percent' ],
-    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ] },
+    \              [ 'charvaluehex', 'fileencoding', 'filetype' ] ]
+    \ },
     \ 'component': { 'charvaluehex': '0x%B' },
     \ 'component_function': {
     \   'gitbranch': 'FugitiveHead',
     \   'gitstatus': 'GitStatus'
     \ },
-    \ 'component_expand': { 'mappings': 'Mappings' },
-    \ 'component_type': { 'mappings': 'hint' },
+    \ 'component_expand': {
+    \   'mappings': 'Mappings',
+    \ },
+    \ 'component_type': {
+    \   'mappings': 'hint',
+    \ },
     \ }
 let g:lightline.inactive = g:lightline.active
 function! Mappings()
