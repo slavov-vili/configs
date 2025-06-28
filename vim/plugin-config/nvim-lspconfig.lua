@@ -1,9 +1,5 @@
 -- Diagnostics Mappings
 local opts = { noremap=true, silent=true }
-vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, opts)
-vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev,  opts)
-vim.keymap.set('n', ']d',       vim.diagnostic.goto_next,  opts)
-vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 
 
@@ -13,7 +9,17 @@ local hl_colors = vim.api.nvim_get_hl(0, { name="CursorLine"})
 
 
 
-local on_attach = function(client, bufnr)
+vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d',       vim.diagnostic.goto_prev,  opts)
+vim.keymap.set('n', ']d',       vim.diagnostic.goto_next,  opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    local bufnr = args.buf
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- configure reference highlights
@@ -68,7 +74,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', PREFIX..'L', vim.lsp.buf.list_workspace_folders, bufopts)
     vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', PREFIX..'R', vim.lsp.buf.remove_workspace_folder, bufopts)
-end
+  end
+})
 
 
 
@@ -121,16 +128,8 @@ require("mason-lspconfig").setup({
         'ts_ls',
     },
     handlers = {
-        function(server)
-          lspconfig[server].setup({
-            on_attach = on_attach,
-            -- capabilities = lsp_capabilities,
-          })
-        end,
         ['pylsp'] = function()
           lspconfig.pylsp.setup({
-            on_attach = on_attach,
-            -- capabilities = lsp_capabilities,
             settings = {
                 pylsp = {
                     plugins = {
