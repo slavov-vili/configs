@@ -50,7 +50,7 @@ syntax on                            "Enable syntax highlighting
 if has('gui_running')
     colorscheme obsidian2            "Set GUI color scheme
 else
-    colorscheme elflord              "Set color scheme 
+    colorscheme elflord              "Set color scheme
 endif
 
 
@@ -92,7 +92,7 @@ set noerrorbells visualbell t_vb=
 set noswapfile                       "Disable swap files
 " set nowrap                           "Disable line wrapping
 set number                           "Turn on line numbers
-set omnifunc=syntaxcomplete#Complete "Native auto-complete 
+set omnifunc=syntaxcomplete#Complete "Native auto-complete
 set scroll=10
 set scrolloff=7
 set shell=/bin/bash                  "Set the default shell
