@@ -24,7 +24,7 @@ Plug 'hrsh7th/nvim-cmp'
 Plug 'chrisgrieser/nvim-genghis'
 Plug 'nvim-tree/nvim-tree.lua'
 " Git
-Plug 'airblade/vim-gitgutter'
+Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 " LSP
 Plug 'neovim/nvim-lspconfig'
