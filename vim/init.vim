@@ -27,9 +27,9 @@ Plug 'nvim-tree/nvim-tree.lua'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'tpope/vim-fugitive'
 " LSP
+Plug 'williamboman/mason.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason-lspconfig.nvim'
-Plug 'williamboman/mason.nvim'
 " Visual
 Plug 'echasnovski/mini.animate'
 Plug 'echasnovski/mini.indentscope'
@@ -50,7 +50,7 @@ syntax on                            "Enable syntax highlighting
 if has('gui_running')
     colorscheme obsidian2            "Set GUI color scheme
 else
-    colorscheme elflord              "Set color scheme
+    colorscheme welpe                "Set color scheme
 endif
 
 
@@ -106,7 +106,7 @@ set smarttab                         "Use smart tabs (overwritten by vim-sleuth)
 set splitbelow                       "New splits always below
 set splitright                       "New vSplits always to the right"
 set tabstop=4
-set updatetime=300                   "Write after this many miliseconds of being idle
+set updatetime=1000                   "Write after this many miliseconds of being idle
 set wildmenu                         "Better auto-completion for cmd
 let mapleader=","                    "Change leader key
 
