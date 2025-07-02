@@ -1,86 +1,78 @@
 local gitsigns = require('gitsigns')
 
+local my_signs = {
+  add          = { text = '+' },
+  change       = { text = '~' },
+  delete       = { text = 'x' },
+  topdelete    = { text = '‾' },
+  changedelete = { text = 'x' },
+  untracked    = { text = '_' },
+}
+
 
 
 local on_attach = function(bufnr)
-    local function map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
+  local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    vim.keymap.set(mode, l, r, opts)
+  end
+
+  -- Navigation
+  map('n', ']c', function()
+    if vim.wo.diff then
+      vim.cmd.normal({']c', bang = true})
+    else
+      gitsigns.nav_hunk('next')
     end
+  end)
 
-      -- Navigation
-      map('n', ']c', function()
-        if vim.wo.diff then
-          vim.cmd.normal({']c', bang = true})
-        else
-          gitsigns.nav_hunk('next')
-        end
-      end)
-
-      map('n', '[c', function()
-        if vim.wo.diff then
-          vim.cmd.normal({'[c', bang = true})
-        else
-          gitsigns.nav_hunk('prev')
-        end
-      end)
-
-      -- Actions
-      map('n', '<leader>hs', gitsigns.stage_hunk)
-      map('n', '<leader>hr', gitsigns.reset_hunk)
-
-      map('v', '<leader>hs', function()
-        gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-      end)
-
-      map('v', '<leader>hr', function()
-        gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-      end)
-
-      map('n', '<leader>hS', gitsigns.stage_buffer)
-      map('n', '<leader>hR', gitsigns.reset_buffer)
-      map('n', '<leader>hp', gitsigns.preview_hunk)
-      map('n', '<leader>hi', gitsigns.preview_hunk_inline)
-
-      map('n', '<leader>hb', function()
-        gitsigns.blame_line({ full = true })
-      end)
-
-
-      map('n', '<leader>hD', function()
-        gitsigns.diffthis('~')
-      end)
-
-      map('n', '<leader>hQ', function() gitsigns.setqflist('all') end)
-      map('n', '<leader>hq', gitsigns.setqflist)
-
-      -- Toggles
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-      map('n', '<leader>tw', gitsigns.toggle_word_diff)
-
-      -- Text object
-      map({'o', 'x'}, 'ih', gitsigns.select_hunk)
+  map('n', '[c', function()
+    if vim.wo.diff then
+      vim.cmd.normal({'[c', bang = true})
+    else
+      gitsigns.nav_hunk('prev')
     end
+  end)
+
+  -- Actions
+  local PREFIX = '<leader>g'
+  map('n', PREFIX..'s', gitsigns.stage_hunk)
+  map('v', PREFIX..'s', function()
+    gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+  end)
+  map('n', PREFIX..'S', gitsigns.stage_buffer)
+
+  map('n', PREFIX..'r', gitsigns.reset_hunk)
+  map('v', PREFIX..'r', function()
+    gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
+  end)
+  map('n', PREFIX..'R', gitsigns.reset_buffer)
+
+  map('n', PREFIX..'p', gitsigns.preview_hunk_inline)
+  map('n', PREFIX..'P', gitsigns.preview_hunk)
+
+  map('n', PREFIX..'b', gitsigns.toggle_current_line_blame)
+  map('n', PREFIX..'B', function()
+    gitsigns.blame_line({ full = true })
+  end)
+
+  map('n', PREFIX..'d', gitsigns.toggle_word_diff)
+  map('n', PREFIX..'D', function()
+    gitsigns.diffthis('~')
+  end)
+
+  map('n', PREFIX..'q', gitsigns.setqflist)
+  map('n', PREFIX..'Q', function() gitsigns.setqflist('all') end)
+
+  -- Text object
+  map({'o', 'x'}, 'ih', gitsigns.select_hunk)
+end
 
 
 
 gitsigns.setup({
-  signs = {
-    add          = { text = '+' },
-    change       = { text = '~' },
-    delete       = { text = 'x' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = 'x' },
-    untracked    = { text = '_' },
-  },
-  signs_staged = {
-    add          = { text = '+' },
-    change       = { text = '~' },
-    delete       = { text = 'x' },
-    topdelete    = { text = '‾' },
-    changedelete = { text = 'x' },
-    untracked    = { text = '_' },
-  },
   on_attach = on_attach,
+  signs = my_signs,
+  signs_staged = my_signs,
 })

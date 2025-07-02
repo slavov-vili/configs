@@ -6,7 +6,7 @@ local PREFIX = '<leader>h'
 
 
 
-local function current_line(action) 
+local function current_line(action)
     return function()
         action({current_line_only = true})
     end
