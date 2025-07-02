@@ -100,6 +100,7 @@ set shellcmdflag=-ic                 "Make vim read my .bashrc (I just love my a
 set shiftwidth=4                     "Indentation size (overwritten by vim-sleuth)
 set showcmd                          "Show incomplete commands (fd, cw, etc.)
 set showmatch                        "Highlight matching brackets
+set signcolumn=auto:2                "Show up to 2 signs
 set smartcase                        "Respect capital letters in searches
 set smartindent                      "Use smart indentation
 set smarttab                         "Use smart tabs (overwritten by vim-sleuth)
