@@ -75,4 +75,6 @@ gitsigns.setup({
   on_attach = on_attach,
   signs = my_signs,
   signs_staged = my_signs,
+  sign_priority = 50,
+  numhl = true,
 })
