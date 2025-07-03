@@ -32,13 +32,14 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason-lspconfig.nvim'
 " Visual
 Plug 'echasnovski/mini.animate'
-Plug 'echasnovski/mini.indentscope'
 Plug 'echasnovski/mini.trailspace'
+Plug 'slavov-vili/mini.indentscope.previewborder'
 Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'nvim-tree/nvim-web-devicons'
 " Others
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
+Plug 'nvimtools/hydra.nvim'
 Plug 'tpope/vim-sleuth'
 call plug#end()
 packadd! matchit
