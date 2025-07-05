@@ -3,6 +3,9 @@ As well as include some useful tips and technical details
 
 I encourage you to look up the **bolded** terms in vim help and the *italicized* ones in here for a short description.
 
+TODO: continue looking through help pages
+TODO: look up various commands, such as grepping (helpgrep?)
+
 # Features
 1. How to exit: **:quit!**
 * **:** = enter **Command-line-mode** and execute a command
