@@ -1,0 +1,4 @@
+#!/bin/sh
+EFI_DIR="/boot/efi"
+sudo grub-install --target=x86_64-efi --efi-directory=$EFI_DIR --bootloader-id=Void_Linux
+sudo cp $EFI_DIR/EFI/Void_Linux/grubx64.efi $EFI_DIR/EFI/boot/bootx64.efi

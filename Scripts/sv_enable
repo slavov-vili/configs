@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SV_NAME=$1
+
+# TODO: if number of args = 1 - print usage and exit
+
+sudo ln -sf /etc/sv/$SV_NAME /var/service/
+
