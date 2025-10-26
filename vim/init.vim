@@ -8,35 +8,35 @@ let g:loaded_netrwPlugin = 1
 " [Plugin setup]
 call plug#begin('~/.local/share/nvim/vimplugs')
 " Movement
-Plug 'smoka7/hop.nvim'
+Plug 'smoka7/hop.nvim' " Jump around the screen
 Plug 'echasnovski/mini.bracketed'
 " Editing
 Plug 'tmsvg/pear-tree'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'  " Surround stuff
 Plug 'echasnovski/mini.ai'
 " Completion
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/nvim-cmp'     " Completion engine
 " Files
-Plug 'chrisgrieser/nvim-genghis'
-Plug 'nvim-tree/nvim-tree.lua'
+Plug 'chrisgrieser/nvim-genghis' " File actions
+Plug 'nvim-tree/nvim-tree.lua'   " File tree
 " Git
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'tpope/vim-fugitive'
+Plug 'lewis6991/gitsigns.nvim' " Git visuals
+Plug 'tpope/vim-fugitive'      " Git commands
 " LSP
-Plug 'williamboman/mason.nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'williamboman/mason.nvim'           " Install LSPs and stuff
+Plug 'neovim/nvim-lspconfig'             " Configure LSPs
+Plug 'williamboman/mason-lspconfig.nvim' " Integrate the above
 " Visual
-Plug 'echasnovski/mini.animate'
-Plug 'echasnovski/mini.trailspace'
-Plug 'slavov-vili/mini.indentscope.previewborder'
-Plug 'itchyny/lightline.vim'
-Plug 'luochen1990/rainbow'
-Plug 'nvim-tree/nvim-web-devicons'
+Plug 'echasnovski/mini.animate'      " Cool animations
+Plug 'echasnovski/mini.trailspace'   " Trailspace actions
+Plug 'slavov-vili/mini.indentscope.previewborder' " Show scope
+Plug 'itchyny/lightline.vim' "Status line
+Plug 'luochen1990/rainbow' " Colored brackets
+Plug 'nvim-tree/nvim-web-devicons' " Cool icons for stuff
 " Others
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'nvimtools/hydra.nvim'
