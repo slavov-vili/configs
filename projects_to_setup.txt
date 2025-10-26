@@ -1,12 +1,7 @@
+Scripts
 bash
 git
-vim
-dunst
-gsimplecal
-gxkb
 lightdm
 rofi
-openbox
-Scripts
-tint2
-volumeicon
+tmux
+vim
