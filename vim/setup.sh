@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DIR=$(pwd)
-VIM_DIR=" $HOME/.config/nvim/"
+VIM_DIR="$HOME/.config/nvim/"
 mkdir $VIM_DIR
 
 # Install vim-plug

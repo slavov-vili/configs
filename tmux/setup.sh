@@ -1,5 +1,7 @@
 #!/bin/bash
 
 DIR=$(pwd)
+TMUX_DIR="$HOME/.config/tmux"
 
-cp --verbose --force --remove-destination $DIR/tmux.conf $HOME/.config/tmux/tmux.conf
+mkdir -p $TMUX_DIR
+cp --verbose --force --remove-destination $DIR/tmux.conf $TMUX_DIR/tmux.conf
