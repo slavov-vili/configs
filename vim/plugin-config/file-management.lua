@@ -1,6 +1,6 @@
 vim.g.genghis_use_systemclipboard = true
 
-local PREFIX = "<leader>f"
+local PREFIX = "<leader>F"
 
 local function keymap(key, action, mode)
     mode = mode or "n"
