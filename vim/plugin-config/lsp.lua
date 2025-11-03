@@ -60,7 +60,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', PREFIX..'S', vim.lsp.buf.workspace_symbol, bufopts)
     vim.keymap.set('n', PREFIX..'a', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', PREFIX..'c', vim.lsp.buf.outgoing_calls, bufopts)
-    vim.keymap.set('n', PREFIX..'f', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', PREFIX..'r', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', PREFIX..'h', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', PREFIX..'i', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', PREFIX..'s', vim.lsp.buf.document_symbol, bufopts)
@@ -68,12 +68,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Refactoring mappings
     vim.keymap.set('n', PREFIX..'F', function() vim.lsp.buf.format { async = true } end, bufopts)
-    vim.keymap.set('n', PREFIX..'r', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.rename, bufopts)
 
     -- Workspace mappings
-    vim.keymap.set('n', PREFIX..'L', vim.lsp.buf.list_workspace_folders, bufopts)
-    vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', PREFIX..'R', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', PREFIX..'LS', vim.lsp.buf.list_workspace_folders, bufopts)
+    vim.keymap.set('n', PREFIX..'MK', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', PREFIX..'RM', vim.lsp.buf.remove_workspace_folder, bufopts)
   end
 })
 
