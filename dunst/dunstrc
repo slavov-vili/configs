@@ -126,7 +126,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  literal %
     # markup is allowed
-    format = "<b>%s</b>\n%b\n%p"
+    format = "%i <b>%s</b>\n%b\n%p"
 
     # alignment of message text.
     # possible values are "left", "center" and "right".
@@ -175,7 +175,7 @@
     max_icon_size = 32
 
     # paths to default icons.
-    icon_path = /usr/share/icons/Arc/:usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
+    icon_path = /usr/share/icons/Papirus-Dark/:usr/share/icons/Papirus/
 
     ### history ###
 
