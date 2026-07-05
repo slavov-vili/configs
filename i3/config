@@ -45,8 +45,8 @@ floating_modifier $mod
 
 # Inner = between windows
 # Outer = between windows and screen edge
-gaps inner 8
-gaps outer 3
+gaps inner 3
+gaps outer 0
 
 for_window [all] title_window_icon on
 for_window [all] title_window_icon padding 1px
@@ -60,6 +60,15 @@ focus_follows_mouse no
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 tiling_drag modifier titlebar
+
+
+
+# --------------------------------------
+# Window assignments
+# --------------------------------------
+assign [class="^(?i).*term.*$"] $ws2
+assign [class="Alacritty"] $ws2
+assign [window_role="browser"] $ws3
 
 
 
@@ -223,11 +232,12 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
     position top
+    # TODO: make i3status only show free space and maybe network speed? and date WITH emojis
     status_command i3status
+
+    mode dock
 }
 
 
@@ -237,14 +247,14 @@ bar {
 # --------------------------------------
 
 # Compositor
-exec_always --no-startup-id "killall -9 picom; picom"
+exec --no-startup-id "picom"
 
 # Background setter
-# TODO: run xfce background setter or something
+exec_always "feh --bg-scale ~/Images/kali-dragon-dark.png"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id "dex --autostart --environment i3"
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
@@ -256,13 +266,13 @@ exec --no-startup-id dex --autostart --environment i3
 # Daemons
 # --------------------------------------
 # Audio server
-exec --no-startup-id pipewire
+exec --no-startup-id "pipewire"
 
 # Notification daemon
-exec --no-startup-id dunst
+exec --no-startup-id "dunst"
 
 # Process authentication framework
-exec --no-startup-id /usr/libexec/xfce-polkit
+exec --no-startup-id "/usr/libexec/xfce-polkit"
 
 
 
@@ -270,19 +280,19 @@ exec --no-startup-id /usr/libexec/xfce-polkit
 # Tray Icons
 # --------------------------------------
 # Power manager
-exec --no-startup-id xfce4-power-manager --daemon'
+exec --no-startup-id "xfce4-power-manager --daemon"
 
 # Applet for NetworkManager
-exec --no-startup-id nm-applet
+exec --no-startup-id "nm-applet"
 
 # Applet for Bluetooth
-exec --no-startup-id blueman-applet
+exec --no-startup-id "blueman-applet"
 
 # Icons of removable drives
-exec --no-startup-id udiskie -t
+exec --no-startup-id "udiskie --smart-tray"
 
 # Applet for volume control
-exec --no-startup-id pasystray --key-grabbing
+exec --no-startup-id "pasystray --key-grabbing"
 
 # Keyboard language icon + switcher
-exec --no-startup-id gxkb
+# exec --no-startup-id "gxkb"
