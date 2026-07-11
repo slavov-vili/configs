@@ -19,8 +19,8 @@ set $right l
 
 # Names for workspaces
 set $ws1 "1: main"
-set $ws2 "2: browser"
-set $ws3 "3: terminal"
+set $ws2 "2: terminal"
+set $ws3 "3: browser"
 set $ws4 "4: messages"
 set $ws5 "5"
 set $ws6 "6"
@@ -32,7 +32,7 @@ set $ws10 "10"
 set $term alacritty
 set $launcher --no-startup-id sh ~/.config/rofi/scripts/app_launcher.sh
 
-set $refresh_status_bar killall -SIGUSR1 i3status
+set $refresh_status_bar killall -SIGUSR1 polybar
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -45,14 +45,14 @@ floating_modifier $mod
 
 # Inner = between windows
 # Outer = between windows and screen edge
-gaps inner 3
-gaps outer 0
+gaps inner 5
+gaps outer 5
 
 for_window [all] title_window_icon on
 for_window [all] title_window_icon padding 1px
 
-default_border normal 3
-default_floating_border normal 3
+default_border normal 0
+default_floating_border normal 1
 hide_edge_borders smart
 
 focus_follows_mouse no
@@ -115,7 +115,7 @@ bindsym $mod+r exec $launcher
 bindsym $mod+Return exec $term
 
 # Kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # Currently replaced with pa-applet
 # Use pactl to adjust volume in PulseAudio.
@@ -160,8 +160,8 @@ bindsym $mod+v split v
 
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+Shift+s layout stacking
-bindsym $mod+Tab layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+Tab layout tabbed
+bindsym $mod+Shift+w layout toggle split
 # Toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 # Change focus between tiling / floating windows
@@ -210,35 +210,32 @@ bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'You pressed the exit sh
 bindsym $mod+Shift+r mode "resize"
 bindsym $mod+Shift+b balance
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym $left       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
         bindsym $right      resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
+# same, but for arrow keys
         bindsym Left        resize shrink width 10 px or 10 ppt
         bindsym Down        resize grow height 10 px or 10 ppt
         bindsym Up          resize shrink height 10 px or 10 ppt
         bindsym Right       resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+# Return back to normal
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
-bar {
-    position top
-    # TODO: make i3status only show free space and maybe network speed? and date WITH emojis
-    status_command i3status
-
-    mode dock
-}
+# --------------------------------------
+# Bar
+# --------------------------------------
+exec --no-startup-id "polybar"
+# bar {
+#     position top
+#     status_command i3status
+#
+#     mode dock
+# }
 
 
 
