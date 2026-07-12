@@ -1,32 +1,34 @@
 -- Heavily based on the sample config
-local cmp = require'cmp'
+local cmp = require('cmp')
 
 
 
 cmp.setup({
-  sources = cmp.config.sources(
-    {
-      { name = 'nvim_lsp' },
-      -- { name = 'vsnip' }, -- For vsnip users.
-      -- { name = 'luasnip' }, -- For luasnip users.
-      -- { name = 'ultisnips' }, -- For ultisnips users.
-      -- { name = 'snippy' }, -- For snippy users.
-    },
-    {
-      { name = 'buffer' },
-    }
-  ),
   mapping = cmp.mapping.preset.insert({
     ['<C-u>'] = cmp.mapping.scroll_docs(-4),
     ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-q>'] = cmp.mapping.abort(),
+    ['<CR>'] = cmp.mapping.confirm({ select = false }),
   }),
   window = {
-    -- completion = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
+  preselect = cmp.PreselectMode.None,
+  sources = cmp.config.sources({
+      { name = 'nvim_lsp', priority = 1000 },
+      { name = 'buffer', priority = 750 },
+      {
+        name = 'path',
+        priority = 500,
+        option = { trailing_slash = false }
+      },
+      -- { name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+  }),
   -- snippet = {
     -- REQUIRED - you must specify a snippet engine
     -- expand = function(args)
@@ -79,14 +81,13 @@ cmp.setup.cmdline(
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':',
   {
-    sources = cmp.config.sources(
+    sources = cmp.config.sources({
       {
-        { name = 'cmdline' }
+        name = 'path',
+        option = { trailing_slash = true }
       },
-      {
-        { name = 'path' }
-      }
-    ),
+      { name = 'cmdline' }
+    }),
     mapping = cmp.mapping.preset.cmdline(),
     matching = { disallow_symbol_nonprefix_matching = false },
     window = {

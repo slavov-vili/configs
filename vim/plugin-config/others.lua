@@ -13,5 +13,4 @@ require('mini.ai').setup({
     search_method = 'cover_or_nearest'
 })
 
-require('mini.indentscope').setup()
-
+require('scopemaster').setup({scope_mode = "cursor"})

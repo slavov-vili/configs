@@ -33,10 +33,10 @@ Plug 'williamboman/mason-lspconfig.nvim' " Integrate the above
 " Visual
 Plug 'echasnovski/mini.animate'      " Cool animations
 Plug 'echasnovski/mini.trailspace'   " Trailspace actions
-Plug 'slavov-vili/mini.indentscope.previewborder' " Show scope
 Plug 'itchyny/lightline.vim' "Status line
 Plug 'luochen1990/rainbow' " Colored brackets
 Plug 'nvim-tree/nvim-web-devicons' " Cool icons for stuff
+"Plug 'slavov-vili/nvim-scopemaster'           " Show and manage scope
 " Others
 Plug 'ibhagwan/fzf-lua', {'branch': 'main'}
 Plug 'nvimtools/hydra.nvim'
@@ -193,4 +193,3 @@ nnoremap <C-W><Tab> <C-W>T
 "Load stuff from runtimepath
 runtime! plugin-config/*.lua "Plugin configs
 runtime! plugin-config/*.vim "Plugin configs
-

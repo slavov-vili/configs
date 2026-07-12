@@ -52,15 +52,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     -- FIXME: only if in a different file
     vim.keymap.set('n', PREFIX..'C', vim.lsp.buf.incoming_calls, bufopts)
-    vim.keymap.set('n', PREFIX..'d', function()
-      vim.cmd('tab split +lua\\ =vim.lsp.buf.definition()')
-    end, bufopts)
-    vim.keymap.set('n', PREFIX..'D', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', PREFIX..'H', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', PREFIX..'S', vim.lsp.buf.workspace_symbol, bufopts)
     vim.keymap.set('n', PREFIX..'a', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', PREFIX..'c', vim.lsp.buf.outgoing_calls, bufopts)
-    vim.keymap.set('n', PREFIX..'r', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', PREFIX..'f', vim.lsp.buf.references, bufopts)
     vim.keymap.set('n', PREFIX..'h', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', PREFIX..'i', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', PREFIX..'s', vim.lsp.buf.document_symbol, bufopts)
@@ -68,12 +66,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Refactoring mappings
     vim.keymap.set('n', PREFIX..'F', function() vim.lsp.buf.format { async = true } end, bufopts)
-    vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', PREFIX..'r', vim.lsp.buf.rename, bufopts)
 
     -- Workspace mappings
-    vim.keymap.set('n', PREFIX..'LS', vim.lsp.buf.list_workspace_folders, bufopts)
-    vim.keymap.set('n', PREFIX..'MK', vim.lsp.buf.add_workspace_folder, bufopts)
-    vim.keymap.set('n', PREFIX..'RM', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', PREFIX..'L', vim.lsp.buf.list_workspace_folders, bufopts)
+    vim.keymap.set('n', PREFIX..'N', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', PREFIX..'R', vim.lsp.buf.remove_workspace_folder, bufopts)
   end
 })
 
@@ -117,28 +115,27 @@ vim.diagnostic.config({
 
 -- IMPORTANT: this has to be in this order and before lspconfig
 require("mason").setup()
-local lspconfig = require('lspconfig')
 require("mason-lspconfig").setup({
     ensure_installed = {
-        'pylsp',
-        'lua_ls',
+        'cssls',
         'eslint',
         'html',
-        'cssls',
+        'lua_ls',
+        'pylsp',
         'ts_ls',
     },
     handlers = {
         ['pylsp'] = function()
-          lspconfig.pylsp.setup({
-            settings = {
-                pylsp = {
-                    plugins = {
-                        pylint = { enabled = true, executable = "pylint" },
+            vim.lsp.config('pylsp', {
+                settings = {
+                    pylsp = {
+                        plugins = {
+                            pylint = { enabled = true, executable = "pylint" },
+                        }
                     }
                 }
-            }
-          })
-        end
+            })
+        end,
       }
 })
 
