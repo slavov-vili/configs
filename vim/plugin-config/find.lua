@@ -2,8 +2,91 @@ local fzf = require("fzf-lua")
 
 fzf.setup({
   winopts = {
-    width = 0.9,
-    height = 0.9,
+    height     = 0.90,
+    width      = 0.90,
+    row        = 0.5,
+    col        = 0.5,
+    preview = {
+      layout   = "flex", -- Swaps between horizontal/vertical depending on screen size
+      horizontal = "right:55%",
+      vertical = "down:50%",
+    },
+  },  keymap = {
+    builtin = {
+      -- Finder Window Mechanics
+      ["<C-z>"] = "hide",
+      ["<C-h>"] = "toggle-help",
+      ["<C-f>"] = "toggle-fullscreen",
+
+      -- Preview Window Toggles
+      ["<C-p>"] = "toggle-preview",
+      ["<C-l>"] = "toggle-preview-wrap",
+      ["<C-o>"] = "toggle-preview-cw",
+      ["<C-y>"] = "toggle-preview-behavior",
+      ["<C-r>"] = "preview-reset",
+      ["<C-j>"] = "down",
+      ["<C-k>"] = "up",
+
+      -- Preview Navigation
+      ["<C-d>"] = "preview-page-down",
+      ["<C-u>"] = "preview-page-up",
+      -- ["<C-j>"] = "preview-down",
+      -- ["<C-k>"] = "preview-up",
+
+      -- Treesitter-Context
+      -- ["<C-T>"] = "toggle-preview-ts-ctx",
+      -- ["<C-[>"] = "preview-ts-ctx-dec",
+      -- ["<C-]>"] = "preview-ts-ctx-inc",
+    },
+
+    fzf = {
+      -- General Control
+      ["ctrl-q"] = "abort",
+      ["ctrl-x"] = "toggle+down",
+      ["ctrl-space"] = "toggle-all",
+
+      -- Edit Text Input
+      ["ctrl-b"] = "beginning-of-line",
+      ["ctrl-e"] = "end-of-line",
+      ["ctrl-w"] = "unix-line-discard",
+      -- Scroll list navigation
+      -- ["ctrl-f"] = "half-page-down",
+      -- ["ctrl-d"] = "half-page-up",
+      -- Jumping
+      ["ctrl-i"] = "first",
+      ["ctrl-n"] = "last",
+    },
+  },
+
+  actions = {
+    -- Below are the default actions, setting any value in these tables will override
+    -- the defaults, to inherit from the defaults change [1] from `false` to `true`
+    files = {
+      -- true,        -- uncomment to inherit all the below in your custom config
+      -- Pickers inheriting these actions:
+      --   files, git_files, git_status, grep, lsp, oldfiles, quickfix, loclist,
+      --   tags, btags, args, buffers, tabs, lines, blines
+      -- `file_edit_or_qf` opens a single selection or sends multiple selection to quickfix
+      -- replace `enter` with `file_edit` to open all files/bufs whether single or multiple
+      -- replace `enter` with `file_switch_or_edit` to attempt a switch in current tab first
+      ["enter"]     = FzfLua.actions.file_edit_or_qf,
+      ["ctrl-s"]    = FzfLua.actions.file_split,
+      ["ctrl-v"]    = FzfLua.actions.file_vsplit,
+      ["ctrl-t"]    = FzfLua.actions.file_tabedit,
+      ["ctrl-q"]    = FzfLua.actions.file_sel_to_qf,
+      ["alt-q"]     = FzfLua.actions.file_sel_to_ll,
+      ["alt-i"]     = FzfLua.actions.toggle_ignore,
+      ["alt-h"]     = FzfLua.actions.toggle_hidden,
+      ["alt-f"]     = FzfLua.actions.toggle_follow,
+    },
+  },
+  files = {
+    git_icons = true,
+    file_icons = true,
+    color_icons = true,
+  },
+  grep = {
+    rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case",
   },
 })
 
@@ -15,98 +98,100 @@ end
 
 
 -- Files
-keymap({"n", "v"}, "f", fzf.files,          "Find Files")
-keymap({"n", "v"}, "b", fzf.buffers,        "Open Buffers")
-keymap({"n", "v"}, "o", fzf.oldfiles,       "Recent Files")
-keymap({"n", "v"}, "a", fzf.args,           "Arg List")
-keymap({"n", "v"}, ":", fzf.blines,         "Search Current Buffer Lines")
-keymap({"n", "v"}, "L", fzf.lines,          "Search All Buffer Lines")
-keymap({"n", "v"}, "t", fzf.tabs,           "Tabs")
-keymap({"n", "v"}, "T", fzf.treesitter,     "Treesitter Symbols")
-keymap({"n", "v"}, "qf", fzf.quickfix,       "Quickfix List")
-keymap({"n", "v"}, "qF", fzf.quickfix_stack, "Quickfix Stack")
-keymap({"n", "v"}, "qw", fzf.loclist,       "Location List")
-keymap({"n", "v"}, "qW", fzf.loclist_stack, "Location Stack")
+keymap("n", ":", fzf.lines,          "Search All Buffer Lines")
+keymap("n", ";", fzf.blines,         "Search Current Buffer Lines")
+keymap("n", "L", fzf.loclist_stack,  "Location Stack")
+keymap("n", "Q", fzf.quickfix_stack, "Quickfix Stack")
+keymap("n", "T", fzf.treesitter,     "Treesitter Symbols")
+keymap("n", "a", fzf.args,           "Arg List")
+keymap("n", "b", fzf.buffers,        "Open Buffers")
+keymap("n", "f", fzf.files,          "Find Files")
+keymap("n", "l", fzf.loclist,        "Location List")
+keymap("n", "o", fzf.oldfiles,       "Recent Files")
+keymap("n", "q", fzf.quickfix,       "Quickfix List")
+keymap("n", "t", fzf.tabs,           "Tabs")
 
 
 
 -- Search
+keymap("n", "/", fzf.grep_curbuf,    "Grep Current Buffer")
+keymap("n", "G", fzf.grep,           "Grep")
+keymap("n", "L", fzf.grep_last,      "Repeat Last Grep")
+keymap("n", "Q", fzf.grep_quickfix,  "Grep Quickfix")
+keymap("n", "W", fzf.grep_cWORD,     "Grep WORD Under Cursor")
 keymap("n", "g", fzf.live_grep,      "Live Grep")
+keymap("n", "l", fzf.lgrep_loclist,  "Live Grep Loclist")
+keymap("n", "p", fzf.grep_project,   "Grep Project")
+keymap("n", "q", fzf.lgrep_quickfix, "Live Grep Quickfix")
+keymap("n", "w", fzf.grep_cword,     "Grep Word Under Cursor")
 keymap("v", "g", fzf.grep_visual,    "Grep Visual Selection")
-keymap({"n", "v"}, "G", fzf.grep,           "Grep")
-keymap({"n", "v"}, "p", fzf.grep_project,   "Grep Project")
-keymap({"n", "v"}, "w", fzf.grep_cword,     "Grep Word Under Cursor")
-keymap({"n", "v"}, "W", fzf.grep_cWORD,     "Grep WORD Under Cursor")
-keymap({"n", "v"}, "/", fzf.grep_curbuf,    "Grep Current Buffer")
-keymap({"n", "v"}, "qg", fzf.lgrep_quickfix, "Live Grep Quickfix")
-keymap({"n", "v"}, "qG", fzf.grep_quickfix,  "Grep Quickfix")
-keymap({"n", "v"}, "qv", fzf.lgrep_loclist,  "Live Grep Loclist")
-keymap({"n", "v"}, "L", fzf.grep_last,      "Repeat Last Grep")
+-- TODO find other stuff here
 
 
 
 -- Git
-keymap({"n", "v"}, "Gs", fzf.git_status,   "Git Status")
-keymap({"n", "v"}, "Gc", fzf.git_commits,  "Git Commits")
-keymap({"n", "v"}, "Gb", fzf.git_branches, "Git Branches")
-keymap({"n", "v"}, "Gt", fzf.git_tags,     "Git Tags")
-keymap({"n", "v"}, "GS", fzf.git_stash,    "Git Stash")
-keymap({"n", "v"}, "Gd", fzf.git_diff,     "Git Diff")
+keymap("n", "gS", fzf.git_stash,    "Git Stash")
+keymap("n", "gb", fzf.git_branches, "Git Branches")
+keymap("n", "gc", fzf.git_commits,  "Git Commits")
+keymap("n", "gd", fzf.git_diff,     "Git Diff")
+keymap("n", "gs", fzf.git_status,   "Git Status")
+keymap("n", "gt", fzf.git_tags,     "Git Tags")
 
 
 
 -- LSP
-keymap("n", "ld", fzf.lsp_definitions,       "LSP Definitions")
-keymap("n", "lD", fzf.lsp_declarations,      "LSP Declarations")
-keymap("n", "li", fzf.lsp_implementations,   "LSP Implementations")
-keymap("n", "lt", fzf.lsp_typedefs,          "LSP Type Definitions")
-keymap("n", "lr", fzf.lsp_references,        "LSP References")
-keymap("n", "la", fzf.lsp_code_actions,"LSP Code Actions")
-keymap("n", "ls", fzf.lsp_document_symbols,  "Document Symbols")
-keymap("n", "lS", fzf.lsp_workspace_symbols, "Workspace Symbols")
-keymap("n", "ll", fzf.lsp_live_workspace_symbols,"Live Workspace Symbols")
-keymap("n", "lc", fzf.lsp_outgoing_calls,"LSP Outgoing Calls")
-keymap("n", "lC", fzf.lsp_incoming_calls,"LSP Incoming Calls")
-keymap("n", "lp", fzf.lsp_type_sub,  "LSP Subtypes")
-keymap("n", "lP", fzf.lsp_type_super,"LSP Supertypes")
-keymap("n", "lf", fzf.lsp_finder,    "LSP Finder")
-keymap("n", "le", fzf.diagnostics_document,"Document Diagnostics")
-keymap("n", "lE", fzf.diagnostics_workspace,"Workspace Diagnostics")
+keymap("n", "lC", fzf.lsp_incoming_calls,         "LSP Incoming Calls")
+keymap("n", "lD", fzf.lsp_declarations,           "LSP Declarations")
+keymap("n", "lS", fzf.lsp_workspace_symbols,      "Workspace Symbols")
+keymap("n", "lT", fzf.lsp_type_super,             "LSP Supertypes")
+keymap("n", "lX", fzf.diagnostics_workspace,      "Workspace Diagnostics")
+keymap("n", "la", fzf.lsp_code_actions,           "LSP Code Actions")
+keymap("n", "lc", fzf.lsp_outgoing_calls,         "LSP Outgoing Calls")
+keymap("n", "ld", fzf.lsp_definitions,            "LSP Definitions")
+keymap("n", "lf", fzf.lsp_finder,                 "LSP Finder")
+keymap("n", "li", fzf.lsp_implementations,        "LSP Implementations")
+keymap("n", "ll", fzf.lsp_live_workspace_symbols, "Live Workspace Symbols")
+keymap("n", "lr", fzf.lsp_references,             "LSP References")
+keymap("n", "ls", fzf.lsp_document_symbols,       "Document Symbols")
+keymap("n", "ls", fzf.lsp_type_sub,               "LSP Subtypes")
+keymap("n", "lt", fzf.lsp_typedefs,               "LSP Type Definitions")
+keymap("n", "lx", fzf.diagnostics_document,       "Document Diagnostics")
 
 
 
 -- Miscellaneous
-keymap({"n", "v"}, "R", fzf.resume,        "Resume Last Picker")
-keymap({"n", "v"}, "B", fzf.builtin,       "Builtin Pickers")
-keymap({"n", "v"}, "P", fzf.profiles,      "Profiles")
-keymap({"n", "v"}, "`", fzf.marks,         "Marks")
-keymap({"n", "v"}, "J", fzf.jumps,         "Jumps")
-keymap({"n", "v"}, "C", fzf.commands,      "Commands")
-keymap({"n", "v"}, "<up>", fzf.command_history,"Command History")
-keymap({"n", "v"}, "~", fzf.changes,       "Changes")
-keymap({"n", "v"}, "\"", fzf.registers,    "Registers")
-keymap({"n", "v"}, "T", fzf.tagstack,     "Tag Stack")
-keymap({"n", "v"}, "H", fzf.helptags,      "Help Tags")
-keymap({"n", "v"}, "M", fzf.manpages,      "Man Pages")
-keymap({"n", "v"}, "cs", fzf.colorschemes, "Color Schemes")
-keymap({"n", "v"}, "?", fzf.search_history,"Search History")
-keymap({"n", "v"}, "K", fzf.keymaps,      "Keymaps")
-keymap({"n", "v"}, "O", fzf.nvim_options, "Neovim Options")
-keymap({"n", "v"}, "F", fzf.filetypes,    "Filetypes")
-keymap({"n", "v"}, "N", fzf.menus,        "Menus")
-keymap({"n", "v"}, "sp", fzf.spellcheck,   "Spellcheck Words")
-keymap({"n", "v"}, "ss", fzf.spell_suggest,"Spell Suggestions")
-keymap({"n", "v"}, "Ep", fzf.packadd,      "Packadd Plugins")
-keymap({"n", "v"}, "Eh", fzf.highlights,   "Highlights")
-keymap({"n", "v"}, "Ea", fzf.autocmds,     "Auto-commands")
-keymap({"n", "v"}, "Et", fzf.tmux_buffers, "Tmux Buffers")
-keymap({"n", "v"}, "Ez", fzf.zoxide,       "Zoxide Directories")
+keymap("n", "R", fzf.resume,          "Resume Last Picker")
+keymap("n", "B", fzf.builtin,         "Builtin Pickers")
+keymap("n", "P", fzf.profiles,        "Profiles")
+keymap("n", "`", fzf.marks,           "Marks")
+keymap("n", "J", fzf.jumps,           "Jumps")
+keymap("n", "c", fzf.commands,        "Commands")
+keymap("n", "h", fzf.command_history, "Command History")
+keymap("n", "~", fzf.changes,         "Changes")
+keymap("n", "\"", fzf.registers,      "Registers")
+keymap("n", "]", fzf.tagstack,        "Tag Stack")
+keymap("n", "H", fzf.helptags,        "Help Tags")
+keymap("n", "M", fzf.manpages,        "Man Pages")
+keymap("n", "C", fzf.colorschemes,   "Color Schemes")
+keymap("n", "?", fzf.search_history,  "Search History")
+keymap("n", "K", fzf.keymaps,         "Keymaps")
+keymap("n", "O", fzf.nvim_options,    "Neovim Options")
+keymap("n", "F", fzf.filetypes,       "Filetypes")
+keymap("n", "N", fzf.menus,           "Menus")
+-- TODO: do I even need this?
+keymap("n", "sp", fzf.spellcheck,     "Spellcheck Words")
+keymap("n", "ss", fzf.spell_suggest,  "Spell Suggestions")
+keymap("n", "Ep", fzf.packadd,        "Packadd Plugins")
+keymap("n", "Eh", fzf.highlights,     "Highlights")
+keymap("n", "Ea", fzf.autocmds,       "Auto-commands")
+keymap("n", "Et", fzf.tmux_buffers,   "Tmux Buffers")
+keymap("n", "Ez", fzf.zoxide,         "Zoxide Directories")
 
 
 
 -- Completion
-keymap({"n", "v"}, "cp", fzf.complete_path, "Complete Path")
-keymap({"n", "v"}, "cf", fzf.complete_file, "Complete File")
-keymap({"n", "v"}, "cl", fzf.complete_bline,"Complete Buffer Line")
-keymap({"n", "v"}, "cL", fzf.complete_line, "Complete Line")
+keymap("n", "cp", fzf.complete_path, "Complete Path")
+keymap("n", "cf", fzf.complete_file, "Complete File")
+keymap("n", "cl", fzf.complete_bline,"Complete Buffer Line")
+keymap("n", "cL", fzf.complete_line, "Complete Line")
 
