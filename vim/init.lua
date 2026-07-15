@@ -197,9 +197,3 @@ vim.keymap.set("n", "<leader>s", ":split ")
 vim.keymap.set("n", "<leader>v", ":vsplit ")
 vim.keymap.set("n", "<C-W><Tab>", "<C-W>T")
 
-
-
--- Load stuff from runtimepath
-vim.cmd("runtime! plugin-config/*.lua") -- Plugin configs
-vim.cmd("runtime! plugin-config/*.vim") -- Plugin configs
-
