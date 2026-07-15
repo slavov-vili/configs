@@ -40,6 +40,9 @@ vim.pack.add({
     { src = 'https://github.com/nvimtools/hydra.nvim' },
     { src = 'https://github.com/tpope/vim-sleuth' },
 })
+vim.cmd("packadd nvim.undotree")
+vim.cmd("packadd nvim.difftool")
+
 vim.cmd("syntax on") -- Enable syntax highlighting
 vim.cmd("filetype plugin indent on") -- Use auto-indenting
 

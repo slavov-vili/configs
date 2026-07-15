@@ -18,7 +18,6 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    print("LSP attached!")
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     local bufnr = args.buf
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
