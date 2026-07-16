@@ -22,7 +22,6 @@ local hop = require('hop')
 hop.setup{
     extensions = { 'hop-yank', 'hop-treesitter' }
 }
-local PREFIX = '<leader>h'
 
 local function current_line(action)
     return function()
@@ -36,50 +35,52 @@ local function multi_windows(action)
     end
 end
 
-local function keymap(key, action)
-    vim.keymap.set({'n', 'x'}, PREFIX..key, action, { remap=true })
+local PREFIX = '<leader>h'
+local function map(key, action, opts, mode)
+    mode = mode or {'n', 'x'}
+    vim.keymap.set(mode, PREFIX..key, action, vim.tbl_extend("force", { remap=true }, opts))
 end
 
 
 
 -- Hop anywhere
-keymap('a', current_line(hop.hint_anywhere))
-keymap('A', hop.hint_anywhere)
--- map('A', multi_windows(hop.hint_anywhere))
+map('a', current_line(hop.hint_anywhere), { desc = "Jump anywhere in current line" })
+map('A', hop.hint_anywhere, { desc = "Jump anywhere" })
+-- map('A', multi_windows(hop.hint_anywhere), { desc = "Jump anywhere (multi_windows)" })
 -- Hop to character
-keymap('f', current_line(hop.hint_char1))
-keymap('F', hop.hint_char1)
-keymap('f', multi_windows(hop.hint_char1))
-keymap('t', current_line(hop.hint_char2))
-keymap('T', hop.hint_char2)
-keymap('t', multi_windows(hop.hint_char2))
+map('f', current_line(hop.hint_char1), { desc = "Jump to char in current line" })
+map('F', hop.hint_char1, { desc = "Jump to char anywhere" })
+map('f', multi_windows(hop.hint_char1), { desc = "Jump to char anywhere (multi_windows)" })
+map('t', current_line(hop.hint_char2), { desc = "Jump to 2 chars in current line" })
+map('T', hop.hint_char2, { desc = "Jump to 2 chars anywhere" })
+map('t', multi_windows(hop.hint_char2), { desc = "Jump to 2 chars anywhere (multi_windows)" })
 -- Hop to word
-keymap('w', current_line(hop.hint_words))
-keymap('W', hop.hint_words)
-keymap('M', multi_windows(hop.hint_words))
+map('w', current_line(hop.hint_words), { desc = "Jump to word in current line" })
+map('W', hop.hint_words, { desc = "Jump to word anywhere" })
+map('M', multi_windows(hop.hint_words), { desc = "Jump to word anywhere (multi_windows)" })
 -- Hop to pattern
-keymap('/', hop.hint_patterns)
-keymap('?', multi_windows(hop.hint_patterns))
+map('/', hop.hint_patterns, { desc = "Jump to search pattern" })
+map('?', multi_windows(hop.hint_patterns), { desc = "Jump to search pattern (multi_windows)" })
 -- Hop to line
-keymap('l', hop.hint_lines_skip_whitespace)
-keymap('L', multi_windows(hop.hint_lines_skip_whitespace))
-keymap('<space>', hop.hint_lines)
-keymap('<space>', multi_windows(hop.hint_lines))
-keymap('v', hop.hint_vertical)
-keymap('V', multi_windows(hop.hint_vertical))
+map('l', hop.hint_lines_skip_whitespace, { desc = "Jump to line (skip_whitespace)" })
+map('L', multi_windows(hop.hint_lines_skip_whitespace), { desc = "Jump to line (skip_whitespace, multi_windows)" })
+map('<space>', hop.hint_lines, { desc = "Jump to line" })
+map('<space>', multi_windows(hop.hint_lines), { desc = "Jump to line (multi_windows)" })
+map('v', hop.hint_vertical, { desc = "Jump vertically" })
+map('V', multi_windows(hop.hint_vertical), { desc = "Jump vertically (multi_windows)" })
 
 
 
 -- FIXME: this stuff requires extensions
 -- Yank from char to char
--- keymap('y', current_line(hop.yank_char1))
--- keymap('Y', hop.yank_char1)
+-- map('y', current_line(hop.yank_char1), { desc = "Yank from char to char in current line" })
+-- map('Y', hop.yank_char1, { desc = "Yank from char to char anywhere" })
 -- -- Paste to char
--- keymap('p', current_line(hop.paste_char1))
--- keymap('P', hop.paste_char1)
+-- map('p', current_line(hop.paste_char1), { desc = "Paste to char in current line" })
+-- map('P', hop.paste_char1, { desc = "Paste to char anywhere" })
 
 
 
 -- -- Hop to TreeSitter node
--- keymap('n', hop.hint_nodes)
+-- map('n', hop.hint_nodes, { desc = "Jump to node" })
 

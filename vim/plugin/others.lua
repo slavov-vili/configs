@@ -13,4 +13,8 @@ require('mini.ai').setup({
     search_method = 'cover_or_nearest'
 })
 
+require('which-key').setup({
+    delay = 2000
+})
+
 require('scopemaster').setup({scope_mode = "cursor"})

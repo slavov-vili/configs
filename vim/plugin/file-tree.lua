@@ -1,15 +1,22 @@
+local api = require("nvim-tree.api")
+
+local PREFIX = "<leader>t"
+local function map(key, action, opts)
+    vim.keymap.set("n", PREFIX..key, action, vim.tbl_extend('force', { noremap = true, silent = true }, opts))
+end
+
 local function on_attach(bufnr)
-  local api = require("nvim-tree.api")
-
-  local function opts(desc)
-    return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
-  end
-
   -- default mappings
   api.map.on_attach.default(bufnr)
 
   -- custom mappings
-  vim.keymap.set("n", "?",     api.tree.toggle_help,                  opts("Help"))
+  -- Don't want to use the prefix within the tree itself... only in normal buffers
+  local prefix_bak = PREFIX
+  PREFIX = ""
+
+  map("?", api.tree.toggle_help, { desc = "File tree help", buffer = bufnr, nowait = true })
+
+  PREFIX = prefix_bak
 end
 
 require("nvim-tree").setup({
@@ -39,31 +46,25 @@ require("nvim-tree").setup({
   },
 })
 
-local api = require("nvim-tree.api")
-
-local PREFIX = "<leader>t"
-local function keymap(key, action)
-    vim.keymap.set("n", PREFIX..key, action, { noremap = true, silent = true })
-end
 
 -- TODO: add custom mappings for tree (help)
 -- TODO: add any other useful functions
 -- Tree management
 -- FIXME: Find current file?
-keymap("t", api.tree.toggle)
+map("t", api.tree.toggle, { desc = "Toggle file tree" })
 -- FIXME: Find current file?
-keymap("o", api.tree.open)
-keymap("q", api.tree.close)
-keymap("r", api.tree.reload)
+map("o", api.tree.open, { desc = "Open file tree" })
+map("q", api.tree.close, { desc = "Close file tree" })
+map("r", api.tree.reload, { desc = "Reload file tree" })
 -- Navigation
-keymap("F", api.tree.focus)
+map("F", api.tree.focus, { desc = "Focus file tree" })
 -- FIXME: switch to tree?
-keymap("f", api.tree.find_file)
-keymap("l", api.tree.collapse_all)
-keymap("L", api.tree.expand_all)
+map("f", api.tree.find_file, { desc = "Find file in file tree" })
+map("l", api.tree.collapse_all, { desc = "Copy filename" })
+map("L", api.tree.expand_all, { desc = "Expand all nodes in file tree" })
 -- Filters
-keymap(".", api.tree.toggle_hidden_filter)
-keymap("g", api.tree.toggle_git_clean_filter)
-keymap("G", api.tree.toggle_gitignore_filter)
-keymap("x", api.tree.toggle_no_buffer_filter)
+map(".", api.tree.toggle_hidden_filter, { desc = "Toggle file tree filter: hidden" })
+map("g", api.tree.toggle_git_clean_filter, { desc = "Toggle file tree filter: git clean" })
+map("G", api.tree.toggle_gitignore_filter, { desc = "Toggle file tree filter: gitignore" })
+map("x", api.tree.toggle_no_buffer_filter, { desc = "Toggle file tree filter: no buffer" })
 

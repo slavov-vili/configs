@@ -39,6 +39,7 @@ vim.pack.add({
     { src = 'https://github.com/ibhagwan/fzf-lua', version = 'main' },
     { src = 'https://github.com/nvimtools/hydra.nvim' },
     { src = 'https://github.com/tpope/vim-sleuth' },
+    { src = 'https://github.com/folke/which-key.nvim' },
 })
 vim.cmd("packadd nvim.undotree")
 vim.cmd("packadd nvim.difftool")
@@ -133,42 +134,38 @@ vim.api.nvim_set_hl(0, "DiffDelete", {
 
 
 -- [Key mappings]
+local all_modes = {"n", "v", "o"}
+local function map(l, r, opts, mode)
+    mode = mode or "n"
+    opts = opts or {}
+    vim.keymap.set(mode, l, r, opts)
+end
+
 -- gg => END
-vim.keymap.set({"n", "v", "o"}, "G", "gg")
-vim.keymap.set({"n", "v", "o"}, "gg", "G")
+map("G", "gg", { desc = "Go to file end"},   all_modes)
+map("gg", "G", { desc = "Go to file start"}, all_modes)
 -- Optical illusion?
-vim.keymap.set({"n", "v", "o"}, "P", "p")
-vim.keymap.set({"n", "v", "o"}, "p", "P")
--- Toggle whether to show relative line numbers
-vim.keymap.set({"n", "v", "o"}, "<leader>`", ":set rnu!<cr>")
--- Toggle whether to highlight current column
-vim.keymap.set({"n", "v", "o"}, "<leader><leader>", ":set cursorcolumn!<cr>")
+map("P", "p",  { desc = "Paste after cursor"},  all_modes)
+map("p", "P",  { desc = "Paste before cursor"}, all_modes)
+map("<leader>`", ":set rnu!<cr>",                         { desc = "Toggle relative line numbers"},    all_modes)
+map("<leader><leader>", ":set cursorcolumn!<cr>",         { desc = "Toggle highlight current column"}, all_modes)
 -- I found it, now go away!
-vim.keymap.set("n", "<leader><space>", ":nohlsearch<cr>")
--- Toggle spellchecker
-vim.keymap.set("n", "<leader>en", ":setlocal spell! spelllang=en_us<cr>")
-vim.keymap.set("n", "<leader>de", ":setlocal spell! spelllang=de_de<cr>")
-vim.keymap.set("n", "<leader>bg", ":setlocal spell! spelllang=bg_bg<cr>")
--- Run the current file
-vim.keymap.set({"n", "v", "o"}, "<leader>r", ":Run<cr>")
--- Open the current file
-vim.keymap.set({"n", "v", "o"}, "<leader>o", ":Open<cr>")
--- Reload .vimrc
-vim.keymap.set({"n", "v", "o"}, "<leader><F5>", ":so $MYVIMRC<cr>")
+map("<leader><space>", ":nohlsearch<cr>",                 { desc = "Clear search highlighting"})
+map("<leader>en", ":setlocal spell! spelllang=en_us<cr>", { desc = "Toggle spellchecker English"})
+map("<leader>de", ":setlocal spell! spelllang=de_de<cr>", { desc = "Toggle spellchecker German"})
+map("<leader>bg", ":setlocal spell! spelllang=bg_bg<cr>", { desc = "Toggle spellchecker Bulgarian"})
+map("<leader>r", ":Run<cr>",                              { desc = "Run current file"},   all_modes)
+map("<leader>o", ":Open<cr>",                             { desc = "Open current file?"}, all_modes)
+map("<leader><F5>", ":so $MYVIMRC<cr>",                   { desc = "Reload vimrc"},       all_modes)
 
 -- Visual mode mappings
--- Reopen visual mode after indentation
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("v", "<", "<gv")
+map(">", ">gv", { desc = "Reopen visual mode after indent"},   "v")
+map("<", "<gv", { desc = "Reopen visual mode after unindent"}, "v")
 
 -- Insert mode mappings
--- Insert-Completion
--- Omni-completion
-vim.keymap.set("i", "<C-space>", "<C-x><C-o>")
--- Choose popup menu item also with Enter instead of only Ctrl-Y
-vim.keymap.set("i", "<CR>", 'pumvisible() ? "\\<C-y>" : "\\<CR>"', { expr = true })
--- Close the popup menu like any other mode
-vim.keymap.set("i", "<Esc>", 'pumvisible() ? "\\<C-e>" : "\\<Esc>"', { expr = true })
+map("<C-space>", "<C-x><C-o>",                       { desc = "Omni-completion in insert mode"}, "i")
+map("<CR>", 'pumvisible() ? "\\<C-y>" : "\\<CR>"',   { desc = "Choose popup menu also with Enter (instead of only Ctrl-Y", expr = true }, "i")
+map("<Esc>", 'pumvisible() ? "\\<C-e>" : "\\<Esc>"', { expr = true, desc = "Close popup menu like other modes"}, "i")
 -- Terminal mode mappings
 vim.api.nvim_create_autocmd("TermOpen", {
   pattern = "*",
@@ -176,27 +173,25 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.cmd("startinsert")
   end,
 })
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
-vim.keymap.set("n", "<leader>;", ":vsplit term://bash<cr>")
+map("<Esc>", "<C-\\><C-n>",                { desc = "Go back to normal mode form terminal mode"}, "t")
+map("<leader>;", ":split term://bash<cr>", { desc = "Open terminal"},                             "n")
 
--- Execute line under cursor as vim command
-vim.keymap.set("n", "<leader>:", "yy:@\"<cr>")
--- Execute selection as vim command
-vim.keymap.set("v", "<leader>:", "y:@\"<cr>")
+map("<leader>:", "yy:@\"<cr>",    { desc = "Execute line under cursor as vim command"}, "n")
+map("<leader>:", "y:@\"<cr>",     { desc = "Execute selection as vim command"},         "v")
 
 -- Tab manipulation
-vim.keymap.set("n", "<Tab>n", " :tabnew ")
-vim.keymap.set("n", "<Tab>o", " :tabonly<cr>")
-vim.keymap.set("n", "<Tab>j", " gT")
-vim.keymap.set("n", "<Tab>k", " gt")
-vim.keymap.set("n", "<Tab>J", " :tabfirst<cr>")
-vim.keymap.set("n", "<Tab>K", " :tablast<cr>")
-vim.keymap.set("n", "<Tab>mj", ":tabmove -1<cr>")
-vim.keymap.set("n", "<Tab>mk", ":tabmove +1<cr>")
-vim.keymap.set("n", "<Tab>c", " :tabclose<cr>")
+map("<Tab>n", " :tabnew ",        { desc = "New tab"},               "n")
+map("<Tab>o", " :tabonly<cr>",    { desc = "Only keep this tab"},    "n")
+map("<Tab>j", " gT",              { desc = "Go to previous tab"},    "n")
+map("<Tab>k", " gt",              { desc = "Go to next tab"},        "n")
+map("<Tab>J", " :tabfirst<cr>",   { desc = "Go to first tab"},       "n")
+map("<Tab>K", " :tablast<cr>",    { desc = "Go to last tab"},        "n")
+map("<Tab>mj", ":tabmove -1<cr>", { desc = "Move tab to the left"},  "n")
+map("<Tab>mk", ":tabmove +1<cr>", { desc = "Move tab to the right"}, "n")
+map("<Tab>c", " :tabclose<cr>",   { desc = "Close tab"}, "n")
 
 -- Window manipulation
-vim.keymap.set("n", "<leader>s", ":split ")
-vim.keymap.set("n", "<leader>v", ":vsplit ")
-vim.keymap.set("n", "<C-W><Tab>", "<C-W>T")
+map("<leader>s", ":split ",  { desc = "Horizontal split"},       "n")
+map("<leader>v", ":vsplit ", { desc = "Vertical split"},         "n")
+map("<C-W><Tab>", "<C-W>T",  { desc = "Move window to new tab"}, "n")
 
